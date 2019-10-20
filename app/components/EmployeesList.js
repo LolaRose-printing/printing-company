@@ -4,18 +4,44 @@ import { Link } from 'react-router-dom';
 import { Employee } from '../dtos/Employee';
 import styles from './Counter.css';
 import routes from '../constants/routes';
+import EmployeeDetail from './EmployeeDetail';
 
 type Props = {
   addNew: () => void,
-  viewDetails: number => void,
+  // viewDetails: number => void,
   employeesList: Array<Employee>
 };
 
 export default class EmployeesList extends Component<Props> {
   props: Props;
 
+  state = {
+    search: []
+  };
+
+  selectEmployees = (search, employeesList) => {
+    let displayedEmployees;
+    if (search.length) {
+      const searchPattern = new RegExp(
+        search.map(term => `(?=.*${term})`).join(''),
+        'i'
+      );
+
+      displayedEmployees = employeesList.filter(
+        e => e.name.match(searchPattern) || e.surname.match(searchPattern)
+      );
+    } else {
+      displayedEmployees = employeesList;
+    }
+    return displayedEmployees;
+  };
+
   render() {
-    const { addNew, viewDetails, employeesList } = this.props;
+    const { addNew, employeesList } = this.props;
+    const { search } = this.state;
+
+    const displayedEmployees = this.selectEmployees(search, employeesList);
+
     return (
       <div id="employees-div">
         <div className={styles.backButton} data-tid="backButton">
@@ -24,14 +50,16 @@ export default class EmployeesList extends Component<Props> {
           </Link>
         </div>
 
-        <input type="text" />
+        <input
+          id="employees-search"
+          type="text"
+          onChange={e => this.setState({ search: e.target.value.split(' ') })}
+        />
+
         <ul id="employees-list">
-          {employeesList.map(e => (
+          {displayedEmployees.map(e => (
             <li key={e.id}>
-              {e.name} {e.surname}
-              <button type="button" onClick={() => viewDetails(e.id)}>
-                Detail
-              </button>
+              <EmployeeDetail detail={e} />
             </li>
           ))}
         </ul>

@@ -1,5 +1,8 @@
+// @flow
+
 import React, { Component } from 'react';
-import Employee from '../dtos/Employee';
+import Collapsible from 'react-collapsible';
+import { Employee } from '../dtos/Employee';
 
 type Props = {
   // save: () => void,
@@ -12,18 +15,9 @@ export default class EmployeeDetail extends Component<Props> {
   render() {
     const { detail } = this.props;
     return (
-      <table>
-        <tr>
-          <th>First name</th>
-          <th>Last name</th>
-          <th>Phone</th>
-        </tr>
-        <tr>
-          <td>{detail.name}</td>
-          <td>{detail.surname}</td>
-          <td>{detail.phone}</td>
-        </tr>
-      </table>
+      <Collapsible trigger={`${detail.name} ${detail.surname}`}>
+        Here is place for detail: {detail.name} {detail.surname}`
+      </Collapsible>
     );
   }
 }

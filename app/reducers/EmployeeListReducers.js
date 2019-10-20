@@ -7,8 +7,6 @@ export default function employees(
   state: Map<number, Employee> = new Map(),
   action: Action<Employee>
 ) {
-  console.log('Employee state', state);
-
   switch (action.type) {
     case ADD_NEW:
       return { ...state, [action.payload.id]: action.payload };

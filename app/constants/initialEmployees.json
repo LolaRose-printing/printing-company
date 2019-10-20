@@ -1,0 +1,39 @@
+{
+  "employees": [
+    {
+      "id": 1,
+      "name": "John",
+      "surname": "Doe",
+      "email": "john.doe@dd.com",
+      "phone": "151 222 333"
+    },
+    {
+      "id": 2,
+      "name": "Herbert",
+      "surname": "Frank",
+      "email": "herbert.frank@gmail.com",
+      "phone": "101 222 335"
+    },
+    {
+      "id": 3,
+      "name": "Alice",
+      "surname": "A",
+      "email": "alice.a@seznam.cz",
+      "phone": "122 453 434"
+    },
+    {
+      "id": 4,
+      "name": "Bob",
+      "surname": "B",
+      "email": "bobby.b@horde.cz",
+      "phone": "09347 4098"
+    },
+    {
+      "id": 5,
+      "name": "Bobby",
+      "surname": "Frank",
+      "email": "bobby@b.com",
+      "phone": "111 222 333"
+    }
+  ]
+}

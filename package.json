@@ -265,6 +265,7 @@
     "electron-updater": "^4.0.6",
     "history": "^4.9.0",
     "react": "^16.8.6",
+    "react-collapsible": "^2.6.0",
     "react-dom": "^16.8.6",
     "react-hot-loader": "^4.8.2",
     "react-redux": "^7.1.0",
@@ -282,7 +283,9 @@
   "collective": {
     "url": "https://opencollective.com/electron-react-boilerplate-594"
   },
-  "browserslist": ["electron 1.6"],
+  "browserslist": [
+    "electron 1.6"
+  ],
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
