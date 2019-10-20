@@ -5,7 +5,21 @@ import Root from './containers/Root';
 import { configureStore, history } from './store/configureStore';
 import './app.global.css';
 
-const store = configureStore();
+const store = configureStore({
+  employees: new Map([
+    [
+      2,
+      {
+        id: 2,
+        name: 'Herbert',
+        surname: 'Frank',
+        email: 'herbert.frank@gmail.com',
+        phone: '111 222 33'
+      }
+    ]
+  ]),
+  counter: 10
+});
 
 const AppContainer = process.env.PLAIN_HMR ? Fragment : ReactHotAppContainer;
 
