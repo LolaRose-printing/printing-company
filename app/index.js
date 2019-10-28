@@ -5,11 +5,12 @@ import Modal from 'react-modal';
 import Root from './containers/Root';
 import { configureStore, history } from './store/configureStore';
 import './app.global.css';
-import loadEmployeeMap from './utils/DataLoader';
+import { loadEmployeeMap, loadWorkTypes } from './utils/DataLoader';
 
 const store = configureStore({
   employees: loadEmployeeMap(),
-  counter: 10
+  workTypes: loadWorkTypes(),
+  counter: 1
 });
 
 const AppContainer = process.env.PLAIN_HMR ? Fragment : ReactHotAppContainer;

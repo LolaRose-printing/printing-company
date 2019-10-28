@@ -35,5 +35,37 @@
       "email": "bobby@b.com",
       "phone": "111 222 333"
     }
+  ],
+  "workTypes": [
+    {
+      "id": 1,
+      "name": "cutting",
+      "employeeWage": 100,
+      "priceForCustomer": 200
+    },
+    {
+      "id": 2,
+      "name": "printing",
+      "employeeWage": 50,
+      "priceForCustomer": 10000
+    },
+    {
+      "id": 3,
+      "name": "some stuff",
+      "employeeWage": 500,
+      "priceForCustomer": 500
+    },
+    {
+      "id": 4,
+      "name": "yeeying",
+      "employeeWage": 2,
+      "priceForCustomer": 400
+    },
+    {
+      "id": 5,
+      "name": "not doing anything",
+      "employeeWage": 0,
+      "priceForCustomer": 20
+    }
   ]
 }

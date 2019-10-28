@@ -21,6 +21,7 @@ const modalStyle = {
 
 type Props = {
   saveEmployee: Employee => void,
+  deleteEmployee: Employee => void,
   employeesList: Array<Employee>
 };
 
@@ -64,7 +65,7 @@ export default class EmployeesList extends Component<Props> {
   };
 
   render() {
-    const { saveEmployee, employeesList } = this.props;
+    const { saveEmployee, deleteEmployee, employeesList } = this.props;
     const { search, modalIsOpen } = this.state;
 
     const displayedEmployees = this.selectEmployees(search, employeesList);
@@ -104,6 +105,7 @@ export default class EmployeesList extends Component<Props> {
                 saveEmployee(e);
                 this.closeModal();
               }}
+              deleteRecord={undefined}
               detail={undefined}
             />
           </div>
@@ -112,7 +114,11 @@ export default class EmployeesList extends Component<Props> {
         <ul id="employees-list">
           {displayedEmployees.map(e => (
             <li key={e.id}>
-              <EmployeeDetail detail={e} save={saveEmployee} />
+              <EmployeeDetail
+                detail={e}
+                save={saveEmployee}
+                deleteRecord={deleteEmployee}
+              />
             </li>
           ))}
         </ul>

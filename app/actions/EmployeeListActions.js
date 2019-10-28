@@ -3,7 +3,7 @@
 import { Employee } from '../dtos/Employee';
 
 export const SAVE_EMPLOYEE = 'SAVE_EMPLOYEE';
-export const VIEW_DETAILS = 'VIEW_DETAILS';
+export const DELETE_EMPLOYEE = 'DELETE_EMPLOYEE';
 
 export function saveEmployee(employee: Employee) {
   return {
@@ -12,9 +12,9 @@ export function saveEmployee(employee: Employee) {
   };
 }
 
-export function viewDetails(id: number) {
-  console.log('viewDetails called', id);
+export function deleteEmployee(employee: Employee) {
   return {
-    type: VIEW_DETAILS
+    type: DELETE_EMPLOYEE,
+    payload: employee
   };
 }

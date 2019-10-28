@@ -4,15 +4,16 @@ import { Form, Field } from 'react-final-form';
 import { Employee } from '../dtos/Employee';
 
 type Props = {
+  detail: ?Employee,
   save: Employee => void,
-  detail: ?Employee
+  deleteRecord: Employee => void
 };
 
 export default class EmployeeEdit extends Component<Props> {
   props: Props;
 
   render() {
-    const { save, detail } = this.props;
+    const { save, deleteRecord, detail } = this.props;
 
     return (
       <div id="employee-edit">
@@ -63,6 +64,14 @@ export default class EmployeeEdit extends Component<Props> {
                   disabled={submitting || pristine}
                 >
                   Reset
+                </button>
+                {/* TODO add prompt */}
+                <button
+                  type="button"
+                  onClick={() => deleteRecord(detail.id)}
+                  style={detail ? {} : { display: 'none' }}
+                >
+                  Delete
                 </button>
               </div>
             </form>
