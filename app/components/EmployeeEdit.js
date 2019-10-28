@@ -6,7 +6,7 @@ import { Employee } from '../dtos/Employee';
 type Props = {
   save: Employee => void,
   detail: ?Employee,
-  employees: Array<Employee>
+  newId: ?number
 };
 
 export default class EmployeeEdit extends Component<Props> {
@@ -14,11 +14,11 @@ export default class EmployeeEdit extends Component<Props> {
 
   render() {
     let { detail } = this.props;
-    const { save, employees } = this.props;
-
+    const { save, newId } = this.props;
+    console.log(newId);
     if (!detail) {
       detail = {
-        id: Math.max(employees.map(e => e.id)) + 1
+        id: newId
       };
     }
 

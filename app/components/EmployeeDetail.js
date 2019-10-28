@@ -17,9 +17,9 @@ export default class EmployeeDetail extends Component<Props> {
   render() {
     const { detail, save } = this.props;
     return (
-      <Collapsible trigger={`${detail.name} ${detail.surname}`}>
+      <Collapsible trigger={`${detail.name} ${detail.surname}`} >
         <div className={styles.detailBox}>
-          <EmployeeEdit save={save} detail={detail} employees={[]} />
+          <EmployeeEdit save={save} detail={detail} newId={undefined} />
         </div>
       </Collapsible>
     );
