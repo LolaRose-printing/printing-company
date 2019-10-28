@@ -21,7 +21,7 @@ const modalStyle = {
 
 type Props = {
   saveEmployee: Employee => void,
-  deleteEmployee: Employee => void,
+  deleteEmployee: number => void,
   employeesList: Array<Employee>
 };
 
