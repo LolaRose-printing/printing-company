@@ -5,5 +5,6 @@ export type Employee = {
   name: string,
   surname: string,
   email: string,
-  phone: string
+  phone: string,
+  notes: string
 };

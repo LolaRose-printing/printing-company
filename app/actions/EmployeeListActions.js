@@ -1,11 +1,14 @@
 // @flow
 
-export const ADD_NEW = 'ADD_NEW';
+import { Employee } from '../dtos/Employee';
+
+export const SAVE_EMPLOYEE = 'SAVE_EMPLOYEE';
 export const VIEW_DETAILS = 'VIEW_DETAILS';
 
-export function addNew() {
+export function saveEmployee(employee: Employee) {
   return {
-    type: ADD_NEW
+    type: SAVE_EMPLOYEE,
+    payload: employee
   };
 }
 

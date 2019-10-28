@@ -2,13 +2,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Employee } from '../dtos/Employee';
-import styles from './Counter.css';
 import routes from '../constants/routes';
 import EmployeeDetail from './EmployeeDetail';
 
 type Props = {
-  addNew: () => void,
-  // viewDetails: number => void,
+  saveEmployee: Employee => void,
   employeesList: Array<Employee>
 };
 
@@ -37,14 +35,15 @@ export default class EmployeesList extends Component<Props> {
   };
 
   render() {
-    const { addNew, employeesList } = this.props;
+    console.log(this.props);
+    const { saveEmployee, employeesList } = this.props;
     const { search } = this.state;
 
     const displayedEmployees = this.selectEmployees(search, employeesList);
 
     return (
       <div id="employees-div">
-        <div className={styles.backButton} data-tid="backButton">
+        <div data-tid="backButton">
           <Link to={routes.HOME}>
             <i className="fa fa-arrow-left fa-3x" />
           </Link>
@@ -59,13 +58,10 @@ export default class EmployeesList extends Component<Props> {
         <ul id="employees-list">
           {displayedEmployees.map(e => (
             <li key={e.id}>
-              <EmployeeDetail detail={e} />
+              <EmployeeDetail detail={e} save={saveEmployee} />
             </li>
           ))}
         </ul>
-        <button type="button" onClick={addNew}>
-          Add new
-        </button>
       </div>
     );
   }
