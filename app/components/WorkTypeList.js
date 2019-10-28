@@ -7,7 +7,7 @@ import type { WorkType } from '../dtos/WorkType';
 
 type Props = {
   saveWorkType: WorkType => void,
-  deleteWorkType: WorkType => void,
+  deleteWorkType: number => void,
   workTypeList: Array<WorkType>
 };
 
