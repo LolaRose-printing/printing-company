@@ -5,9 +5,6 @@ import * as EmployeeListActions from '../actions/EmployeeListActions';
 import EmployeesList from '../components/EmployeesList';
 
 function mapStateToProps(state) {
-  console.log('Mam state to Props.');
-  console.log(state);
-  console.log('Stat props execuion');
   return {
     employeesList: [...state.employees.values()]
   };

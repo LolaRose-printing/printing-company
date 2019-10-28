@@ -15,7 +15,7 @@ export default class EmployeeEdit extends Component<Props> {
   render() {
     let { detail } = this.props;
     const { save, newId } = this.props;
-    console.log(newId);
+
     if (!detail) {
       detail = {
         id: newId
