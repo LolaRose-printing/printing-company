@@ -13,9 +13,22 @@ export default function employees(
 
   switch (action.type) {
     case SAVE_EMPLOYEE:
-      copyMap.set(action.payload.id, action.payload);
-      return copyMap;
+      return saveEmployee(copyMap, action.payload);
     default:
       return state;
   }
+}
+
+function saveEmployee(copyMap: Map<number, Employee>, toSave: Employee) {
+  let employee;
+
+  if (!toSave.id) {
+    employee = { ...toSave };
+    employee.id = Math.max(...Array.from(copyMap.keys())) + 1;
+  } else {
+    employee = toSave;
+  }
+
+  copyMap.set(employee.id, employee);
+  return copyMap;
 }

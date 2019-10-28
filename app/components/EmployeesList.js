@@ -1,12 +1,23 @@
 // @flow
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Collapsible from 'react-collapsible';
+import Modal from 'react-modal';
 import { Employee } from '../dtos/Employee';
 import routes from '../constants/routes';
 import EmployeeDetail from './EmployeeDetail';
 import detailStyles from './EmployeeDetail.css';
 import EmployeeEdit from './EmployeeEdit';
+
+const modalStyle = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)'
+  }
+};
 
 type Props = {
   saveEmployee: Employee => void,
@@ -17,7 +28,8 @@ export default class EmployeesList extends Component<Props> {
   props: Props;
 
   state = {
-    search: []
+    search: [],
+    modalIsOpen: false
   };
 
   selectEmployees = (search, employeesList) => {
@@ -37,9 +49,23 @@ export default class EmployeesList extends Component<Props> {
     return displayedEmployees;
   };
 
+  openModal = () => {
+    this.setState(state => ({
+      ...state,
+      modalIsOpen: true
+    }));
+  };
+
+  closeModal = () => {
+    this.setState(state => ({
+      ...state,
+      modalIsOpen: false
+    }));
+  };
+
   render() {
     const { saveEmployee, employeesList } = this.props;
-    const { search } = this.state;
+    const { search, modalIsOpen } = this.state;
 
     const displayedEmployees = this.selectEmployees(search, employeesList);
     return (
@@ -53,18 +79,35 @@ export default class EmployeesList extends Component<Props> {
         <input
           id="employees-search"
           type="text"
-          onChange={e => this.setState({ search: e.target.value.split(' ') })}
+          onChange={e => {
+            const searchValues = e.target.value.split(' ');
+            this.setState(state => ({
+              ...state,
+              search: searchValues
+            }));
+          }}
         />
 
-        <Collapsible trigger="Add new">
+        <button onClick={this.openModal} type="button">
+          Add new
+        </button>
+
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={this.closeModal}
+          style={modalStyle}
+          contentLabel="Example Modal"
+        >
           <div className={detailStyles.detailBox}>
             <EmployeeEdit
-              save={saveEmployee}
+              save={e => {
+                saveEmployee(e);
+                this.closeModal();
+              }}
               detail={undefined}
-              newId={Math.max(...employeesList.map(e => e.id))}
             />
           </div>
-        </Collapsible>
+        </Modal>
 
         <ul id="employees-list">
           {displayedEmployees.map(e => (

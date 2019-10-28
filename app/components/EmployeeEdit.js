@@ -5,22 +5,14 @@ import { Employee } from '../dtos/Employee';
 
 type Props = {
   save: Employee => void,
-  detail: ?Employee,
-  newId: ?number
+  detail: ?Employee
 };
 
 export default class EmployeeEdit extends Component<Props> {
   props: Props;
 
   render() {
-    let { detail } = this.props;
-    const { save, newId } = this.props;
-
-    if (!detail) {
-      detail = {
-        id: newId
-      };
-    }
+    const { save, detail } = this.props;
 
     return (
       <div id="employee-edit">
@@ -29,7 +21,7 @@ export default class EmployeeEdit extends Component<Props> {
           initialValues={detail}
           render={({ handleSubmit, form, submitting, pristine }) => (
             <form onSubmit={handleSubmit}>
-              <div>
+              <div style={detail ? {} : { display: 'none' }}>
                 <label>Id</label>
                 <Field
                   name="id"

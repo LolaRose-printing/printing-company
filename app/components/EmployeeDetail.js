@@ -19,7 +19,7 @@ export default class EmployeeDetail extends Component<Props> {
     return (
       <Collapsible trigger={`${detail.name} ${detail.surname}`}>
         <div className={styles.detailBox}>
-          <EmployeeEdit save={save} detail={detail} newId={undefined} />
+          <EmployeeEdit save={save} detail={detail} />
         </div>
       </Collapsible>
     );
