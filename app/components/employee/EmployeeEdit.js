@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 import { Form, Field } from 'react-final-form';
-import { Employee } from '../dtos/Employee';
+import { Employee } from '../../dtos/Employee';
 
 type Props = {
   detail: ?Employee,

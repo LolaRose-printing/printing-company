@@ -2,7 +2,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as EmployeeListActions from '../actions/EmployeeListActions';
 
-import EmployeesList from '../components/EmployeesList';
+import EmployeesList from '../components/employee/EmployeesList';
 
 function mapStateToProps(state) {
   return {

@@ -2,8 +2,8 @@
 
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import routes from '../constants/routes';
-import type { WorkType } from '../dtos/WorkType';
+import routes from '../../constants/routes';
+import type { WorkType } from '../../dtos/WorkType';
 
 type Props = {
   saveWorkType: WorkType => void,

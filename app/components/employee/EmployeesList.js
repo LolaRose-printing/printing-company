@@ -2,8 +2,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Modal from 'react-modal';
-import { Employee } from '../dtos/Employee';
-import routes from '../constants/routes';
+import { Employee } from '../../dtos/Employee';
+import routes from '../../constants/routes';
 import EmployeeDetail from './EmployeeDetail';
 import detailStyles from './EmployeeDetail.css';
 import EmployeeEdit from './EmployeeEdit';

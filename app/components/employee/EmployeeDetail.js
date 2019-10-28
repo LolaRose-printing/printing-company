@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import Collapsible from 'react-collapsible';
-import { Employee } from '../dtos/Employee';
+import { Employee } from '../../dtos/Employee';
 import EmployeeEdit from './EmployeeEdit';
 import styles from './EmployeeDetail.css';
 

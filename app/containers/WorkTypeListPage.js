@@ -1,7 +1,7 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as WorkTypeListActions from '../actions/workTypeListActions';
-import WorkTypeList from '../components/WorkTypeList';
+import WorkTypeList from '../components/workType/WorkTypeList';
 
 function mapStateToProps(state) {
   return {
