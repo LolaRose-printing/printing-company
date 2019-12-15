@@ -17,3 +17,21 @@ export function loadWorkTypes() {
   staticDataSet.workTypes.forEach(wt => resultMap.set(wt.id, wt));
   return resultMap;
 }
+
+/**
+ * Loads clients.
+ */
+export function loadClients() {
+  const resultMap = new Map();
+  staticDataSet.clients.forEach(wt => resultMap.set(wt.id, wt));
+  return resultMap;
+}
+
+/**
+ * Loads orders.
+ */
+export function loadOrders() {
+  const resultMap = new Map();
+  staticDataSet.orders.forEach(wt => resultMap.set(wt.id, wt));
+  return resultMap;
+}

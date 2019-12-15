@@ -271,9 +271,11 @@
     "react-final-form": "^6.3.0",
     "react-hot-loader": "^4.8.2",
     "react-modal": "^3.11.1",
+    "react-picker": "^1.2.15",
     "react-redux": "^7.1.0",
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
+    "react-select": "^3.0.8",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "source-map-support": "^0.5.11"

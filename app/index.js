@@ -5,11 +5,18 @@ import Modal from 'react-modal';
 import Root from './containers/Root';
 import { configureStore, history } from './store/configureStore';
 import './app.global.css';
-import { loadEmployeeMap, loadWorkTypes } from './utils/DataLoader';
+import {
+  loadClients,
+  loadEmployeeMap,
+  loadOrders,
+  loadWorkTypes
+} from './utils/DataLoader';
 
 const store = configureStore({
   employees: loadEmployeeMap(),
   workTypes: loadWorkTypes(),
+  clients: loadClients(),
+  orders: loadOrders(),
   counter: 1
 });
 

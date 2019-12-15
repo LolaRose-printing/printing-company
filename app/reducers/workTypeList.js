@@ -4,6 +4,8 @@ import {
   DELETE_WORK_TYPE,
   SAVE_WORK_TYPE
 } from '../actions/workTypeListActions';
+import { saveToMap } from './common';
+
 import type { Action } from './types';
 import type { WorkType } from '../dtos/WorkType';
 
@@ -16,17 +18,12 @@ export default function workTypes(
 
   switch (action.type) {
     case SAVE_WORK_TYPE:
-      return saveWorkType(copyMap, action.payload);
+      return saveToMap(copyMap, action.payload);
     case DELETE_WORK_TYPE:
       return deleteWorkType(copyMap, action.payload);
     default:
       return state;
   }
-}
-
-function saveWorkType(copyMap: Map<number, WorkType>, workType: WorkType) {
-  copyMap.set(workType.id, workType);
-  return copyMap;
 }
 
 function deleteWorkType(copyMap: Map<number, WorkType>, workTypeId: number) {

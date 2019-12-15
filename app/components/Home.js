@@ -23,6 +23,9 @@ export default class Home extends Component<Props> {
           <li>
             <Link to={routes.WORK_TYPES}>to Work Types</Link>
           </li>
+          <li>
+            <Link to={routes.ORDERS}>Orders</Link>
+          </li>
         </ul>
       </div>
     );

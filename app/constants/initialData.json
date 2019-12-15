@@ -1,4 +1,71 @@
 {
+  "orders": [
+    {
+      "id": 1,
+      "name": "Order 1 for client 1",
+      "clientId": 1,
+      "notes": "nothing here",
+      "works": [
+        {
+          "recordId": 1,
+          "employeeId": 1,
+          "workId": 1,
+          "amount": 2,
+          "date": "Monday"
+        },
+        {
+          "recordId": 2,
+          "employeeId": 1,
+          "workId": 3,
+          "amount": 2,
+          "date": "Tue"
+        },
+        {
+          "recordId": 3,
+          "employeeId": 1,
+          "workId": 2,
+          "amount": 4,
+          "date": "Tue"
+        },
+        {
+          "recordId": 4,
+          "employeeId": 2,
+          "workId": 1,
+          "amount": 1,
+          "date": "Th"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Order 2 for client 1",
+      "clientId": 2,
+      "notes": "nothing here",
+      "works": [
+        {
+          "recordId": 1,
+          "employeeId": 1,
+          "workId": 1,
+          "amount": 2,
+          "date": "sa"
+        }
+      ]
+    }
+  ],
+  "clients": [
+    {
+      "id": 1,
+      "name": "Client A",
+      "email": "info@clientA.com",
+      "phone": "151 222 333"
+    },
+    {
+      "id": 2,
+      "name": "Client B",
+      "email": "info@clientA.com",
+      "phone": "151 222 333"
+    }
+  ],
   "employees": [
     {
       "id": 1,

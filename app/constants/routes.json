@@ -2,5 +2,7 @@
   "HOME": "/",
   "COUNTER": "/counter",
   "EMPLOYEES": "/employees",
-  "WORK_TYPES": "/work-types"
+  "WORK_TYPES": "/work-types",
+  "ORDERS": "/orders",
+  "REPORTS": "/reports"
 }

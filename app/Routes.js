@@ -6,10 +6,12 @@ import HomePage from './containers/HomePage';
 import CounterPage from './containers/CounterPage';
 import EmployeeListPage from './containers/EmployeeListPage';
 import WorkTypeListPage from './containers/WorkTypeListPage';
+import OrdersListPage from './containers/OrdersListPage';
 
 export default () => (
   <App>
     <Switch>
+      <Route path={routes.ORDERS} component={OrdersListPage} />
       <Route path={routes.WORK_TYPES} component={WorkTypeListPage} />
       <Route path={routes.EMPLOYEES} component={EmployeeListPage} />
       <Route path={routes.COUNTER} component={CounterPage} />
