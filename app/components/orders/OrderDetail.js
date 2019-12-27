@@ -37,6 +37,13 @@ export default class OrderDetail extends Component<Props> {
     });
   };
 
+  createMapWithEmptyEntry = source => {
+    const res = new Map();
+    source.set(-1, { id: -1, name: '' });
+    source.forEach(x => res.set(x.id, x));
+    return res;
+  };
+
   render() {
     const { save, order, employees, workTypes, clients } = this.props;
 
@@ -89,13 +96,29 @@ export default class OrderDetail extends Component<Props> {
         <div>
           {order.works.map(work => (
             <WorkAssignment
-              key={`work-${work.employeeId}-${work.workId}-${work.recordId}`}
+              key={`work-${order.id}-${work.recordId}`}
               workTypes={workTypes}
               employees={employees}
               work={work}
               onChange={x => this.updateWorkRecord(save, order, x)}
             />
           ))}
+        </div>
+
+        <div>
+          <WorkAssignment
+            key={`new-work-${order.id}`}
+            workTypes={this.createMapWithEmptyEntry(workTypes)}
+            employees={this.createMapWithEmptyEntry(employees)}
+            work={{
+              recordId: Math.max(order.works.map(x => x.recordId)) + 1,
+              workId: -1,
+              employeeId: -1
+            }}
+            onChange={x => {
+              this.addWorkRecord(save, order, x);
+            }} // TODO after this, one must reload the modal
+          />
         </div>
       </div>
     );

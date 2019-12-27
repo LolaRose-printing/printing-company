@@ -16,6 +16,23 @@ type Props = {
 export default class WorkAssignment extends Component<Props> {
   props: Props;
 
+  validateForm = values => {
+    const errors = {};
+    if (values.employeeId === -1) {
+      errors.employeeId = 'Must be selected';
+    }
+
+    if (values.workId === -1) {
+      errors.workId = 'Must be selected';
+    }
+
+    if (!parseInt(values.amount, 10)) {
+      errors.amount = 'Must be set';
+    }
+
+    return errors;
+  };
+
   render() {
     const { employees, workTypes, work, onChange } = this.props;
 
@@ -23,6 +40,7 @@ export default class WorkAssignment extends Component<Props> {
       <Form
         onSubmit={onChange}
         initialValues={work}
+        validate={this.validateForm}
         render={({ handleSubmit, form, submitting, pristine }) => (
           <form onSubmit={handleSubmit}>
             <div>
