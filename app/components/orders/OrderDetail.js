@@ -7,6 +7,7 @@ import type { WorkType } from '../../dtos/WorkType';
 import type { Order } from '../../dtos/Order';
 import WorkAssignment from './WorkAssignment';
 import DatePickerWrapper from '../tools/DatePickerWrapper';
+import BackButton from '../../utils/BackButton';
 
 type Props = {
   save: Order => void,
@@ -30,8 +31,6 @@ export default class OrderDetail extends Component<Props> {
   };
 
   addWorkRecord = (save, order, newWork) => {
-    console.log('saving');
-    console.log(newWork);
     save({
       ...order,
       works: order.works.concat(newWork)
@@ -49,6 +48,8 @@ export default class OrderDetail extends Component<Props> {
     const { save, order, employees, workTypes, clients } = this.props;
     return (
       <div id="order-list-div">
+        <BackButton />
+
         <Form
           onSubmit={save}
           initialValues={order}
@@ -130,7 +131,7 @@ export default class OrderDetail extends Component<Props> {
             }}
             onChange={x => {
               this.addWorkRecord(save, order, x);
-            }} // TODO after this, one must reload the modal
+            }}
           />
         </div>
       </div>

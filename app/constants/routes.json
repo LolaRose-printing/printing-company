@@ -4,5 +4,6 @@
   "EMPLOYEES": "/employees",
   "WORK_TYPES": "/work-types",
   "ORDERS": "/orders",
+  "ORDER_DETAIL": "/order/",
   "REPORTS": "/reports"
 }

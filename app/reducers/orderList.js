@@ -1,5 +1,5 @@
 import type { Action } from './types';
-import { SAVE_ORDER, DELETE_ORDER } from '../actions/orderListActions';
+import { SAVE_ORDER, DELETE_ORDER } from '../actions/orderDetailActions';
 import { saveToMap, deleteFromMap } from './common';
 import type { Order } from '../dtos/Order';
 

@@ -2,70 +2,18 @@
 
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Modal from 'react-modal';
 import routes from '../../constants/routes';
-import type { Employee } from '../../dtos/Employee';
-import type { WorkType } from '../../dtos/WorkType';
 import type { Order } from '../../dtos/Order';
-import detailStyles from '../employee/EmployeeDetail.css';
-import OrderDetail from './OrderDetail';
-
-const modalStyle = {
-  content: {
-    top: '50%',
-    left: '50%',
-    // right: 'auto',
-    // bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)'
-  }
-};
 
 type Props = {
-  saveOrder: Order => void,
-  deleteOrder: number => void,
-  orders: Array<Order>,
-  employees: Map<number, Employee>,
-  workTypes: Map<number, WorkType>,
-  clients: Map<number, Client>
+  orders: Array<Order>
 };
 
 export default class OrdersList extends Component<Props> {
   props: Props;
 
-  state = {
-    modalIsOpen: false,
-    orderInModal: null
-  };
-
-  openModal = (order: Order) => {
-    this.setState(state => ({
-      ...state,
-      modalIsOpen: true,
-      orderInModal: order
-    }));
-  };
-
-  closeModal = () => {
-    this.setState(state => ({
-      ...state,
-      modalIsOpen: false
-      // orderInModal: null //TODO maybe bug?
-    }));
-  };
-
   render() {
-    const {
-      saveOrder,
-      // eslint-disable-next-line no-unused-vars
-      deleteOrder,
-      orders,
-      employees,
-      workTypes,
-      clients
-    } = this.props;
-
-    const { modalIsOpen, orderInModal } = this.state;
+    const { orders } = this.props;
 
     return (
       <div id="order-list-div">
@@ -78,32 +26,10 @@ export default class OrdersList extends Component<Props> {
         <ul id="orders-list">
           {orders.map(wt => (
             <li key={wt.id}>
-              <button type="button" onClick={() => this.openModal(wt)}>
-                {wt.name}
-              </button>
+              <Link to={routes.ORDER_DETAIL + wt.id}>{wt.name}</Link>
             </li>
           ))}
         </ul>
-
-        <Modal
-          isOpen={modalIsOpen}
-          onRequestClose={this.closeModal}
-          style={modalStyle}
-          contentLabel="Example Modal"
-        >
-          <div className={detailStyles.detailBox}>
-            <OrderDetail
-              save={x => {
-                saveOrder(x);
-                this.closeModal();
-              }}
-              order={orderInModal}
-              employees={employees}
-              workTypes={workTypes}
-              clients={clients}
-            />
-          </div>
-        </Modal>
       </div>
     );
   }
