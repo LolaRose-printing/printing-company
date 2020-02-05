@@ -5,34 +5,31 @@
       "name": "Order 1 for client 1",
       "clientId": 1,
       "notes": "nothing here",
+      "date": "2020-02-04T11:21:48.713Z",
       "works": [
         {
           "recordId": 1,
           "employeeId": 1,
           "workId": 1,
-          "amount": 2,
-          "date": "Monday"
+          "amount": 2
         },
         {
           "recordId": 2,
           "employeeId": 1,
           "workId": 3,
-          "amount": 2,
-          "date": "Tue"
+          "amount": 2
         },
         {
           "recordId": 3,
           "employeeId": 1,
           "workId": 2,
-          "amount": 4,
-          "date": "Tue"
+          "amount": 4
         },
         {
           "recordId": 4,
           "employeeId": 2,
           "workId": 1,
-          "amount": 1,
-          "date": "Th"
+          "amount": 1
         }
       ]
     },
@@ -41,6 +38,7 @@
       "name": "Order 2 for client 1",
       "clientId": 2,
       "notes": "nothing here",
+      "date": "2020-02-04T11:21:48.713Z",
       "works": [
         {
           "recordId": 1,

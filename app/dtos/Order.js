@@ -4,8 +4,7 @@ export type Work = {
   recordId: number,
   employeeId: number,
   workId: number,
-  amount: number,
-  date: string
+  amount: number
 };
 
 export type Order = {
@@ -13,5 +12,6 @@ export type Order = {
   name: string,
   clientId: number,
   notes: string,
-  works: Array<Work>
+  works: Array<Work>,
+  date: string
 };

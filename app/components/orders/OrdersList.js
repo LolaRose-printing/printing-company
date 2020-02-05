@@ -93,7 +93,10 @@ export default class OrdersList extends Component<Props> {
         >
           <div className={detailStyles.detailBox}>
             <OrderDetail
-              save={saveOrder}
+              save={x => {
+                saveOrder(x);
+                this.closeModal();
+              }}
               order={orderInModal}
               employees={employees}
               workTypes={workTypes}

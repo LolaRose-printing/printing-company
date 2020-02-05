@@ -6,6 +6,7 @@ import type { Employee } from '../../dtos/Employee';
 import type { WorkType } from '../../dtos/WorkType';
 import type { Order } from '../../dtos/Order';
 import WorkAssignment from './WorkAssignment';
+import DatePickerWrapper from '../tools/DatePickerWrapper';
 
 type Props = {
   save: Order => void,
@@ -16,8 +17,6 @@ type Props = {
 };
 
 export default class OrderDetail extends Component<Props> {
-  props: Props;
-
   updateWorkRecord = (save, order, updatedWork) => {
     save({
       ...order,
@@ -31,6 +30,8 @@ export default class OrderDetail extends Component<Props> {
   };
 
   addWorkRecord = (save, order, newWork) => {
+    console.log('saving');
+    console.log(newWork);
     save({
       ...order,
       works: order.works.concat(newWork)
@@ -46,7 +47,6 @@ export default class OrderDetail extends Component<Props> {
 
   render() {
     const { save, order, employees, workTypes, clients } = this.props;
-
     return (
       <div id="order-list-div">
         <Form
@@ -77,6 +77,18 @@ export default class OrderDetail extends Component<Props> {
                 <label>Notes</label>
                 <Field name="notes" component="textarea" placeholder="Notes" />
               </div>
+
+              <Field name="date">
+                {({ input }) => (
+                  <DatePickerWrapper
+                    initDate={input.value}
+                    onChange={d => {
+                      input.onChange(d);
+                    }}
+                  />
+                )}
+              </Field>
+
               <div className="buttons">
                 <button type="submit" disabled={submitting || pristine}>
                   Submit
@@ -106,12 +118,13 @@ export default class OrderDetail extends Component<Props> {
         </div>
 
         <div>
+          Add new work assignment:
           <WorkAssignment
             key={`new-work-${order.id}`}
             workTypes={this.createMapWithEmptyEntry(workTypes)}
             employees={this.createMapWithEmptyEntry(employees)}
             work={{
-              recordId: Math.max(order.works.map(x => x.recordId)) + 1,
+              recordId: Math.max(...order.works.map(x => x.recordId)) + 1,
               workId: -1,
               employeeId: -1
             }}

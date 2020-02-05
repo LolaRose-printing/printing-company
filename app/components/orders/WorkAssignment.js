@@ -71,10 +71,6 @@ export default class WorkAssignment extends Component<Props> {
               <label>Amount</label>
               <Field name="amount" component="textarea" placeholder="Amount" />
             </div>
-            <div>
-              <label>Date</label>
-              <Field name="date" component="textarea" placeholder="Date" />
-            </div>
 
             <div className="buttons">
               <button type="submit" disabled={submitting || pristine}>
