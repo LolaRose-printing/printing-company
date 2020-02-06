@@ -39,7 +39,7 @@ export default class OrderDetail extends Component<Props> {
 
   createMapWithEmptyEntry = source => {
     const res = new Map();
-    source.set(-1, { id: -1, name: '' });
+    res.set(-1, { id: -1, name: '' });
     source.forEach(x => res.set(x.id, x));
     return res;
   };
