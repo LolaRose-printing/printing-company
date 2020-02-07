@@ -18,6 +18,7 @@ export default () => (
       <Route path={routes.EMPLOYEES} component={EmployeeListPage} />
       <Route path={routes.COUNTER} component={CounterPage} />
       <Route path={routes.HOME} component={HomePage} />
+      <Route path={routes.HOME} component={HomePage} />
     </Switch>
   </App>
 );

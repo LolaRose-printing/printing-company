@@ -26,7 +26,9 @@ export default class OrdersList extends Component<Props> {
         <ul id="orders-list">
           {orders.map(wt => (
             <li key={wt.id}>
-              <Link to={routes.ORDER_DETAIL + wt.id}>{wt.name}</Link>
+              <Link to={routes.ORDER_DETAIL + JSON.stringify(wt.id)}>
+                {wt.name}
+              </Link>
             </li>
           ))}
         </ul>

@@ -4,7 +4,7 @@ import * as actions from '../actions/orderDetailActions';
 import OrderDetail from '../components/orders/OrderDetail';
 
 function mapStateToProps(state, ownProps) {
-  const orderId = parseInt(ownProps.match.params.id, 10);
+  const orderId = JSON.parse(ownProps.match.params.id);
   const order = state.orders.get(orderId);
   return {
     order,

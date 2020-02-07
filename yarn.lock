@@ -11470,6 +11470,11 @@ react-select@^3.0.8:
     react-input-autosize "^2.2.2"
     react-transition-group "^2.2.1"
 
+react-step-wizard@^5.3.0:
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/react-step-wizard/-/react-step-wizard-5.3.0.tgz#2965b647bef457ec2c187e3f02826fcb98975875"
+  integrity sha512-WsYIvfYn9dDQowrqBK0vW5kSzavNGmq7epmcGRET6aFfWlz6Up+M3Hqiwj0S/zyufO3mEhuFGpZCKaygDgwKuA==
+
 react-tapper@^0.1.17:
   version "0.1.18"
   resolved "https://registry.yarnpkg.com/react-tapper/-/react-tapper-0.1.18.tgz#0b6976c1e115379d509e1d6726d3255f3be63778"
