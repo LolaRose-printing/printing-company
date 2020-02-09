@@ -125,6 +125,7 @@ export default class OrderDetail extends Component<Props> {
             workTypes={this.createMapWithEmptyEntry(workTypes)}
             employees={this.createMapWithEmptyEntry(employees)}
             work={{
+              orderId: order.id,
               recordId: Math.max(...order.works.map(x => x.recordId)) + 1,
               workId: -1,
               employeeId: -1

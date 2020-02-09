@@ -26,6 +26,10 @@ export default class Home extends Component<Props> {
           <li>
             <Link to={routes.ORDERS}>Orders</Link>
           </li>
+
+          <li>
+            <Link to={routes.EMPLOYEES_REPORTS}>Employee Reports</Link>
+          </li>
         </ul>
       </div>
     );

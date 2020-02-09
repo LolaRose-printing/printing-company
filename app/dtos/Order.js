@@ -2,8 +2,9 @@
 
 export type Work = {
   recordId: number,
+  orderId: number,
   employeeId: number,
-  workId: number,
+  workTypeId: number,
   amount: number
 };
 

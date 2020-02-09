@@ -9,6 +9,9 @@
   },
   "rules": {
     "prettier/prettier": "warn",
+    "no-unused-vars": "warn",
+    "react/no-unused-prop-types": 0,
+    "flowtype/no-weak-types": 0,
     "jsx-a11y/label-has-for": 0,
     "jsx-a11y/label-has-associated-control": 0
   }

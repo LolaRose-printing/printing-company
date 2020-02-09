@@ -59,7 +59,11 @@ export default class WorkAssignment extends Component<Props> {
             </div>
             <div>
               <label>Work Type</label>
-              <Field name="workId" component="select" placeholder="Work Type">
+              <Field
+                name="workTypeId"
+                component="select"
+                placeholder="Work Type"
+              >
                 {[...workTypes.values()].map(x => (
                   <option key={x.id} value={x.id}>
                     {x.name}

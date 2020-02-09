@@ -9,26 +9,30 @@
       "works": [
         {
           "recordId": 1,
+          "orderId": 1,
           "employeeId": 1,
-          "workId": 1,
+          "workTypeId": 1,
           "amount": 2
         },
         {
           "recordId": 2,
+          "orderId": 1,
           "employeeId": 1,
-          "workId": 3,
+          "workTypeId": 3,
           "amount": 2
         },
         {
           "recordId": 3,
+          "orderId": 1,
           "employeeId": 1,
-          "workId": 2,
+          "workTypeId": 2,
           "amount": 4
         },
         {
           "recordId": 4,
+          "orderId": 1,
           "employeeId": 2,
-          "workId": 1,
+          "workTypeId": 1,
           "amount": 1
         }
       ]
@@ -42,10 +46,10 @@
       "works": [
         {
           "recordId": 1,
+          "orderId": 2,
           "employeeId": 1,
-          "workId": 1,
-          "amount": 2,
-          "date": "sa"
+          "workTypeId": 1,
+          "amount": 2
         }
       ]
     }
