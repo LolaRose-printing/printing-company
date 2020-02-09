@@ -22,8 +22,8 @@ export default class WorkAssignment extends Component<Props> {
       errors.employeeId = 'Must be selected';
     }
 
-    if (values.workId === -1) {
-      errors.workId = 'Must be selected';
+    if (values.workTypeId === -1) {
+      errors.workTypeId = 'Must be selected';
     }
 
     if (!parseInt(values.amount, 10)) {
