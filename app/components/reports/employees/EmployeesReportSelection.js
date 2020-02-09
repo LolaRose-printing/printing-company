@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import DatePicker from 'react-datepicker';
 import Select from 'react-select';
 import { Link } from 'react-router-dom';
 import type { Employee } from '../../../dtos/Employee';
 import BackButton from '../../../utils/BackButton';
 import routes from '../../../constants/routes';
+import DateRangeSelector from '../DateRangeSelector';
 
 type Props = {
   history: any,
@@ -20,15 +20,19 @@ export default class EmployeesReportSelection extends Component<Props> {
     endDate: null
   };
 
-  stateToFilter = state => {
+  stateToFilter = (selected, startDate, endDate) => {
     return {
-      employeesIds: state.selected.map(x => x.value),
-      startDate: new Date(state.startDate),
-      endDate: new Date(state.endDate)
+      employeesIds: selected.map(x => x.value),
+      startDate: new Date(startDate),
+      endDate: new Date(endDate)
     };
   };
 
-  serialize = () => JSON.stringify(this.stateToFilter(this.state));
+  serialize = (selected, startDate, endDate) =>
+    JSON.stringify(this.stateToFilter(selected, startDate, endDate));
+
+  dataSelected = state =>
+    state.selected.length > 0 && state.startDate && state.endDate;
 
   render() {
     const { history, employees } = this.props;
@@ -41,18 +45,7 @@ export default class EmployeesReportSelection extends Component<Props> {
     return (
       <div>
         <BackButton history={history} />
-        Start date
-        <DatePicker
-          label="StartDate"
-          onChange={x => this.setState({ startDate: x })}
-          selected={startDate}
-        />
-        End date
-        <DatePicker
-          label="EndDate"
-          onChange={x => this.setState({ endDate: x })}
-          selected={endDate}
-        />
+        <DateRangeSelector rangeOnChange={x => this.setState(x)} />
         Options
         <Select
           value={selected}
@@ -63,10 +56,25 @@ export default class EmployeesReportSelection extends Component<Props> {
           className="basic-multi-select"
           classNamePrefix="select"
         />
-        <Link to={`${routes.SPECIFIC_EMPLOYEES_REPORTS}${this.serialize()}`}>
-          Generate report.
-        </Link>
+        {this.dataSelected(this.state) ? (
+          <RenderLink filter={this.serialize(selected, startDate, endDate)} />
+        ) : null}
       </div>
+    );
+  }
+}
+
+type RenderLinkProps = {
+  filter: string
+};
+
+class RenderLink extends Component<RenderLinkProps> {
+  render() {
+    const { filter } = this.props;
+    return (
+      <Link to={`${routes.SPECIFIC_EMPLOYEES_REPORTS}${filter}`}>
+        Generate report.
+      </Link>
     );
   }
 }
