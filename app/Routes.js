@@ -8,20 +8,29 @@ import EmployeeListPage from './containers/EmployeeListPage';
 import WorkTypeListPage from './containers/WorkTypeListPage';
 import OrdersListPage from './containers/OrdersListPage';
 import OrderDetailPage from './containers/OrderDetailPage';
-import EmployeesReportsPage from './containers/EmployeesReportsPage';
-import EmployeesReportSelectionPage from './constants/EmployeesReportSelectionPage';
+import EmployeesReportsPage from './containers/EmployeesReportListPage';
+import EmployeesReportSelectionPage from './containers/EmployeesReportSelectionPage';
+import ClientReportSelectionPage from './containers/ClientReportSelectionPage';
 
 export default () => (
   <App>
     <Switch>
+      <Route
+        path={routes.EMPLOYEES_REPORTS}
+        component={EmployeesReportSelectionPage}
+      />
       <Route
         path={`${routes.SPECIFIC_EMPLOYEES_REPORTS}:filter?`}
         component={EmployeesReportsPage}
       />
 
       <Route
-        path={routes.EMPLOYEES_REPORTS}
-        component={EmployeesReportSelectionPage}
+        path={routes.ORDER_REPORTS}
+        component={ClientReportSelectionPage}
+      />
+      <Route
+        path={`${routes.SPECIFIC_ORDER_REPORTS}:filter?`}
+        component={EmployeesReportsPage}
       />
 
       <Route path={`${routes.ORDER_DETAIL}:id?`} component={OrderDetailPage} />
