@@ -1,33 +1,34 @@
 import React, { Component } from 'react';
-import Headline from './Headline';
 import type { Order } from '../../../dtos/Order';
 import type { Client } from '../../../dtos/Client';
-import BackButton from '../../../utils/BackButton';
+import type { WorkType } from '../../../dtos/WorkType';
+import OrderReport from './OrderReport';
+import { getPriceForMultipleOrders } from '../../../utils/PriceComputation';
 
 type Props = {
-  history: any,
   client: Client,
-  startDate: Date,
-  endDate: Date,
-  orders: Array<Order>
+  orders: Array<Order>,
+  workTypes: Map<number, WorkType>
 };
 
 export default class ClientOrdersReport extends Component<Props> {
   props: Props;
 
-  state = {
-    selectedClientId: null
-  };
-
   render() {
-    const { history, client, orders, startDate, endDate } = this.props;
-    const { selectedClientId } = this.state;
+    const { client, orders, workTypes } = this.props;
+    const clientPrice = getPriceForMultipleOrders(orders, workTypes);
 
     return (
-      <div id="orders-report-div">
-        <BackButton history={history} />
-
-        <Headline startDate={startDate} endDate={endDate} />
+      <div id={`client-${client.id}-orders-report`}>
+        Report for client {client.name}.
+        <ul>
+          {orders.map(order => (
+            <li key={`client-${client.id}-order-${order.id}`}>
+              <OrderReport order={order} workTypes={workTypes} />
+            </li>
+          ))}
+        </ul>
+        Final price: {clientPrice}.
       </div>
     );
   }

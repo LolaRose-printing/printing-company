@@ -13,7 +13,8 @@ export default class Headline extends Component<Props> {
 
     return (
       <div>
-        This is company headline for report from {startDate} to {endDate}.
+        This is company headline for Client Report from{' '}
+        {startDate.toDateString()} to {endDate.toDateString()}.
       </div>
     );
   }

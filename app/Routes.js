@@ -11,6 +11,8 @@ import OrderDetailPage from './containers/OrderDetailPage';
 import EmployeesReportsPage from './containers/EmployeesReportListPage';
 import EmployeesReportSelectionPage from './containers/EmployeesReportSelectionPage';
 import ClientReportSelectionPage from './containers/ClientReportSelectionPage';
+import ClientReportsPage from './containers/ClientReportsPage';
+import ClientsReportsListPage from './containers/ClientsReportsListPage';
 
 export default () => (
   <App>
@@ -30,7 +32,7 @@ export default () => (
       />
       <Route
         path={`${routes.SPECIFIC_ORDER_REPORTS}:filter?`}
-        component={EmployeesReportsPage}
+        component={ClientsReportsListPage}
       />
 
       <Route path={`${routes.ORDER_DETAIL}:id?`} component={OrderDetailPage} />

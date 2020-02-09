@@ -49,7 +49,7 @@ export default class EmployeesReportSelection extends Component<Props> {
         Options
         <Select
           value={selected}
-          onChange={x => this.setState({ selected: x })}
+          onChange={x => this.setState({ selected: x || [] })}
           isMulti
           name="employees"
           options={employeesOptions}

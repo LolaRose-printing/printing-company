@@ -19,15 +19,14 @@ function mapStateToProps(state, ownProps) {
     ownProps.match.params.filter
   );
 
-  const orders = affectedOrders(
-    state.orders,
-    new Date(startDate),
-    new Date(endDate)
-  );
+  const start = new Date(startDate);
+  const end = new Date(endDate);
+
+  const orders = affectedOrders(state.orders, start, end);
 
   return {
-    startDate,
-    endDate,
+    startDate: start,
+    endDate: end,
     orders,
     workTypes: state.workTypes,
     employees: affectedEmployees(state.employees, employeesIds),

@@ -39,11 +39,19 @@ export default class ClientReportSelection extends Component<Props> {
     const { selectedClients, selectedOrders, startDate, endDate } = this.state;
 
     return (
+      selectedClients &&
       selectedClients.length > 0 &&
+      selectedOrders &&
       selectedOrders.length &&
       startDate &&
       endDate
     );
+  };
+
+  rangeFilter = dateStr => {
+    const { startDate, endDate } = this.state;
+    const date = new Date(dateStr);
+    return new Date(startDate) <= date && date <= new Date(endDate);
   };
 
   render() {
@@ -56,7 +64,10 @@ export default class ClientReportSelection extends Component<Props> {
 
     const ordersOptions = selectedClients
       .map(x => {
-        return { clientName: x.label, clientOrders: orders[x.value] };
+        return {
+          clientName: x.label,
+          clientOrders: orders[x.value].filter(o => this.rangeFilter(o.date))
+        };
       })
       .flatMap(x => {
         return x.clientOrders.map(order => {
@@ -71,7 +82,7 @@ export default class ClientReportSelection extends Component<Props> {
         Client
         <Select
           value={selectedClients}
-          onChange={x => this.setState({ selectedClients: x })}
+          onChange={x => this.setState({ selectedClients: x || [] })}
           isMulti
           name="clients"
           options={clientsOptions}
@@ -81,7 +92,7 @@ export default class ClientReportSelection extends Component<Props> {
         Orders
         <Select
           value={selectedOrders}
-          onChange={x => this.setState({ selectedOrders: x })}
+          onChange={x => this.setState({ selectedOrders: x || [] })}
           isMulti
           name="orders"
           options={ordersOptions}
@@ -103,6 +114,7 @@ type RenderLinkProps = {
 class RenderLink extends Component<RenderLinkProps> {
   render() {
     const { filter } = this.props;
+
     return (
       <Link to={`${routes.SPECIFIC_ORDER_REPORTS}${filter}`}>
         Generate report.
