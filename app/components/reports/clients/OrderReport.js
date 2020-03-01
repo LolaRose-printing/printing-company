@@ -41,7 +41,7 @@ export default class OrderReport extends Component<Props> {
             </li>
           ))}
         </ul>
-        Final price: {finalPrice}Kc.
+        Final price: {finalPrice}Eur.
       </div>
     );
   }
