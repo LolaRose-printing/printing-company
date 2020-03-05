@@ -16,3 +16,9 @@ export type Order = {
   works: Array<Work>,
   date: string
 };
+
+export type Motive = {
+  id: number,
+  name: string,
+  orderId: number
+};
