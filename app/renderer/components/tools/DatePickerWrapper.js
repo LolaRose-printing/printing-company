@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import DatePicker from 'react-datepicker';
-// import 'react-datepicker/dist/react-datepicker.css';
 import PropTypes from 'prop-types';
 
 export default class DatePickerWrapper extends Component {
@@ -24,7 +23,7 @@ export default class DatePickerWrapper extends Component {
 
     return (
       <div>
-        <DatePicker onChange={this.update} selected={date} />
+        <DatePicker onChange={this.update} selected={date}/>
       </div>
     );
   }
