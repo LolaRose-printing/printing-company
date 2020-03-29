@@ -3,35 +3,35 @@ import staticDataSet from '../constants/initialData';
 /**
  * Loads employees and returns map of them.
  */
-export function loadEmployeeMap() {
+export function loadEmployeeMap(dataSet = staticDataSet.employees) {
   const resultMap = new Map();
-  staticDataSet.employees.forEach(e => resultMap.set(e.id, e));
+  dataSet.forEach(e => resultMap.set(e.id, e));
   return resultMap;
 }
 
 /**
  * Loads work types.
  */
-export function loadWorkTypes() {
+export function loadWorkTypes(dataSet = staticDataSet.workTypes) {
   const resultMap = new Map();
-  staticDataSet.workTypes.forEach(wt => resultMap.set(wt.id, wt));
+  dataSet.forEach(wt => resultMap.set(wt.id, wt));
   return resultMap;
 }
 
 /**
  * Loads clients.
  */
-export function loadClients() {
+export function loadClients(dataSet = staticDataSet.clients) {
   const resultMap = new Map();
-  staticDataSet.clients.forEach(wt => resultMap.set(wt.id, wt));
+  dataSet.forEach(wt => resultMap.set(wt.id, wt));
   return resultMap;
 }
 
 /**
  * Loads orders.
  */
-export function loadOrders() {
+export function loadOrders(dataSet = staticDataSet.orders) {
   const resultMap = new Map();
-  staticDataSet.orders.forEach(wt => resultMap.set(wt.id, wt));
+  dataSet.forEach(wt => resultMap.set(wt.id, wt));
   return resultMap;
 }

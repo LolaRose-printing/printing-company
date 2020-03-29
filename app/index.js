@@ -20,13 +20,15 @@ const store = configureStore({
   counter: 1
 });
 
+export default store;
+
 const AppContainer = process.env.PLAIN_HMR ? Fragment : ReactHotAppContainer;
 
 Modal.setAppElement(document.getElementById('root'));
 
 render(
   <AppContainer>
-    <Root store={store} history={history} />
+    <Root store={store} history={history}/>
   </AppContainer>,
   document.getElementById('root')
 );

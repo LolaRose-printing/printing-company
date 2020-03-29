@@ -34,6 +34,10 @@ export default class Home extends Component<Props> {
           <li>
             <Link to={routes.ORDER_REPORTS}>Orders Reports</Link>
           </li>
+
+          <li>
+            <Link to={routes.SAVE_STATE}>Save work</Link>
+          </li>
         </ul>
       </div>
     );

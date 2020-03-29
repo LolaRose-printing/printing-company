@@ -6,6 +6,8 @@
   "ORDERS": "/orders",
   "ORDER_DETAIL": "/order/",
 
+  "SAVE_STATE": "/save",
+
   "ORDER_REPORTS": "/reports/orders-selection",
   "SPECIFIC_ORDER_REPORTS": "/reports/orders/",
 

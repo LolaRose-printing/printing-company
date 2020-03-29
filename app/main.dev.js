@@ -14,6 +14,8 @@ import { app, BrowserWindow } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
+import store from './index';
+import { saveState } from './utils/SaveState';
 
 export default class AppUpdater {
   constructor() {
@@ -57,6 +59,14 @@ app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit();
   }
+});
+
+app.on('before-quite', () => {
+  saveState(store.getState);
+});
+
+app.on('quit', () => {
+  saveState(store.getState);
 });
 
 app.on('ready', async () => {

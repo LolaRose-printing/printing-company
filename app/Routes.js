@@ -13,6 +13,7 @@ import EmployeesReportSelectionPage from './containers/EmployeesReportSelectionP
 import ClientReportSelectionPage from './containers/ClientReportSelectionPage';
 import ClientReportsPage from './containers/ClientReportsPage';
 import ClientsReportsListPage from './containers/ClientsReportsListPage';
+import SavePage from './containers/SavePage';
 
 export default () => (
   <App>
@@ -37,6 +38,8 @@ export default () => (
 
       <Route path={`${routes.ORDER_DETAIL}:id?`} component={OrderDetailPage} />
       <Route path={routes.ORDERS} component={OrdersListPage} />
+
+      <Route path={routes.SAVE_STATE} component={SavePage} />
 
       <Route path={routes.WORK_TYPES} component={WorkTypeListPage} />
       <Route path={routes.EMPLOYEES} component={EmployeeListPage} />

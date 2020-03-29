@@ -8,6 +8,7 @@ import { saveToMap } from './common';
 
 import type { Action } from './types';
 import type { WorkType } from '../dtos/WorkType';
+import { LOAD_STATE } from '../actions/loadStateAction';
 
 export default function workTypes(
   state: Map<number, WorkType> = new Map(),
@@ -21,6 +22,8 @@ export default function workTypes(
       return saveToMap(copyMap, action.payload);
     case DELETE_WORK_TYPE:
       return deleteWorkType(copyMap, action.payload);
+    case LOAD_STATE:
+      return action.payload.workTypes;
     default:
       return state;
   }
