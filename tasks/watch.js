@@ -20,7 +20,7 @@ function watchHtml() {
 }
 
 function watchCss() {
-  return watch(['app/renderer/**/*.css'], series(assets.copyCss, hotreload.reload));
+  return watch(['app/renderer/**/*.css'], series(scripts.cssMerge, hotreload.reload));
 }
 
 watchMainScripts.displayName = 'watch-main-scripts';

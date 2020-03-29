@@ -20,7 +20,11 @@ function developBuild() {
 }
 
 function cssMerge() {
-  return src('app/**/*.css')
+  return src([
+    'app/**/*.css',
+    // here put all css from node_modules
+    'node_modules/react-datepicker/dist/react-datepicker.css',
+  ])
     .pipe(concat('concat.css'))
     .pipe(dest('build/renderer'));
 }
