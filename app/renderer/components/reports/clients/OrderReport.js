@@ -13,11 +13,11 @@ export default class OrderReport extends Component {
     const { order, workTypes } = this.props;
 
     const groupedTypes = new Map();
-    new Set(order.works.map(x => x.workTypeId)).forEach(workType => {
+    new Set(order.works.map((x) => x.workTypeId)).forEach((workType) => {
       groupedTypes[workType] = 0;
     });
 
-    order.works.forEach(w => {
+    order.works.forEach((w) => {
       groupedTypes[w.workTypeId] += w.amount;
     });
 
@@ -30,11 +30,7 @@ export default class OrderReport extends Component {
         <ul>
           {[...groupedTypes].map(([workTypeId, amount]) => (
             <li key={`order-${order.id}-work-${workTypeId}`}>
-              <WorkReport
-                work={{ amount }}
-                workType={workTypes[workTypeId]}
-                showWage={false}
-              />
+              <WorkReport work={{ amount }} workType={workTypes[workTypeId]} showWage={false} />
             </li>
           ))}
         </ul>

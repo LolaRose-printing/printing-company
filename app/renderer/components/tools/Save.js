@@ -16,7 +16,7 @@ export default class Save extends Component {
     return (
       <div>
         <Link to={routes.HOME}>
-          <i className="fa fa-arrow-left fa-3x"/>
+          <i className="fa fa-arrow-left fa-3x" />
         </Link>
         <button type="button" onClick={() => saveState(state)}>
           Save state.

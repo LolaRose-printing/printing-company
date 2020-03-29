@@ -7,14 +7,13 @@ export default class Headline extends Component {
     endDate: PropTypes.any.isRequired,
   };
 
-
   render() {
     const { startDate, endDate } = this.props;
 
     return (
       <div>
-        This is company headline for Client Report from{' '}
-        {startDate.toDateString()} to {endDate.toDateString()}.
+        This is company headline for Client Report from {startDate.toDateString()} to{' '}
+        {endDate.toDateString()}.
       </div>
     );
   }

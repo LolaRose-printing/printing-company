@@ -15,9 +15,7 @@ function mapStateToProps(state, ownProps) {
     };
   }
 
-  const { employeesIds, startDate, endDate } = JSON.parse(
-    ownProps.match.params.filter,
-  );
+  const { employeesIds, startDate, endDate } = JSON.parse(ownProps.match.params.filter);
 
   const start = new Date(startDate);
   const end = new Date(endDate);
@@ -46,14 +44,14 @@ const affectedOrders = (orders, startDate, endDate) =>
 
 const employeesWorks = (filteredOrders, employeesIds) => {
   const employeeReportOrder = new Map();
-  employeesIds.forEach(x => {
+  employeesIds.forEach((x) => {
     employeeReportOrder[x] = [];
   });
 
   [...filteredOrders.values()]
-    .flatMap(x => x.works)
-    .filter(x => employeesIds.includes(x.employeeId))
-    .forEach(x => {
+    .flatMap((x) => x.works)
+    .filter((x) => employeesIds.includes(x.employeeId))
+    .forEach((x) => {
       employeeReportOrder[x.employeeId].push(x);
     });
   return employeeReportOrder;
@@ -61,7 +59,7 @@ const employeesWorks = (filteredOrders, employeesIds) => {
 
 // noinspection JSUnusedLocalSymbols
 const affectedEmployees = (employees, employeesIds) =>
-  [...employees.values()].filter(x => employeesIds.includes(x.id));
+  [...employees.values()].filter((x) => employeesIds.includes(x.id));
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({}, dispatch);

@@ -5,9 +5,7 @@ import DatePickerWrapper from '../tools/DatePickerWrapper';
 import BackButton from '../tools/BackButton';
 import PropTypes from 'prop-types';
 
-
 export default class OrderDetail extends Component {
-
   static propTypes = {
     save: PropTypes.func.isRequired,
     order: PropTypes.any.isRequired,
@@ -16,11 +14,10 @@ export default class OrderDetail extends Component {
     clients: PropTypes.any.isRequired,
   };
 
-
   updateWorkRecord = (save, order, updatedWork) => {
     save({
       ...order,
-      works: order.works.map(x => {
+      works: order.works.map((x) => {
         if (x.recordId === updatedWork.recordId) {
           return { ...updatedWork };
         }
@@ -36,10 +33,10 @@ export default class OrderDetail extends Component {
     });
   };
 
-  createMapWithEmptyEntry = source => {
+  createMapWithEmptyEntry = (source) => {
     const res = new Map();
     res.set(-1, { id: -1, name: '' });
-    source.forEach(x => res.set(x.id, x));
+    source.forEach((x) => res.set(x.id, x));
     return res;
   };
 
@@ -47,7 +44,7 @@ export default class OrderDetail extends Component {
     const { save, order, employees, workTypes, clients } = this.props;
     return (
       <div id="order-list-div">
-        <BackButton/>
+        <BackButton />
 
         <Form
           onSubmit={save}
@@ -56,17 +53,12 @@ export default class OrderDetail extends Component {
             <form onSubmit={handleSubmit}>
               <div>
                 <label>Name</label>
-                <Field
-                  name="name"
-                  component="input"
-                  type="text"
-                  placeholder="Order Name"
-                />
+                <Field name="name" component="input" type="text" placeholder="Order Name" />
               </div>
               <div>
                 <label>Client</label>
                 <Field name="clientId" component="select" placeholder="Client">
-                  {[...clients.values()].map(x => (
+                  {[...clients.values()].map((x) => (
                     <option key={x.id} value={x.id}>
                       {x.name}
                     </option>
@@ -75,14 +67,14 @@ export default class OrderDetail extends Component {
               </div>
               <div>
                 <label>Notes</label>
-                <Field name="notes" component="textarea" placeholder="Notes"/>
+                <Field name="notes" component="textarea" placeholder="Notes" />
               </div>
 
               <Field name="date">
                 {({ input }) => (
                   <DatePickerWrapper
                     initDate={input.value}
-                    onChange={d => {
+                    onChange={(d) => {
                       input.onChange(d);
                     }}
                   />
@@ -93,11 +85,7 @@ export default class OrderDetail extends Component {
                 <button type="submit" disabled={submitting || pristine}>
                   Submit
                 </button>
-                <button
-                  type="button"
-                  onClick={form.reset}
-                  disabled={submitting || pristine}
-                >
+                <button type="button" onClick={form.reset} disabled={submitting || pristine}>
                   Reset
                 </button>
               </div>
@@ -106,13 +94,13 @@ export default class OrderDetail extends Component {
         />
 
         <div>
-          {order.works.map(work => (
+          {order.works.map((work) => (
             <WorkAssignment
               key={`work-${order.id}-${work.recordId}`}
               workTypes={workTypes}
               employees={employees}
               work={work}
-              onChange={x => this.updateWorkRecord(save, order, x)}
+              onChange={(x) => this.updateWorkRecord(save, order, x)}
             />
           ))}
         </div>
@@ -125,11 +113,11 @@ export default class OrderDetail extends Component {
             employees={this.createMapWithEmptyEntry(employees)}
             work={{
               orderId: order.id,
-              recordId: Math.max(...order.works.map(x => x.recordId)) + 1,
+              recordId: Math.max(...order.works.map((x) => x.recordId)) + 1,
               workId: -1,
               employeeId: -1,
             }}
-            onChange={x => {
+            onChange={(x) => {
               this.addWorkRecord(save, order, x);
             }}
           />

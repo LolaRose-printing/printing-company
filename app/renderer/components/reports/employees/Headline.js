@@ -12,8 +12,8 @@ export default class Headline extends Component {
 
     return (
       <div>
-        This is company headline for Employees Report from{' '}
-        {startDate.toDateString()} to {endDate.toDateString()}.
+        This is company headline for Employees Report from {startDate.toDateString()} to{' '}
+        {endDate.toDateString()}.
       </div>
     );
   }

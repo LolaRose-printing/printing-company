@@ -14,24 +14,17 @@ function mapStateToProps(state, ownProps) {
     };
   }
 
-  const { orderIds, clientIds, startDate, endDate } = JSON.parse(
-    ownProps.match.params.filter,
-  );
+  const { orderIds, clientIds, startDate, endDate } = JSON.parse(ownProps.match.params.filter);
 
   const start = new Date(startDate);
   const end = new Date(endDate);
 
-  const clients = [...state.clients.values()].filter(x =>
-    clientIds.includes(x.id),
-  );
+  const clients = [...state.clients.values()].filter((x) => clientIds.includes(x.id));
 
-  const orders = [...state.orders.values()].filter(o => {
+  const orders = [...state.orders.values()].filter((o) => {
     const date = new Date(o.date);
     return (
-      orderIds.includes(o.id) &&
-      clientIds.includes(o.clientId) &&
-      start <= date &&
-      date <= end
+      orderIds.includes(o.id) && clientIds.includes(o.clientId) && start <= date && date <= end
     );
   });
 

@@ -4,7 +4,6 @@ import Headline from './Headline';
 import PropTypes from 'prop-types';
 import BackButton from '../../tools/BackButton';
 
-
 export default class EmployeesReportList extends Component {
   static propTypes = {
     startDate: PropTypes.any.isRequired,
@@ -16,25 +15,18 @@ export default class EmployeesReportList extends Component {
   };
 
   render() {
-    const {
-      startDate,
-      endDate,
-      orders,
-      employees,
-      works,
-      workTypes,
-    } = this.props;
+    const { startDate, endDate, orders, employees, works, workTypes } = this.props;
 
     return (
       <div id="employees-report-list">
-        <BackButton/>
+        <BackButton />
 
-        <Headline startDate={startDate} endDate={endDate}/>
+        <Headline startDate={startDate} endDate={endDate} />
 
         <div>
           Records for employees:
           <ul id="report-employees-list">
-            {employees.map(emp => (
+            {employees.map((emp) => (
               <li key={`employee-report-item-${emp.id}`}>
                 Record for employee: {emp.name}
                 <EmployeeReport

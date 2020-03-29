@@ -6,11 +6,11 @@ function mapStateToProps(state) {
   const clients = [...state.clients.values()];
 
   const clientsOrders = new Map();
-  clients.forEach(x => {
+  clients.forEach((x) => {
     clientsOrders[x.id] = [];
   });
 
-  [...state.orders.values()].forEach(x => {
+  [...state.orders.values()].forEach((x) => {
     clientsOrders[x.clientId].push(x);
   });
 

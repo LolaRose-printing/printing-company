@@ -1,9 +1,8 @@
 export function copyMap(state) {
   const copyMap = new Map();
-  state.forEach(e => copyMap.set(e.id, e));
+  state.forEach((e) => copyMap.set(e.id, e));
   return copyMap;
 }
-
 
 export function deleteFromMap(copyMap, id) {
   copyMap.delete(id);

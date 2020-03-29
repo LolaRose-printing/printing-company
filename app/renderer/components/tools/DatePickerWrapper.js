@@ -9,13 +9,12 @@ export default class DatePickerWrapper extends Component {
     onChange: PropTypes.func.isRequired,
   };
 
-
   constructor(props) {
     super(props);
     this.state = { date: new Date(this.props.initDate) };
   }
 
-  update = date => {
+  update = (date) => {
     this.setState({ date });
     this.props.onChange(date.toLocaleString());
   };
@@ -25,7 +24,7 @@ export default class DatePickerWrapper extends Component {
 
     return (
       <div>
-        <DatePicker onChange={this.update} selected={date}/>
+        <DatePicker onChange={this.update} selected={date} />
       </div>
     );
   }

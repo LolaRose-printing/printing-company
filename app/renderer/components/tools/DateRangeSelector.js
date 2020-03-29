@@ -18,9 +18,9 @@ export default class DateRangeSelector extends Component {
     rangeOnChange({ startDate, endDate });
   };
 
-  startChange = startDate => this.setState({ startDate }, this.onChange);
+  startChange = (startDate) => this.setState({ startDate }, this.onChange);
 
-  endChange = endDate => this.setState({ endDate }, this.onChange);
+  endChange = (endDate) => this.setState({ endDate }, this.onChange);
 
   render() {
     const { startDate, endDate } = this.state;
@@ -28,17 +28,9 @@ export default class DateRangeSelector extends Component {
     return (
       <div>
         Start date
-        <DatePicker
-          label="StartDate"
-          onChange={this.startChange}
-          selected={startDate}
-        />
+        <DatePicker label="StartDate" onChange={this.startChange} selected={startDate} />
         End date
-        <DatePicker
-          label="EndDate"
-          onChange={this.endChange}
-          selected={endDate}
-        />
+        <DatePicker label="EndDate" onChange={this.endChange} selected={endDate} />
       </div>
     );
   }

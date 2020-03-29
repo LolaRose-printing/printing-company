@@ -7,7 +7,6 @@ import DateRangeSelector from '../../tools/DateRangeSelector';
 import PropTypes from 'prop-types';
 import BackButton from '../../tools/BackButton';
 
-
 export default class ClientReportSelection extends Component {
   static propTypes = {
     orders: PropTypes.any.isRequired,
@@ -21,17 +20,17 @@ export default class ClientReportSelection extends Component {
     endDate: null,
   };
 
-  stateToFilter = state => {
+  stateToFilter = (state) => {
     const { selectedClients, selectedOrders, startDate, endDate } = state;
     return {
-      orderIds: selectedClients.map(x => x.value),
-      clientIds: selectedOrders.map(x => x.value),
+      orderIds: selectedClients.map((x) => x.value),
+      clientIds: selectedOrders.map((x) => x.value),
       startDate: new Date(startDate),
       endDate: new Date(endDate),
     };
   };
 
-  serialize = state => JSON.stringify(this.stateToFilter(state));
+  serialize = (state) => JSON.stringify(this.stateToFilter(state));
 
   dataSelected = () => {
     const { selectedClients, selectedOrders, startDate, endDate } = this.state;
@@ -46,7 +45,7 @@ export default class ClientReportSelection extends Component {
     );
   };
 
-  rangeFilter = dateStr => {
+  rangeFilter = (dateStr) => {
     const { startDate, endDate } = this.state;
     const date = new Date(dateStr);
     return new Date(startDate) <= date && date <= new Date(endDate);
@@ -56,31 +55,31 @@ export default class ClientReportSelection extends Component {
     const { clients, orders } = this.props;
     const { selectedClients, selectedOrders } = this.state;
 
-    const clientsOptions = clients.map(cl => {
+    const clientsOptions = clients.map((cl) => {
       return { value: cl.id, label: cl.name };
     });
 
     const ordersOptions = selectedClients
-      .map(x => {
+      .map((x) => {
         return {
           clientName: x.label,
-          clientOrders: orders[x.value].filter(o => this.rangeFilter(o.date)),
+          clientOrders: orders[x.value].filter((o) => this.rangeFilter(o.date)),
         };
       })
-      .flatMap(x => {
-        return x.clientOrders.map(order => {
+      .flatMap((x) => {
+        return x.clientOrders.map((order) => {
           return { value: order.id, label: `${order.name} - ${x.clientName}` };
         });
       });
 
     return (
       <div>
-        <BackButton/>
-        <DateRangeSelector rangeOnChange={x => this.setState(x)}/>
+        <BackButton />
+        <DateRangeSelector rangeOnChange={(x) => this.setState(x)} />
         Client
         <Select
           value={selectedClients}
-          onChange={x => this.setState({ selectedClients: x || [] })}
+          onChange={(x) => this.setState({ selectedClients: x || [] })}
           isMulti
           name="clients"
           options={clientsOptions}
@@ -90,35 +89,27 @@ export default class ClientReportSelection extends Component {
         Orders
         <Select
           value={selectedOrders}
-          onChange={x => this.setState({ selectedOrders: x || [] })}
+          onChange={(x) => this.setState({ selectedOrders: x || [] })}
           isMulti
           name="orders"
           options={ordersOptions}
           className="basic-multi-select"
           classNamePrefix="select"
         />
-        {this.dataSelected(this.state) ? (
-          <RenderLink filter={this.serialize(this.state)}/>
-        ) : null}
+        {this.dataSelected(this.state) ? <RenderLink filter={this.serialize(this.state)} /> : null}
       </div>
     );
   }
 }
-
 
 class RenderLink extends Component {
   static propTypes = {
     filter: PropTypes.any.isRequired,
   };
 
-
   render() {
     const { filter } = this.props;
 
-    return (
-      <Link to={`${routes.SPECIFIC_ORDER_REPORTS}${filter}`}>
-        Generate report.
-      </Link>
-    );
+    return <Link to={`${routes.SPECIFIC_ORDER_REPORTS}${filter}`}>Generate report.</Link>;
   }
 }

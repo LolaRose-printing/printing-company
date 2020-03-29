@@ -3,7 +3,6 @@ import OrderReport from './OrderReport';
 import { getPriceForMultipleOrders } from '../../../utils/PriceComputation';
 import PropTypes from 'prop-types';
 
-
 export default class ClientOrdersReport extends Component {
   static propTypes = {
     client: PropTypes.any.isRequired,
@@ -19,9 +18,9 @@ export default class ClientOrdersReport extends Component {
       <div id={`client-${client.id}-orders-report`}>
         Report for client {client.name}.
         <ul>
-          {orders.map(order => (
+          {orders.map((order) => (
             <li key={`client-${client.id}-order-${order.id}`}>
-              <OrderReport order={order} workTypes={workTypes}/>
+              <OrderReport order={order} workTypes={workTypes} />
             </li>
           ))}
         </ul>

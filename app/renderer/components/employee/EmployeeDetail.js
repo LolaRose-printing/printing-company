@@ -5,7 +5,6 @@ import EmployeeEdit from './EmployeeEdit';
 import PropTypes from 'prop-types';
 
 export default class EmployeeDetail extends Component {
-
   static propTypes = {
     detail: PropTypes.any.isRequired,
     saveEmployee: PropTypes.func.isRequired,

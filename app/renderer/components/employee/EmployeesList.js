@@ -24,7 +24,6 @@ export default class EmployeesList extends Component {
     deleteEmployee: PropTypes.func.isRequired,
   };
 
-
   state = {
     search: [],
     modalIsOpen: false,
@@ -33,13 +32,10 @@ export default class EmployeesList extends Component {
   selectEmployees = (search, employeesList) => {
     let displayedEmployees;
     if (search.length) {
-      const searchPattern = new RegExp(
-        search.map(term => `(?=.*${term})`).join(''),
-        'i',
-      );
+      const searchPattern = new RegExp(search.map((term) => `(?=.*${term})`).join(''), 'i');
 
       displayedEmployees = employeesList.filter(
-        e => e.name.match(searchPattern) || e.surname.match(searchPattern),
+        (e) => e.name.match(searchPattern) || e.surname.match(searchPattern),
       );
     } else {
       displayedEmployees = employeesList;
@@ -48,14 +44,14 @@ export default class EmployeesList extends Component {
   };
 
   openModal = () => {
-    this.setState(state => ({
+    this.setState((state) => ({
       ...state,
       modalIsOpen: true,
     }));
   };
 
   closeModal = () => {
-    this.setState(state => ({
+    this.setState((state) => ({
       ...state,
       modalIsOpen: false,
     }));
@@ -68,14 +64,14 @@ export default class EmployeesList extends Component {
     const displayedEmployees = this.selectEmployees(search, employeesList);
     return (
       <div id="employees-div">
-        <BackButton/>
+        <BackButton />
 
         <input
           id="employees-search"
           type="text"
-          onChange={e => {
+          onChange={(e) => {
             const searchValues = e.target.value.split(' ');
-            this.setState(state => ({
+            this.setState((state) => ({
               ...state,
               search: searchValues,
             }));
@@ -90,12 +86,11 @@ export default class EmployeesList extends Component {
           isOpen={modalIsOpen}
           onRequestClose={this.closeModal}
           style={modalStyle}
-          contentLabel="Example Modal"
-        >
+          contentLabel="Example Modal">
           {/*<div className={detailStyles.detailBox}>*/}
           <div>
             <EmployeeEdit
-              saveEmployee={e => {
+              saveEmployee={(e) => {
                 saveEmployee(e);
                 this.closeModal();
               }}
@@ -106,7 +101,7 @@ export default class EmployeesList extends Component {
         </Modal>
 
         <ul id="employees-list">
-          {displayedEmployees.map(e => (
+          {displayedEmployees.map((e) => (
             <li key={e.id}>
               <EmployeeDetail
                 detail={e}
