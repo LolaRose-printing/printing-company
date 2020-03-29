@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import routes from '../../../dist-assets/routes';
-import './Home.css';
 
 export default class Home extends Component {
   render() {

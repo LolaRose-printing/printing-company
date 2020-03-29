@@ -30,7 +30,7 @@ watchCss.displayName = 'watch-css';
 
 exports.start = series(
   assets.copyHtml,
-  assets.copyCss,
+  scripts.cssMerge,
   scripts.developBuild,
   hotreload.start,
   electron.start,
