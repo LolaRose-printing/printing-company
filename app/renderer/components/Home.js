@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import routes from '../../../dist-assets/routes';
-// import styles from './Home.css';
-
+import './Home.css';
 
 export default class Home extends Component {
   render() {
     return (
-      <div data-tid="container">
+      <div className="container">
         <h2>Home</h2>
         <ul>
           <li>

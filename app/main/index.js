@@ -20,9 +20,9 @@ const installExtensions = async () => {
 };
 
 crashReporter.start({
-  productName: 'YourName',
-  companyName: 'YourCompany',
-  submitURL: 'https://your-domain.com/url-to-submit',
+  productName: 'System pro tiskarnu',
+  companyName: 'Lukas Forst',
+  submitURL: 'lukas.forst.pw',
   uploadToServer: false,
 });
 

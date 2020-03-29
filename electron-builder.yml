@@ -1,6 +1,6 @@
-appId: com.example.app
-copyright: Example co
-productName: MyApp
+appId: pw.forst.tiskarna
+copyright: Lukas Forst
+productName: System pro tiskarnu
 
 asar: true
 
