@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
 import EmployeeDetail from './EmployeeDetail';
-// import detailStyles from './EmployeeDetail.css';
 import EmployeeEdit from './EmployeeEdit';
 import PropTypes from 'prop-types';
 import BackButton from '../tools/BackButton';
@@ -87,8 +86,7 @@ export default class EmployeesList extends Component {
           onRequestClose={this.closeModal}
           style={modalStyle}
           contentLabel="Example Modal">
-          {/*<div className={detailStyles.detailBox}>*/}
-          <div>
+          <div className="detailBox">
             <EmployeeEdit
               saveEmployee={(e) => {
                 saveEmployee(e);

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Collapsible from 'react-collapsible';
 import EmployeeEdit from './EmployeeEdit';
-// import styles from './EmployeeDetail.css';
 import PropTypes from 'prop-types';
 
 export default class EmployeeDetail extends Component {
@@ -15,8 +14,7 @@ export default class EmployeeDetail extends Component {
     const { detail, saveEmployee, deleteEmployee } = this.props;
     return (
       <Collapsible trigger={`${detail.name} ${detail.surname}`}>
-        {/*<div className={styles.detailBox}>*/}
-        <div>
+        <div className="detailBox">
           <EmployeeEdit
             saveEmployee={saveEmployee}
             detail={detail}
