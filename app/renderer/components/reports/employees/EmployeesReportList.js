@@ -19,9 +19,13 @@ export default class EmployeesReportList extends Component {
 
     return (
       <div id="employees-report-list">
-        <BackButton />
+        <BackButton/>
 
-        <Headline startDate={startDate} endDate={endDate} />
+        <div>
+          <button type="button" className="no-print" onClick={() => window.print()}>Print</button>
+        </div>
+
+        <Headline startDate={startDate} endDate={endDate}/>
 
         <div>
           Records for employees:
