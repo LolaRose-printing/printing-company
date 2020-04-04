@@ -5,9 +5,9 @@ class BackButton extends Component {
   render() {
     const { history } = this.props;
     return (
-      <div data-tid="backButton">
+      <div data-tid="backButton" className="no-print">
         <button onClick={history.goBack} type="button">
-          <i className="fa fa-arrow-left fa-3x" />
+          <i className="fa fa-arrow-left fa-3x"/>
         </button>
       </div>
     );
