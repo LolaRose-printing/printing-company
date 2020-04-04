@@ -2,35 +2,30 @@
   "orders": [
     {
       "id": 1,
-      "name": "Order 1 for client 1",
+      "name": "Order #1 for client 1",
       "clientId": 1,
-      "notes": "nothing here",
-      "date": "2020-02-04T11:21:48.713Z",
+      "date": "2020-04-01T11:21:48.713Z",
       "works": [
         {
-          "recordId": 1,
-          "orderId": 1,
+          "motive": 1,
           "employeeId": 1,
           "workTypeId": 1,
           "amount": 2
         },
         {
-          "recordId": 2,
-          "orderId": 1,
+          "motive": 1,
           "employeeId": 1,
           "workTypeId": 3,
           "amount": 2
         },
         {
-          "recordId": 3,
-          "orderId": 1,
+          "motive": 1,
           "employeeId": 1,
           "workTypeId": 2,
           "amount": 4
         },
         {
-          "recordId": 4,
-          "orderId": 1,
+          "motive": 1,
           "employeeId": 2,
           "workTypeId": 1,
           "amount": 1
@@ -39,19 +34,49 @@
     },
     {
       "id": 2,
-      "name": "Order 2 for client 1",
-      "clientId": 2,
-      "notes": "nothing here",
-      "date": "2020-02-04T11:21:48.713Z",
+      "name": "Order #2 for client 1",
+      "clientId": 1,
+      "date": "2020-04-04T11:21:48.713Z",
       "works": [
         {
-          "recordId": 1,
-          "orderId": 2,
+          "motive": 1,
           "employeeId": 1,
           "workTypeId": 1,
           "amount": 2
+        },
+        {
+          "motive": 1,
+          "employeeId": 1,
+          "workTypeId": 3,
+          "amount": 2
+        },
+        {
+          "motive": 2,
+          "employeeId": 1,
+          "workTypeId": 2,
+          "amount": 4
+        },
+        {
+          "motive": 2,
+          "employeeId": 2,
+          "workTypeId": 1,
+          "amount": 1
         }
       ]
+    }
+  ],
+  "motives": [
+    {
+      "id": 1,
+      "name": "Motive 1"
+    },
+    {
+      "id": 2,
+      "name": "Motive 1"
+    },
+    {
+      "id": 3,
+      "name": "Motive 2"
     }
   ],
   "clients": [
@@ -74,35 +99,50 @@
       "name": "John",
       "surname": "Doe",
       "email": "john.doe@dd.com",
-      "phone": "151 222 333"
+      "phone": "151 222 333",
+      "address": "Mrakov 1234, 1345 01 Domazlice",
+      "socialSecurityNumber": "123546/12358",
+      "identificationNumber": "123456345345"
     },
     {
       "id": 2,
       "name": "Herbert",
       "surname": "Frank",
       "email": "herbert.frank@gmail.com",
-      "phone": "101 222 335"
+      "phone": "101 222 335",
+      "address": "Tulumacov 1234, 1345 01 Jama",
+      "socialSecurityNumber": "0222/12358",
+      "identificationNumber": "9832532"
     },
     {
       "id": 3,
       "name": "Alice",
       "surname": "A",
       "email": "alice.a@seznam.cz",
-      "phone": "122 453 434"
+      "phone": "122 453 434",
+      "address": "Mrakov 1234, 1345 01 Domazlice",
+      "socialSecurityNumber": "123546/12358",
+      "identificationNumber": "123456345345"
     },
     {
       "id": 4,
       "name": "Bob",
       "surname": "B",
       "email": "bobby.b@horde.cz",
-      "phone": "09347 4098"
+      "phone": "09347 4098",
+      "address": "Mrakov 1234, 1345 01 Domazlice",
+      "socialSecurityNumber": "123546/12358",
+      "identificationNumber": "123456345345"
     },
     {
       "id": 5,
       "name": "Bobby",
       "surname": "Frank",
       "email": "bobby@b.com",
-      "phone": "111 222 333"
+      "phone": "111 222 333",
+      "address": "Mrakov 1234, 1345 01 Domazlice",
+      "socialSecurityNumber": "123546/12358",
+      "identificationNumber": "123456345345"
     }
   ],
   "workTypes": [
