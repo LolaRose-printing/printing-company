@@ -10,6 +10,7 @@ function mapStateToProps(state, ownProps) {
       endDate: undefined,
       clients: [],
       orders: [],
+      motives: new Map(),
       workTypes: new Map(),
     };
   }
@@ -33,6 +34,7 @@ function mapStateToProps(state, ownProps) {
     endDate: end,
     clients,
     orders,
+    motives: state.motives,
     workTypes: state.workTypes,
   };
 }

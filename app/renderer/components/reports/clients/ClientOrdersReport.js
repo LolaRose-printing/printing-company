@@ -7,12 +7,15 @@ export default class ClientOrdersReport extends Component {
   static propTypes = {
     client: PropTypes.any.isRequired,
     orders: PropTypes.array.isRequired,
-    workTypes: PropTypes.any.isRequired,
+    motives: PropTypes.instanceOf(Map).isRequired,
+    workTypes: PropTypes.instanceOf(Map).isRequired,
   };
 
   render() {
-    const { client, orders, workTypes } = this.props;
+    const { client, orders, motives, workTypes } = this.props;
     const clientPrice = getPriceForMultipleOrders(orders, workTypes);
+
+    console.log(orders);
 
     return (
       <div id={`client-${client.id}-orders-report`}>
@@ -20,7 +23,7 @@ export default class ClientOrdersReport extends Component {
         <ul>
           {orders.map((order) => (
             <li key={`client-${client.id}-order-${order.id}`}>
-              <OrderReport order={order} workTypes={workTypes} />
+              <OrderReport order={order} motives={motives} workTypes={workTypes}/>
             </li>
           ))}
         </ul>

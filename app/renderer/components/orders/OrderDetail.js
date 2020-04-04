@@ -10,15 +10,16 @@ export default class OrderDetail extends Component {
     save: PropTypes.func.isRequired,
     order: PropTypes.any.isRequired,
     employees: PropTypes.any.isRequired,
+    motives: PropTypes.any.isRequired,
     workTypes: PropTypes.any.isRequired,
     clients: PropTypes.any.isRequired,
   };
 
-  updateWorkRecord = (save, order, updatedWork) => {
+  updateWorkRecord = (save, order, updatedWork, workIdx) => {
     save({
       ...order,
-      works: order.works.map((x) => {
-        if (x.recordId === updatedWork.recordId) {
+      works: order.works.map((x, idx) => {
+        if (idx === workIdx) {
           return { ...updatedWork };
         }
         return { ...x };
@@ -33,18 +34,11 @@ export default class OrderDetail extends Component {
     });
   };
 
-  createMapWithEmptyEntry = (source) => {
-    const res = new Map();
-    res.set(-1, { id: -1, name: '' });
-    source.forEach((x) => res.set(x.id, x));
-    return res;
-  };
-
   render() {
-    const { save, order, employees, workTypes, clients } = this.props;
+    const { save, order, employees, motives, workTypes, clients } = this.props;
     return (
       <div id="order-list-div">
-        <BackButton />
+        <BackButton/>
 
         <Form
           onSubmit={save}
@@ -53,9 +47,9 @@ export default class OrderDetail extends Component {
             <form onSubmit={handleSubmit}>
               <div>
                 <label>Name</label>
-                <Field name="name" component="input" type="text" placeholder="Order Name" />
+                <Field name="name" component="input" type="text" placeholder="Order Name"/>
               </div>
-              <div>
+              <div className="input-field col s12">
                 <label>Client</label>
                 <Field name="clientId" component="select" placeholder="Client">
                   {[...clients.values()].map((x) => (
@@ -67,7 +61,7 @@ export default class OrderDetail extends Component {
               </div>
               <div>
                 <label>Notes</label>
-                <Field name="notes" component="textarea" placeholder="Notes" />
+                <Field name="notes" component="textarea" placeholder="Notes"/>
               </div>
 
               <Field name="date">
@@ -94,13 +88,14 @@ export default class OrderDetail extends Component {
         />
 
         <div>
-          {order.works.map((work) => (
+          {order.works.map((work, idx) => (
             <WorkAssignment
-              key={`work-${order.id}-${work.recordId}`}
+              key={`work-${order.id}-${idx}`}
               workTypes={workTypes}
+              motives={motives}
               employees={employees}
               work={work}
-              onChange={(x) => this.updateWorkRecord(save, order, x)}
+              onChange={(x) => this.updateWorkRecord(save, order, x, idx)}
             />
           ))}
         </div>
@@ -109,14 +104,10 @@ export default class OrderDetail extends Component {
           Add new work assignment:
           <WorkAssignment
             key={`new-work-${order.id}`}
-            workTypes={this.createMapWithEmptyEntry(workTypes)}
-            employees={this.createMapWithEmptyEntry(employees)}
-            work={{
-              orderId: order.id,
-              recordId: Math.max(...order.works.map((x) => x.recordId)) + 1,
-              workId: -1,
-              employeeId: -1,
-            }}
+            workTypes={workTypes}
+            employees={employees}
+            motives={motives}
+            work={{}}
             onChange={(x) => {
               this.addWorkRecord(save, order, x);
             }}

@@ -6,35 +6,18 @@ export default class WorkAssignment extends Component {
   static propTypes = {
     employees: PropTypes.any.isRequired,
     workTypes: PropTypes.any.isRequired,
+    motives: PropTypes.any.isRequired,
     work: PropTypes.any.isRequired,
     onChange: PropTypes.func.isRequired,
   };
 
-  validateForm = (values) => {
-    const errors = {};
-    if (values.employeeId === -1) {
-      errors.employeeId = 'Must be selected';
-    }
-
-    if (values.workTypeId === -1) {
-      errors.workTypeId = 'Must be selected';
-    }
-
-    if (!parseInt(values.amount, 10)) {
-      errors.amount = 'Must be set';
-    }
-
-    return errors;
-  };
-
   render() {
-    const { employees, workTypes, work, onChange } = this.props;
+    const { employees, motives, workTypes, work, onChange } = this.props;
 
     return (
       <Form
         onSubmit={onChange}
         initialValues={work}
-        validate={this.validateForm}
         render={({ handleSubmit, form, submitting, pristine }) => (
           <form onSubmit={handleSubmit}>
             <div>
@@ -46,7 +29,20 @@ export default class WorkAssignment extends Component {
                   </option>
                 ))}
               </Field>
+
             </div>
+
+            <div>
+              <label>Motive</label>
+              <Field name="motiveId" component="select" placeholder="Motive">
+                {[...motives.values()].map((x) => (
+                  <option key={x.id} value={x.id}>
+                    {x.name}
+                  </option>
+                ))}
+              </Field>
+            </div>
+
             <div>
               <label>Work Type</label>
               <Field name="workTypeId" component="select" placeholder="Work Type">
@@ -56,7 +52,9 @@ export default class WorkAssignment extends Component {
                   </option>
                 ))}
               </Field>
+
             </div>
+
             <div>
               <label>Amount</label>
               <Field name="amount" component="textarea" placeholder="Amount" />
@@ -64,7 +62,7 @@ export default class WorkAssignment extends Component {
 
             <div className="buttons">
               <button type="submit" disabled={submitting || pristine}>
-                Submit
+                OK
               </button>
               <button type="button" onClick={form.reset} disabled={submitting || pristine}>
                 Reset

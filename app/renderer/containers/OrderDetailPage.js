@@ -11,6 +11,7 @@ function mapStateToProps(state, ownProps) {
     employees: state.employees,
     workTypes: state.workTypes,
     clients: state.clients,
+    motives: state.motives,
   };
 }
 

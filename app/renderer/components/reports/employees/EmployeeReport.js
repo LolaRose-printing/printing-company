@@ -1,42 +1,43 @@
-/* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 export default class EmployeeReport extends Component {
   static propTypes = {
-    startDate: PropTypes.any.isRequired,
-    endDate: PropTypes.any.isRequired,
-    orders: PropTypes.any.isRequired,
     employee: PropTypes.any.isRequired,
-    works: PropTypes.array.isRequired,
-    workTypes: PropTypes.any.isRequired,
+    employeeData: PropTypes.array.isRequired,
+
+    orders: PropTypes.instanceOf(Map).isRequired,
+    motives: PropTypes.instanceOf(Map).isRequired,
+    workTypes: PropTypes.instanceOf(Map).isRequired,
   };
 
   render() {
-    const { startDate, endDate, orders, employee, works, workTypes } = this.props;
+    const { employee, employeeData, orders, motives, workTypes } = this.props;
 
-    // TODO remove this
-    console.log(startDate, endDate, orders);
-
-    const wage = works
-      .map((x) => workTypes.get(x.workTypeId).employeeWage)
+    const wage = employeeData.flatMap(x => x.works)
+      .map(work => workTypes.get(work.workTypeId).employeeWage)
       .reduce((a, b) => a + b, 0);
-
     return (
       <div>
         {employee.name}
+        <ul id={`"employee-list-${employee.id}`}>
+          {employeeData.flatMap(orderData => {
+            const order = orders.get(orderData.orderId);
 
-        <ul>
-          {works.map((work) => {
-            const workType = workTypes.get(work.workTypeId);
-            return (
-              <li key={`employee-${employee.id}-work-order-${work.orderId}-rec-${work.recordId}`}>
-                Worked - {work.amount} - what - {workType.name}
-              </li>
-            );
+            return orderData.works.map((work, idx) => {
+              const workType = workTypes.get(work.workTypeId);
+
+              return (
+                <li key={`order-${order.id}-emp-work-${idx}`}>
+                  {order.name} - {motives.get(work.motiveId).name}
+                  - {order.date} - {workType.name} - {work.amount}
+                  - {work.amount * workType.employeeWage}
+                </li>
+              );
+            });
           })}
-          Final wage is then - {wage} Kc.
         </ul>
+        Final wage is then - {wage} Kc.
       </div>
     );
   }

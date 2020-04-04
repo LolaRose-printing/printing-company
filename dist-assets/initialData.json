@@ -7,25 +7,25 @@
       "date": "2020-04-01T11:21:48.713Z",
       "works": [
         {
-          "motive": 1,
+          "motiveId": 1,
           "employeeId": 1,
           "workTypeId": 1,
           "amount": 2
         },
         {
-          "motive": 1,
-          "employeeId": 1,
-          "workTypeId": 3,
-          "amount": 2
-        },
-        {
-          "motive": 1,
-          "employeeId": 1,
-          "workTypeId": 2,
+          "motiveId": 1,
+          "employeeId": 2,
+          "workTypeId": 1,
           "amount": 4
         },
         {
-          "motive": 1,
+          "motiveId": 1,
+          "employeeId": 1,
+          "workTypeId": 2,
+          "amount": 2
+        },
+        {
+          "motiveId": 2,
           "employeeId": 2,
           "workTypeId": 1,
           "amount": 1
@@ -34,30 +34,30 @@
     },
     {
       "id": 2,
-      "name": "Order #2 for client 1",
-      "clientId": 1,
+      "name": "Order #2 for client 2",
+      "clientId": 2,
       "date": "2020-04-04T11:21:48.713Z",
       "works": [
         {
-          "motive": 1,
+          "motiveId": 1,
           "employeeId": 1,
           "workTypeId": 1,
           "amount": 2
         },
         {
-          "motive": 1,
+          "motiveId": 1,
           "employeeId": 1,
-          "workTypeId": 3,
+          "workTypeId": 1,
           "amount": 2
         },
         {
-          "motive": 2,
+          "motiveId": 2,
           "employeeId": 1,
           "workTypeId": 2,
           "amount": 4
         },
         {
-          "motive": 2,
+          "motiveId": 2,
           "employeeId": 2,
           "workTypeId": 1,
           "amount": 1
@@ -72,11 +72,11 @@
     },
     {
       "id": 2,
-      "name": "Motive 1"
+      "name": "Motive 2"
     },
     {
       "id": 3,
-      "name": "Motive 2"
+      "name": "Motive 3"
     }
   ],
   "clients": [

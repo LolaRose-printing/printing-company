@@ -20,45 +20,41 @@ function mapStateToProps(state, ownProps) {
   const start = new Date(startDate);
   const end = new Date(endDate);
 
-  const orders = affectedOrders(state.orders, start, end);
+  const affectedOrders = getAffectedOrders(state.orders, start, end);
+  const affectedEmployees = getAffectedEmployees(state.employees, employeesIds);
+
+  const employeeData = new Map();
+  affectedEmployees.forEach(employee => {
+    const works = affectedOrders.map(order => {
+      return {
+        orderId: order.id,
+        works: order.works.filter(work => work.employeeId === employee.id),
+      };
+    });
+
+    employeeData.set(employee.id, works);
+  });
+
 
   return {
     startDate: start,
     endDate: end,
-    orders,
+    orders: state.orders,
     workTypes: state.workTypes,
-    employees: affectedEmployees(state.employees, employeesIds),
-    works: employeesWorks(orders, employeesIds),
+    motives: state.motives,
+    employees: affectedEmployees,
+    employeeData: employeeData,
   };
 }
 
-// noinspection JSUnusedLocalSymbols
-const affectedOrders = (orders, startDate, endDate) =>
-  new Map(
-    // eslint-disable-next-line no-unused-vars
-    [...orders].filter(([k, v]) => {
-      const date = new Date(v.date);
-      return startDate <= date && date <= endDate;
-    }),
-  );
-
-const employeesWorks = (filteredOrders, employeesIds) => {
-  const employeeReportOrder = new Map();
-  employeesIds.forEach((x) => {
-    employeeReportOrder[x] = [];
+const getAffectedOrders = (orders, startDate, endDate) =>
+  [...orders.values()].filter(v => {
+    const date = new Date(v.date);
+    return startDate <= date && date <= endDate;
   });
 
-  [...filteredOrders.values()]
-    .flatMap((x) => x.works)
-    .filter((x) => employeesIds.includes(x.employeeId))
-    .forEach((x) => {
-      employeeReportOrder[x.employeeId].push(x);
-    });
-  return employeeReportOrder;
-};
 
-// noinspection JSUnusedLocalSymbols
-const affectedEmployees = (employees, employeesIds) =>
+const getAffectedEmployees = (employees, employeesIds) =>
   [...employees.values()].filter((x) => employeesIds.includes(x.id));
 
 function mapDispatchToProps(dispatch) {

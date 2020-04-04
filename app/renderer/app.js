@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 import { createMemoryHistory } from 'history';
 import configureStore from './store';
-import { loadClients, loadEmployeeMap, loadOrders, loadWorkTypes } from './utils/dataLoading';
+import { loadClients, loadEmployeeMap, loadMotives, loadOrders, loadWorkTypes } from './utils/dataLoading';
 import routes from './routes';
 
 const syncHistoryWithStore = (store, history) => {
@@ -19,6 +19,7 @@ const initialState = {
   workTypes: loadWorkTypes(),
   clients: loadClients(),
   orders: loadOrders(),
+  motives: loadMotives(),
 };
 
 const routerHistory = createMemoryHistory();

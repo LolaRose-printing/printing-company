@@ -23,8 +23,8 @@ export default class ClientReportSelection extends Component {
   stateToFilter = (state) => {
     const { selectedClients, selectedOrders, startDate, endDate } = state;
     return {
-      orderIds: selectedClients.map((x) => x.value),
-      clientIds: selectedOrders.map((x) => x.value),
+      orderIds: selectedOrders.map((x) => x.value),
+      clientIds: selectedClients.map((x) => x.value),
       startDate: new Date(startDate),
       endDate: new Date(endDate),
     };
