@@ -1,10 +1,10 @@
 import * as storage from 'electron-json-storage';
 import { loadClients, loadEmployeeMap, loadOrders, loadWorkTypes } from './dataLoading';
 
-function initStorage() {
-  // TODO Maybe change this?
-  const path = storage.getDefaultDataPath();
-  console.log(`Setting save path as: ${path}`);
+function initStorage(path = null) {
+  if (!path) {
+    path = storage.getDefaultDataPath();
+  }
   storage.setDataPath(path);
 }
 
@@ -19,9 +19,9 @@ export function convertState(state) {
   };
 }
 
-export function saveState(state) {
+export function saveState(state, path = null) {
   const converted = convertState(state);
-  initStorage();
+  initStorage(path);
   storage.set('state', converted);
 }
 
@@ -34,11 +34,12 @@ function convertToState(data) {
   };
 }
 
-export function loadState(stateCallback) {
-  initStorage();
+export function loadState(stateCallback, path = null) {
+  initStorage(path);
 
   storage.get('state', (error, data) => {
-    if (data) {
+    if (data && data !== {}) {
+      console.log(data);
       stateCallback(convertToState(data.state));
     } else {
       console.log(error);
