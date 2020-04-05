@@ -27,10 +27,14 @@ export default class DateRangeSelector extends Component {
 
     return (
       <div>
-        Start date
-        <DatePicker label="StartDate" onChange={this.startChange} selected={startDate}/>
-        End date
-        <DatePicker label="EndDate" onChange={this.endChange} selected={endDate}/>
+        <div>
+          Start date
+          <DatePicker label="StartDate" onChange={this.startChange} selected={startDate}/>
+        </div>
+        <div>
+          End date
+          <DatePicker label="EndDate" onChange={this.endChange} selected={endDate}/>
+        </div>
       </div>
     );
   }
