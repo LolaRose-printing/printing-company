@@ -1,0 +1,12 @@
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.save-cancel-button {
+    z-index: 0 !important;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    /*width: 33px;*/
+}

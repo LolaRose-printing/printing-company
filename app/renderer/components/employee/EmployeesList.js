@@ -108,7 +108,7 @@ export default class EmployeesList extends Component {
         <Button
           className="red"
           icon={<Icon>add</Icon>}
-          medium
+          large
           node="button"
           waves="light"
           onClick={this.openModal}
@@ -117,7 +117,6 @@ export default class EmployeesList extends Component {
             hoverEnabled: false,
           }}
           floating
-          large
         />
 
         <Modal
