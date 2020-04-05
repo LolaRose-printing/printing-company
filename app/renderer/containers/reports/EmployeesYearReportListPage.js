@@ -73,8 +73,6 @@ function fillWorkData(orders, employeesIds, workTypes, employeeMonthlyWages) {
       employeeMonthlyWages.get(work.employeeId).get(key).wage += work.amount * wage;
     });
   });
-
-
 }
 
 function mapDispatchToProps(dispatch) {

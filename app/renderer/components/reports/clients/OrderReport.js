@@ -1,20 +1,8 @@
 import React, { Component } from 'react';
 import WorkReport from './WorkReport';
 import PropTypes from 'prop-types';
+import groupBy from '../../../utils/groupBy';
 
-function groupBy(list, keyGetter) {
-  const map = new Map();
-  list.forEach((item) => {
-    const key = keyGetter(item);
-    const collection = map.get(key);
-    if (!collection) {
-      map.set(key, [item]);
-    } else {
-      collection.push(item);
-    }
-  });
-  return map;
-}
 
 export default class OrderReport extends Component {
   static propTypes = {
@@ -43,8 +31,7 @@ export default class OrderReport extends Component {
     );
 
     const finalPrice = results.reduce((a, b) =>
-      a + workTypes.get(b.workTypeId).priceForCustomer * b.amount,
-      0);
+      a + workTypes.get(b.workTypeId).priceForCustomer * b.amount, 0);
     return (
       <div>
         Order: {order.name}
