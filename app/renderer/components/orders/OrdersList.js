@@ -4,6 +4,10 @@ import routes from '../../../../dist-assets/routes';
 import PropTypes from 'prop-types';
 import BackButton from '../tools/BackButton';
 
+import 'materialize-css';
+import { Collection, CollectionItem } from 'react-materialize';
+
+
 export default class OrdersList extends Component {
   static propTypes = {
     orders: PropTypes.array.isRequired,
@@ -13,16 +17,16 @@ export default class OrdersList extends Component {
     const { orders } = this.props;
 
     return (
-      <div id="order-list-div">
+      <div id="order-list-container">
         <BackButton/>
 
-        <ul id="orders-list">
+        <Collection id="orders-list">
           {orders.map((wt) => (
-            <li key={wt.id}>
+            <CollectionItem key={wt.id}>
               <Link to={routes.ORDER_DETAIL + JSON.stringify(wt.id)}>{wt.name}</Link>
-            </li>
+            </CollectionItem>
           ))}
-        </ul>
+        </Collection>
       </div>
     );
   }

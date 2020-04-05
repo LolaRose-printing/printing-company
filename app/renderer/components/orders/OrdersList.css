@@ -1,0 +1,11 @@
+#order-list-container {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+
+#orders-list {
+    margin: auto;
+    min-width: 400px;
+    text-align: center;
+}
