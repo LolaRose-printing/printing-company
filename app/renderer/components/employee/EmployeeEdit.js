@@ -10,7 +10,7 @@ export default class EmployeeEdit extends Component {
   };
 
   render() {
-    const { saveEmployee, deleteEmployee, detail } = this.props;
+    const { saveEmployee, detail } = this.props;
 
     return (
       <div id="employee-edit">
@@ -41,13 +41,6 @@ export default class EmployeeEdit extends Component {
                 </button>
                 <button type="button" onClick={form.reset} disabled={submitting || pristine}>
                   Reset
-                </button>
-                {/* TODO add prompt */}
-                <button
-                  type="button"
-                  onClick={() => deleteEmployee(detail.id)}
-                  style={detail ? {} : { display: 'none' }}>
-                  Delete
                 </button>
               </div>
             </form>
