@@ -38,7 +38,7 @@ export default class EmployeeEdit extends Component {
                 <Field name="notes" component="textarea" placeholder="Notes"/>
               </div>
 
-              <div className="buttons">
+              <div className="employee-edit-buttons">
                 <Button
                   className="save-cancel-button"
                   node="button"

@@ -38,21 +38,24 @@ export default class OrderDetail extends Component {
 
   render() {
     const { save, order, employees, motives, workTypes, clients } = this.props;
-    console.log(order.clientId);
     return (
-      <div id="order-list-div">
+      <div id="order-detail-container">
         <BackButton/>
 
         <Form
           onSubmit={save}
           initialValues={order}
           render={({ handleSubmit, form, submitting, pristine }) => (
-            <form onSubmit={handleSubmit}>
+            <form
+              id="order-detail-form"
+              onSubmit={handleSubmit}
+            >
               <div>
                 <label>Name</label>
                 <Field name="name" component="input" type="text" placeholder="Order Name"/>
               </div>
-              <div className="input-field col s12">
+
+              <div>
                 <Field name="clientId">
                   {({ input }) => (
                     <Select
@@ -70,24 +73,25 @@ export default class OrderDetail extends Component {
                     </Select>
                   )}
                 </Field>
-
-
               </div>
+
               <div>
                 <label>Notes</label>
                 <Field name="notes" component="textarea" placeholder="Notes"/>
               </div>
 
-              <Field name="date">
-                {({ input }) => (
-                  <DatePickerWrapper
-                    initDate={input.value}
-                    onChange={(d) => {
-                      input.onChange(d);
-                    }}
-                  />
-                )}
-              </Field>
+              <div>
+                <Field name="date">
+                  {({ input }) => (
+                    <DatePickerWrapper
+                      initDate={input.value}
+                      onChange={(d) => {
+                        input.onChange(d);
+                      }}
+                    />
+                  )}
+                </Field>
+              </div>
 
               <div className="buttons">
                 <button type="submit" disabled={submitting || pristine}>
@@ -101,18 +105,21 @@ export default class OrderDetail extends Component {
           )}
         />
 
-        <div>
+        <ul id="work-assignments-collection">
           {order.works.map((work, idx) => (
-            <WorkAssignment
-              key={`work-${order.id}-${idx}`}
-              workTypes={workTypes}
-              motives={motives}
-              employees={employees}
-              work={work}
-              onChange={(x) => this.updateWorkRecord(save, order, x, idx)}
-            />
+            <li key={idx} className="work-assignment-li">
+              <WorkAssignment
+                key={`work-${order.id}-${idx}`}
+                workTypes={workTypes}
+                motives={motives}
+                employees={employees}
+                work={work}
+                onChange={(x) => this.updateWorkRecord(save, order, x, idx)}
+              />
+            </li>
           ))}
-        </div>
+        </ul>
+
 
         <div>
           Add new work assignment:

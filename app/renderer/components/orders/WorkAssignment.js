@@ -41,25 +41,23 @@ export default class WorkAssignment extends Component {
         onSubmit={onChange}
         initialValues={work}
         render={({ handleSubmit, form, submitting, pristine }) => (
-          <form onSubmit={handleSubmit}>
-            <div className="input-field col s12">
-            </div>
-            <div>
+          <form onSubmit={handleSubmit} className="work-assignment-container">
+            <div className="work-assignment-cell">
               {this.selector('employeeId', employees, 'Employee')}
             </div>
 
-            <div>
+            <div className="work-assignment-cell">
               {this.selector('motiveId', motives, 'Motive')}
             </div>
 
 
-            <div>
+            <div className="work-assignment-cell">
               {this.selector('workTypeId', workTypes, 'Work Type')}
             </div>
 
-            <div>
+            <div className="work-assignment-cell">
               <label>Amount</label>
-              <Field name="amount" component="textarea" placeholder="Amount"/>
+              <Field name="amount" component="input" placeholder="Amount"/>
             </div>
 
             <div className="buttons">
