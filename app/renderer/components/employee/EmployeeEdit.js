@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Field, Form } from 'react-final-form';
 import PropTypes from 'prop-types';
 import 'materialize-css';
-import { Button, Icon } from 'react-materialize';
+import SubmitButton from '../tools/SubmitButton';
+import ResetButton from '../tools/ResetButton';
 
 export default class EmployeeEdit extends Component {
   static propTypes = {
@@ -39,29 +40,8 @@ export default class EmployeeEdit extends Component {
               </div>
 
               <div className="employee-edit-buttons">
-                <Button
-                  className="save-cancel-button"
-                  node="button"
-                  type="submit"
-                  waves="light"
-                  small={true}
-                  disabled={submitting || pristine}
-                  icon={<Icon>send</Icon>}
-                >
-
-                </Button>
-
-                <Button
-                  className="save-cancel-button"
-                  node="button"
-                  waves="light"
-                  small={true}
-                  onClick={form.reset}
-                  disabled={submitting || pristine}
-                  icon={<Icon>cancel</Icon>}
-                >
-
-                </Button>
+                <SubmitButton disabled={submitting || pristine}/>
+                <ResetButton disabled={submitting || pristine} onClick={form.reset}/>
               </div>
             </form>
           )}

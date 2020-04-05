@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import { Field, Form } from 'react-final-form';
 import PropTypes from 'prop-types';
 import 'materialize-css';
-import { Button, Icon, Select } from 'react-materialize';
+import { Select } from 'react-materialize';
+import SubmitButton from '../tools/SubmitButton';
+import ResetButton from '../tools/ResetButton';
+import DeleteButton from '../tools/DeleteButton';
 
 export default class WorkAssignment extends Component {
   static propTypes = {
@@ -62,36 +65,11 @@ export default class WorkAssignment extends Component {
             </div>
 
             <div className="work-assignment-buttons">
-              <Button
-                type="submit"
-                disabled={submitting || pristine}
-                className="green work-assignment-button"
-                floating
-                icon={<Icon>check</Icon>}
-                small
-                node="button"
-                waves="light"
-              />
-              <Button
-                type="submit"
-                disabled={submitting || pristine}
-                className="orange work-assignment-button"
-                floating
-                icon={<Icon>repeat</Icon>}
-                small
-                node="button"
-                waves="light"
-                onClick={form.reset}
-              />
-              <Button
-                className="red work-assignment-button"
-                floating
-                icon={<Icon>delete</Icon>}
-                small
-                node="button"
-                waves="light"
-                onClick={deleteAssignment}
-              />
+              <SubmitButton disabled={submitting || pristine}/>
+
+              <ResetButton disabled={submitting || pristine} onClick={form.reset}/>
+
+              <DeleteButton onClick={deleteAssignment}/>
             </div>
           </form>
         )}

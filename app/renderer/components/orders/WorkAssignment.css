@@ -15,6 +15,7 @@
     align-items: center;
 }
 
-.work-assignment-button {
+.work-assignment-buttons > button {
     margin: 5px;
+    z-index: 0 !important;
 }

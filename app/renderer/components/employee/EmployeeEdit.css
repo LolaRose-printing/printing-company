@@ -1,9 +1,9 @@
 .employee-edit-buttons {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
-.save-cancel-button {
+.employee-edit-buttons > button {
     z-index: 0 !important;
     margin-top: 20px;
     margin-left: 10px;
