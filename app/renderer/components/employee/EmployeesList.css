@@ -1,0 +1,20 @@
+#employees-div {
+}
+
+#search-bar {
+    display: flex;
+    justify-content: center;
+}
+
+#employees-search {
+    min-width: 300px;
+}
+
+#employees-list {
+    display: flex;
+    justify-content: center;
+}
+
+.employee-element {
+    min-width: 500px;
+}

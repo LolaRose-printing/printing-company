@@ -12,6 +12,7 @@ const modalStyle = {
     top: '50%',
     left: '50%',
     right: 'auto',
+    minWidth: '500px',
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
@@ -60,17 +61,6 @@ export default class EmployeesList extends Component {
     }));
   };
 
-  modalButton = () => (
-    <Button
-      className="red" floating
-      icon={<Icon>add</Icon>}
-      small
-      onClick={this.openModal}
-      node="button"
-      waves="light"
-    />
-  );
-
   render() {
     const { saveEmployee, deleteEmployee, employeesList } = this.props;
     const { search, modalIsOpen } = this.state;
@@ -80,26 +70,54 @@ export default class EmployeesList extends Component {
       <div id="employees-div">
         <BackButton/>
 
-        <TextInput
-          icon={<Icon>search</Icon>}
-          id="employees-search"
-          label="Search"
-          onChange={(e) => {
-            const searchValues = e.target.value.split(' ');
-            this.setState((state) => ({
-              ...state,
-              search: searchValues,
-            }));
-          }}
-        />
+        <div id="search-bar">
+          <TextInput
+            icon={<Icon>search</Icon>}
+            id="employees-search"
+            label="Search"
+            onChange={(e) => {
+              const searchValues = e.target.value.split(' ');
+              this.setState((state) => ({
+                ...state,
+                search: searchValues,
+              }));
+            }}
+          />
+        </div>
+
+        <div id="employees-list">
+          <Collapsible accordion={false}>
+            {displayedEmployees.map((e) => (
+              <CollapsibleItem
+                className="employee-element"
+                key={e.id}
+                expanded={false}
+                header={`${e.name} ${e.surname}`}
+                node="div"
+              >
+                <EmployeeEdit
+                  saveEmployee={saveEmployee}
+                  detail={e}
+                  deleteEmployee={deleteEmployee}
+                />
+              </CollapsibleItem>
+            ))}
+          </Collapsible>
+        </div>
+
         <Button
           className="red"
-          floating
           icon={<Icon>add</Icon>}
-          small
+          medium
           node="button"
           waves="light"
           onClick={this.openModal}
+          fab={{
+            direction: 'left',
+            hoverEnabled: false,
+          }}
+          floating
+          large
         />
 
         <Modal
@@ -109,6 +127,7 @@ export default class EmployeesList extends Component {
           contentLabel="Modal">
 
           <EmployeeEdit
+            className="employee-element"
             saveEmployee={(e) => {
               saveEmployee(e);
               this.closeModal();
@@ -117,24 +136,6 @@ export default class EmployeesList extends Component {
             detail={undefined}
           />
         </Modal>
-
-        <Collapsible id="employees-list" accordion={false}>
-          {displayedEmployees.map((e) => (
-            <CollapsibleItem
-              key={e.id}
-              expanded={false}
-              header={`${e.name} ${e.surname}`}
-              node="div"
-            >
-              <EmployeeEdit
-                saveEmployee={saveEmployee}
-                detail={e}
-                deleteEmployee={deleteEmployee}
-              />
-
-            </CollapsibleItem>
-          ))}
-        </Collapsible>
       </div>
     );
   }

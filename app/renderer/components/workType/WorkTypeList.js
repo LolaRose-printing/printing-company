@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import routes from '../../../../dist-assets/routes';
 import PropTypes from 'prop-types';
+import BackButton from '../tools/BackButton';
 
 export default class WorkTypeList extends Component {
   static propTypes = {
@@ -15,11 +14,7 @@ export default class WorkTypeList extends Component {
 
     return (
       <div id="work-types-div">
-        <div data-tid="backButton">
-          <Link to={routes.HOME}>
-            <i className="fa fa-arrow-left fa-3x"/>
-          </Link>
-        </div>
+        <BackButton/>
 
         <ul id="work-types-list">
           {workTypeList.map((wt) => (
