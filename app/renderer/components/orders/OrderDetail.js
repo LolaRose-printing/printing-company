@@ -105,21 +105,22 @@ export default class OrderDetail extends Component {
           )}
         />
 
-        <ul id="work-assignments-collection">
-          {order.works.map((work, idx) => (
-            <li key={idx} className="work-assignment-li">
-              <WorkAssignment
-                key={`work-${order.id}-${idx}`}
-                workTypes={workTypes}
-                motives={motives}
-                employees={employees}
-                work={work}
-                onChange={(x) => this.updateWorkRecord(save, order, x, idx)}
-              />
-            </li>
-          ))}
-        </ul>
-
+        <div id="work-assignments-collection">
+          <ul>
+            {order.works.map((work, idx) => (
+              <li key={idx} className="work-assignment-li">
+                <WorkAssignment
+                  key={`work-${order.id}-${idx}`}
+                  workTypes={workTypes}
+                  motives={motives}
+                  employees={employees}
+                  work={work}
+                  onChange={(x) => this.updateWorkRecord(save, order, x, idx)}
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
 
         <div>
           Add new work assignment:
