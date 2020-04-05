@@ -2,6 +2,7 @@ import WorkAssignment from './WorkAssignment';
 import AddNewWorkAssignment from './AddWorkAssignment';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import 'materialize-css';
 
 export default class WorkAssignmentsList extends Component {
   static propTypes = {
@@ -10,6 +11,25 @@ export default class WorkAssignmentsList extends Component {
     employees: PropTypes.instanceOf(Map).isRequired,
     motives: PropTypes.instanceOf(Map).isRequired,
     workTypes: PropTypes.instanceOf(Map).isRequired,
+  };
+
+  deleteRecord = (save, order, idxToRemove) => {
+    save({
+      ...order,
+      works: order.works.filter((_, idx) => idx !== idxToRemove),
+    });
+  };
+
+  updateWorkRecord = (save, order, updatedWork, workIdx) => {
+    save({
+      ...order,
+      works: order.works.map((x, idx) => {
+        if (idx === workIdx) {
+          return { ...updatedWork };
+        }
+        return { ...x };
+      }),
+    });
   };
 
   addWorkRecord = (save, order, newWork) => {
@@ -34,6 +54,7 @@ export default class WorkAssignmentsList extends Component {
                   employees={employees}
                   work={work}
                   onChange={(x) => this.updateWorkRecord(save, order, x, idx)}
+                  deleteAssignment={() => this.deleteRecord(save, order, idx)}
                 />
               </li>
             ))}

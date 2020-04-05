@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Field, Form } from 'react-final-form';
 import PropTypes from 'prop-types';
 import 'materialize-css';
-import { Select } from 'react-materialize';
+import { Button, Icon, Select } from 'react-materialize';
 
 export default class WorkAssignment extends Component {
   static propTypes = {
@@ -11,6 +11,7 @@ export default class WorkAssignment extends Component {
     motives: PropTypes.instanceOf(Map).isRequired,
     work: PropTypes.any.isRequired,
     onChange: PropTypes.func.isRequired,
+    deleteAssignment: PropTypes.func.isRequired,
   };
 
   selector = (value, data, label) => (
@@ -34,7 +35,7 @@ export default class WorkAssignment extends Component {
   );
 
   render() {
-    const { employees, motives, workTypes, work, onChange } = this.props;
+    const { employees, motives, workTypes, work, onChange, deleteAssignment } = this.props;
 
     return (
       <Form
@@ -60,13 +61,37 @@ export default class WorkAssignment extends Component {
               <Field name="amount" component="input" placeholder="Amount"/>
             </div>
 
-            <div className="buttons">
-              <button type="submit" disabled={submitting || pristine}>
-                OK
-              </button>
-              <button type="button" onClick={form.reset} disabled={submitting || pristine}>
-                Reset
-              </button>
+            <div className="work-assignment-buttons">
+              <Button
+                type="submit"
+                disabled={submitting || pristine}
+                className="green work-assignment-button"
+                floating
+                icon={<Icon>check</Icon>}
+                small
+                node="button"
+                waves="light"
+              />
+              <Button
+                type="submit"
+                disabled={submitting || pristine}
+                className="orange work-assignment-button"
+                floating
+                icon={<Icon>repeat</Icon>}
+                small
+                node="button"
+                waves="light"
+                onClick={form.reset}
+              />
+              <Button
+                className="red work-assignment-button"
+                floating
+                icon={<Icon>delete</Icon>}
+                small
+                node="button"
+                waves="light"
+                onClick={deleteAssignment}
+              />
             </div>
           </form>
         )}

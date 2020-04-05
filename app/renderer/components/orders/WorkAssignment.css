@@ -1,11 +1,20 @@
 .work-assignment-container {
     display: flex;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin: 10px auto;
 }
 
 
 .work-assignment-cell {
     margin-right: 10px;
     margin-left: 10px;
+}
+
+.work-assignment-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.work-assignment-button {
+    margin: 5px;
 }
