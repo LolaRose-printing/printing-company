@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Field, Form } from 'react-final-form';
 import PropTypes from 'prop-types';
+import 'materialize-css';
+import { Select } from 'react-materialize';
 
 export default class WorkAssignment extends Component {
   static propTypes = {
@@ -11,6 +13,26 @@ export default class WorkAssignment extends Component {
     onChange: PropTypes.func.isRequired,
   };
 
+  selector = (value, data, label) => (
+    <Field name={value}>
+      {({ input }) => (
+        <Select
+          value={`${input.value}`}
+          label={label}
+          onChange={(d) => {
+            input.onChange(d);
+          }}
+        >
+          {[...data.values()].map((x) => (
+            <option key={x.id} value={x.id} name={x.name}>
+              {x.name}
+            </option>
+          ))}
+        </Select>
+      )}
+    </Field>
+  );
+
   render() {
     const { employees, motives, workTypes, work, onChange } = this.props;
 
@@ -20,39 +42,19 @@ export default class WorkAssignment extends Component {
         initialValues={work}
         render={({ handleSubmit, form, submitting, pristine }) => (
           <form onSubmit={handleSubmit}>
+            <div className="input-field col s12">
+            </div>
             <div>
-              <label>Employee</label>
-              <Field name="employeeId" component="select" placeholder="Employee">
-                {[...employees.values()].map((x) => (
-                  <option key={x.id} value={x.id}>
-                    {x.name}
-                  </option>
-                ))}
-              </Field>
-
+              {this.selector('employeeId', employees, 'Employee')}
             </div>
 
             <div>
-              <label>Motive</label>
-              <Field name="motiveId" component="select" placeholder="Motive">
-                {[...motives.values()].map((x) => (
-                  <option key={x.id} value={x.id}>
-                    {x.name}
-                  </option>
-                ))}
-              </Field>
+              {this.selector('motiveId', motives, 'Motive')}
             </div>
 
-            <div>
-              <label>Work Type</label>
-              <Field name="workTypeId" component="select" placeholder="Work Type">
-                {[...workTypes.values()].map((x) => (
-                  <option key={x.id} value={x.id}>
-                    {x.name}
-                  </option>
-                ))}
-              </Field>
 
+            <div>
+              {this.selector('workTypeId', workTypes, 'Work Type')}
             </div>
 
             <div>

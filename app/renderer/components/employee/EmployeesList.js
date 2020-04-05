@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
-import EmployeeDetail from './EmployeeDetail';
 import EmployeeEdit from './EmployeeEdit';
 import PropTypes from 'prop-types';
 import BackButton from '../tools/BackButton';
+
+import 'materialize-css';
+import { Button, Collapsible, CollapsibleItem, Icon, TextInput } from 'react-materialize';
 
 const modalStyle = {
   content: {
@@ -15,6 +17,8 @@ const modalStyle = {
     transform: 'translate(-50%, -50%)',
   },
 };
+
+Modal.setAppElement('#app');
 
 export default class EmployeesList extends Component {
   static propTypes = {
@@ -56,6 +60,17 @@ export default class EmployeesList extends Component {
     }));
   };
 
+  modalButton = () => (
+    <Button
+      className="red" floating
+      icon={<Icon>add</Icon>}
+      small
+      onClick={this.openModal}
+      node="button"
+      waves="light"
+    />
+  );
+
   render() {
     const { saveEmployee, deleteEmployee, employeesList } = this.props;
     const { search, modalIsOpen } = this.state;
@@ -65,9 +80,10 @@ export default class EmployeesList extends Component {
       <div id="employees-div">
         <BackButton/>
 
-        <input
+        <TextInput
+          icon={<Icon>search</Icon>}
           id="employees-search"
-          type="text"
+          label="Search"
           onChange={(e) => {
             const searchValues = e.target.value.split(' ');
             this.setState((state) => ({
@@ -76,40 +92,50 @@ export default class EmployeesList extends Component {
             }));
           }}
         />
-
-        <button onClick={this.openModal} type="button">
-          Add new
-        </button>
+        <Button
+          className="red"
+          floating
+          icon={<Icon>add</Icon>}
+          small
+          node="button"
+          waves="light"
+          onClick={this.openModal}
+        />
 
         <Modal
           isOpen={modalIsOpen}
           onRequestClose={this.closeModal}
           style={modalStyle}
-          contentLabel="Example Modal">
-          <div className="detailBox">
-            <EmployeeEdit
-              saveEmployee={(e) => {
-                saveEmployee(e);
-                this.closeModal();
-              }}
-              deleteEmployee={undefined}
-              detail={undefined}
-            />
-          </div>
+          contentLabel="Modal">
+
+          <EmployeeEdit
+            saveEmployee={(e) => {
+              saveEmployee(e);
+              this.closeModal();
+            }}
+            deleteEmployee={undefined}
+            detail={undefined}
+          />
         </Modal>
 
-        <ul id="employees-list">
+        <Collapsible id="employees-list" accordion={false}>
           {displayedEmployees.map((e) => (
-            <li key={e.id}>
-              <EmployeeDetail
-                detail={e}
+            <CollapsibleItem
+              key={e.id}
+              expanded={false}
+              header={`${e.name} ${e.surname}`}
+              node="div"
+            >
+              <EmployeeEdit
                 saveEmployee={saveEmployee}
+                detail={e}
                 deleteEmployee={deleteEmployee}
               />
-            </li>
+
+            </CollapsibleItem>
           ))}
-        </ul>
+        </Collapsible>
       </div>
     );
   }
-}
+};

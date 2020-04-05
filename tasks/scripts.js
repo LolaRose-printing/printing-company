@@ -24,6 +24,7 @@ function cssMerge() {
     'app/**/*.css',
     // here put all css from node_modules
     'node_modules/react-datepicker/dist/react-datepicker.css',
+    'node_modules/materialize-css/dist/css/materialize.css',
   ])
     .pipe(concat('concat.css'))
     .pipe(dest('build/renderer'));

@@ -4,6 +4,8 @@ import WorkAssignment from './WorkAssignment';
 import DatePickerWrapper from '../tools/DatePickerWrapper';
 import BackButton from '../tools/BackButton';
 import PropTypes from 'prop-types';
+import 'materialize-css';
+import { Select } from 'react-materialize';
 
 export default class OrderDetail extends Component {
   static propTypes = {
@@ -36,6 +38,7 @@ export default class OrderDetail extends Component {
 
   render() {
     const { save, order, employees, motives, workTypes, clients } = this.props;
+    console.log(order.clientId);
     return (
       <div id="order-list-div">
         <BackButton/>
@@ -50,14 +53,25 @@ export default class OrderDetail extends Component {
                 <Field name="name" component="input" type="text" placeholder="Order Name"/>
               </div>
               <div className="input-field col s12">
-                <label>Client</label>
-                <Field name="clientId" component="select" placeholder="Client">
-                  {[...clients.values()].map((x) => (
-                    <option key={x.id} value={x.id}>
-                      {x.name}
-                    </option>
-                  ))}
+                <Field name="clientId">
+                  {({ input }) => (
+                    <Select
+                      value={`${input.value}`}
+                      label="Client"
+                      onChange={(d) => {
+                        input.onChange(d);
+                      }}
+                    >
+                      {[...clients.values()].map((x) => (
+                        <option key={x.id} value={x.id} name={x.name}>
+                          {x.name}
+                        </option>
+                      ))}
+                    </Select>
+                  )}
                 </Field>
+
+
               </div>
               <div>
                 <label>Notes</label>

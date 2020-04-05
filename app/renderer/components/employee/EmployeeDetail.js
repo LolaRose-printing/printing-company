@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import Collapsible from 'react-collapsible';
+// import Collapsible from 'react-collapsible';
 import EmployeeEdit from './EmployeeEdit';
 import PropTypes from 'prop-types';
+import 'materialize-css';
+import { CollapsibleItem } from 'react-materialize';
 
 export default class EmployeeDetail extends Component {
   static propTypes = {
@@ -13,7 +15,12 @@ export default class EmployeeDetail extends Component {
   render() {
     const { detail, saveEmployee, deleteEmployee } = this.props;
     return (
-      <Collapsible trigger={`${detail.name} ${detail.surname}`}>
+      <CollapsibleItem
+        key={detail.id}
+        expanded={false}
+        header={`${detail.name} ${detail.surname}`}
+        node="div"
+      >
         <div className="detailBox">
           <EmployeeEdit
             saveEmployee={saveEmployee}
@@ -21,7 +28,7 @@ export default class EmployeeDetail extends Component {
             deleteEmployee={deleteEmployee}
           />
         </div>
-      </Collapsible>
+      </CollapsibleItem>
     );
   }
 }
