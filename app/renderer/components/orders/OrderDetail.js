@@ -6,15 +6,16 @@ import BackButton from '../tools/BackButton';
 import PropTypes from 'prop-types';
 import 'materialize-css';
 import { Select } from 'react-materialize';
+import AddNewWorkAssignment from './AddWorkAssignment';
 
 export default class OrderDetail extends Component {
   static propTypes = {
     save: PropTypes.func.isRequired,
     order: PropTypes.any.isRequired,
-    employees: PropTypes.any.isRequired,
-    motives: PropTypes.any.isRequired,
-    workTypes: PropTypes.any.isRequired,
-    clients: PropTypes.any.isRequired,
+    employees: PropTypes.instanceOf(Map).isRequired,
+    motives: PropTypes.instanceOf(Map).isRequired,
+    workTypes: PropTypes.instanceOf(Map).isRequired,
+    clients: PropTypes.instanceOf(Map).isRequired,
   };
 
   updateWorkRecord = (save, order, updatedWork, workIdx) => {
@@ -122,19 +123,8 @@ export default class OrderDetail extends Component {
           </ul>
         </div>
 
-        <div>
-          Add new work assignment:
-          <WorkAssignment
-            key={`new-work-${order.id}`}
-            workTypes={workTypes}
-            employees={employees}
-            motives={motives}
-            work={{}}
-            onChange={(x) => {
-              this.addWorkRecord(save, order, x);
-            }}
-          />
-        </div>
+        <AddNewWorkAssignment employees={employees} motives={motives} workTypes={workTypes}
+                              addWorkRecord={newWork => this.addWorkRecord(save, order, newWork)}/>
       </div>
     );
   }

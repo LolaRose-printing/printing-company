@@ -6,9 +6,9 @@ import { Select } from 'react-materialize';
 
 export default class WorkAssignment extends Component {
   static propTypes = {
-    employees: PropTypes.any.isRequired,
-    workTypes: PropTypes.any.isRequired,
-    motives: PropTypes.any.isRequired,
+    employees: PropTypes.instanceOf(Map).isRequired,
+    workTypes: PropTypes.instanceOf(Map).isRequired,
+    motives: PropTypes.instanceOf(Map).isRequired,
     work: PropTypes.any.isRequired,
     onChange: PropTypes.func.isRequired,
   };

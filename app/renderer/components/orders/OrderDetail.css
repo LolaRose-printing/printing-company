@@ -37,3 +37,7 @@
 .input-field.col label {
     left: 0 !important;
 }
+
+.select-wrapper input.select-dropdown {
+    z-index: 0 !important;
+}
