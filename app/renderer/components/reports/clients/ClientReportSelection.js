@@ -74,8 +74,8 @@ export default class ClientReportSelection extends Component {
 
     return (
       <div>
-        <BackButton />
-        <DateRangeSelector rangeOnChange={(x) => this.setState(x)} />
+        <BackButton/>
+        <DateRangeSelector rangeOnChange={(x) => this.setState(x)}/>
         Client
         <Select
           value={selectedClients}
@@ -96,7 +96,7 @@ export default class ClientReportSelection extends Component {
           className="basic-multi-select"
           classNamePrefix="select"
         />
-        {this.dataSelected(this.state) ? <RenderLink filter={this.serialize(this.state)} /> : null}
+        {this.dataSelected(this.state) ? <RenderLink filter={this.serialize(this.state)}/> : null}
       </div>
     );
   }

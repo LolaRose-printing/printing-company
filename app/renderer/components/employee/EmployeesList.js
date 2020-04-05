@@ -63,7 +63,7 @@ export default class EmployeesList extends Component {
     const displayedEmployees = this.selectEmployees(search, employeesList);
     return (
       <div id="employees-div">
-        <BackButton />
+        <BackButton/>
 
         <input
           id="employees-search"

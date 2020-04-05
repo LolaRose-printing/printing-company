@@ -28,8 +28,8 @@ export default class Login extends Component {
     return (
       <div>
         <h2>Login</h2>
-        <Link to="/" />
-        <input onChange={this.handleChange} type="text" value={this.state.username} />
+        <Link to="/"/>
+        <input onChange={this.handleChange} type="text" value={this.state.username}/>
         <button onClick={this.handleLogin}>Log In</button>
       </div>
     );

@@ -15,7 +15,7 @@ export default class OrdersList extends Component {
       <div id="order-list-div">
         <div data-tid="backButton">
           <Link to={routes.HOME}>
-            <i className="fa fa-arrow-left fa-3x" />
+            <i className="fa fa-arrow-left fa-3x"/>
           </Link>
         </div>
 

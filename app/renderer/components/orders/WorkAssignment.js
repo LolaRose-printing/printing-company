@@ -57,7 +57,7 @@ export default class WorkAssignment extends Component {
 
             <div>
               <label>Amount</label>
-              <Field name="amount" component="textarea" placeholder="Amount" />
+              <Field name="amount" component="textarea" placeholder="Amount"/>
             </div>
 
             <div className="buttons">
