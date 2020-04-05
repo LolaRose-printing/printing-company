@@ -1,7 +1,7 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import actions from '../actions/orders';
-import OrderDetail from '../components/orders/OrderDetail';
+import Order from '../components/orders/Order';
 
 function mapStateToProps(state, ownProps) {
   const orderId = JSON.parse(ownProps.match.params.id);
@@ -10,8 +10,8 @@ function mapStateToProps(state, ownProps) {
     order,
     employees: state.employees,
     workTypes: state.workTypes,
-    clients: state.clients,
     motives: state.motives,
+    clients: [...state.clients.values()],
   };
 }
 
@@ -25,4 +25,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(OrderDetail);
+)(Order);

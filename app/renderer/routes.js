@@ -7,7 +7,7 @@ import HomePage from './components/HomePage';
 import SavePage from './containers/SavePage';
 import WorkTypeListPage from './containers/WorkTypeListPage';
 import EmployeeListPage from './containers/EmployeeListPage';
-import OrderDetailPage from './containers/OrderDetailPage';
+import OrderDetailPage from './containers/OrderPage';
 import OrdersListPage from './containers/OrdersListPage';
 import ClientsReportsListPage from './containers/reports/ClientsReportsListPage';
 import ClientReportSelectionPage from './containers/reports/ClientReportSelectionPage';

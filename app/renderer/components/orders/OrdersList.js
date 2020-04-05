@@ -6,15 +6,18 @@ import BackButton from '../tools/BackButton';
 
 import 'materialize-css';
 import { Collection, CollectionItem } from 'react-materialize';
+import AddNewOrder from './AddOrder';
 
 
 export default class OrdersList extends Component {
   static propTypes = {
+    save: PropTypes.func.isRequired,
     orders: PropTypes.array.isRequired,
+    clients: PropTypes.array.isRequired,
   };
 
   render() {
-    const { orders } = this.props;
+    const { orders, clients, save } = this.props;
 
     return (
       <div id="order-list-container">
@@ -27,6 +30,9 @@ export default class OrdersList extends Component {
             </CollectionItem>
           ))}
         </Collection>
+
+        <AddNewOrder
+          clients={clients} save={save}/>
       </div>
     );
   }
