@@ -1,10 +1,10 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import OrdersList from '../components/orders/OrdersList';
+import ReportFilter from '../../components/reports/employees/ReportFilter';
 
 function mapStateToProps(state) {
   return {
-    orders: [...state.orders.values()],
+    employees: [...state.employees.values()],
   };
 }
 
@@ -15,4 +15,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(OrdersList);
+)(ReportFilter);

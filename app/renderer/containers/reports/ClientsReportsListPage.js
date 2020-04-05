@@ -1,6 +1,6 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import ClientsReportsList from '../components/reports/clients/ClientsReportsList';
+import ClientsReportsList from '../../components/reports/clients/ClientsReportsList';
 
 function mapStateToProps(state, ownProps) {
   if (!ownProps.match.params.filter) {

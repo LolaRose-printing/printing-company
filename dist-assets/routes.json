@@ -9,5 +9,6 @@
   "ORDER_REPORTS": "/reports/orders-selection",
   "SPECIFIC_ORDER_REPORTS": "/reports/orders/",
   "EMPLOYEES_REPORTS": "/reports/employees-selection",
-  "SPECIFIC_EMPLOYEES_REPORTS": "/reports/employees/"
+  "SPECIFIC_EMPLOYEES_REPORTS": "/reports/employees/",
+  "SPECIFIC_EMPLOYEES_YEARLY_REPORTS": "/reports/employees-yearly"
 }

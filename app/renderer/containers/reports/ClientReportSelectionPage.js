@@ -1,6 +1,6 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import ClientReportSelection from '../components/reports/clients/ClientReportSelection';
+import ClientReportSelection from '../../components/reports/clients/ClientReportSelection';
 
 function mapStateToProps(state) {
   const clients = [...state.clients.values()];
