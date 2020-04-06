@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import BackButton from '../../tools/BackButton';
 import DateRangeSelector from '../../tools/DateRangeSelector';
 import routes from '../../../../../dist-assets/routes';
+import { Button } from 'react-materialize';
 
 export default class ReportFilter extends Component {
   static propTypes = {
@@ -41,27 +42,35 @@ export default class ReportFilter extends Component {
     return (
       <div>
         <BackButton/>
-        <DateRangeSelector rangeOnChange={(x) => this.setState(x)}/>
-        Options
-        <Select
-          value={selected}
-          onChange={(x) => this.setState({ selected: x || [] })}
-          isMulti
-          name="employees"
-          options={employeesOptions}
-          className="basic-multi-select"
-          classNamePrefix="select"
-        />
-        {this.dataSelected(this.state) ? (
-          <div>
-            <div>
-              <GranularReport selected={selected} endDate={endDate} startDate={startDate}/>
-            </div>
-            <div>
-              <YearlyReport selected={selected} endDate={endDate} startDate={startDate}/>
-            </div>
+
+        <div className="employee-reports-filter">
+
+          <DateRangeSelector rangeOnChange={(x) => this.setState(x)}/>
+
+          <div className="employees-select">
+            <Select
+              value={selected}
+              onChange={(x) => this.setState({ selected: x || [] })}
+              isMulti
+              name="employees"
+              options={employeesOptions}
+              className="basic-multi-select"
+              classNamePrefix="select"
+            />
           </div>
-        ) : null}
+
+          {this.dataSelected(this.state) ? (
+            <div className="to-report-navigation">
+              <div className="to-report-link">
+                <GranularReport selected={selected} endDate={endDate} startDate={startDate}/>
+              </div>
+              <div className="to-report-link">
+                <YearlyReport selected={selected} endDate={endDate} startDate={startDate}/>
+              </div>
+            </div>
+          ) : null}
+        </div>
+
       </div>
     );
   }
@@ -77,7 +86,17 @@ class YearlyReport extends Component {
   render() {
     const { startDate, endDate, selected } = this.props;
     const filter = serialize(selected, startDate, endDate);
-    return <Link to={`${routes.SPECIFIC_EMPLOYEES_YEARLY_REPORTS}${filter}`}>Yearly</Link>;
+    return (
+      <Link to={`${routes.SPECIFIC_EMPLOYEES_YEARLY_REPORTS}${filter}`}>
+        <Button
+          className="red"
+          node="a"
+          waves="light"
+        >
+          Yearly
+        </Button>
+      </Link>
+    );
   }
 }
 
@@ -91,7 +110,17 @@ class GranularReport extends Component {
   render() {
     const { startDate, endDate, selected } = this.props;
     const filter = serialize(selected, startDate, endDate);
-    return <Link to={`${routes.SPECIFIC_EMPLOYEES_REPORTS}${filter}`}>Granular</Link>;
+    return (
+      <Link to={`${routes.SPECIFIC_EMPLOYEES_REPORTS}${filter}`}>
+        <Button
+          className="red"
+          node="a"
+          waves="light"
+        >
+          Granular
+        </Button>
+      </Link>
+    );
   }
 }
 

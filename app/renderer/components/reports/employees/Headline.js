@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import 'materialize-css';
-
 export default class Headline extends Component {
   static propTypes = {
     startDate: PropTypes.any.isRequired,

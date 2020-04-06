@@ -26,13 +26,13 @@ export default class DateRangeSelector extends Component {
     const { startDate, endDate } = this.state;
 
     return (
-      <div>
-        <div>
-          Start date
+      <div className="range-selector-bot">
+        <div className="start">
+          <span className="text">From:</span>
           <DatePicker label="StartDate" onChange={this.startChange} selected={startDate}/>
         </div>
-        <div>
-          End date
+        <div className="end">
+          <span className="text">To:</span>
           <DatePicker label="EndDate" onChange={this.endChange} selected={endDate}/>
         </div>
       </div>

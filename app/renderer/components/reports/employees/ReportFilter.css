@@ -1,0 +1,29 @@
+.employee-reports-filter {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin: auto;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.employee-reports-filter > .employees-select {
+  margin-top: 50px;
+  min-width: 600px;
+}
+
+.to-report-navigation {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+
+  z-index: 0 !important;
+  margin-top: 40px;
+}
+
+.to-report-navigation > .to-report-link {
+  margin: auto;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+

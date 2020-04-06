@@ -1,0 +1,16 @@
+.range-selector-bot {
+    display: flex;
+    flex-flow: row;
+}
+
+.range-selector-bot > .start {
+    padding-right: 20px;
+}
+
+.range-selector-bot > .end {
+    padding-left: 20px;
+}
+
+.range-selector-bot .text {
+    padding-right: 10px;
+}
