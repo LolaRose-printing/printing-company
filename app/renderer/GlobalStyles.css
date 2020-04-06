@@ -1,3 +1,9 @@
 body {
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
+
+@media print {
+    html {
+        font-size: 10px;
+    }
+}

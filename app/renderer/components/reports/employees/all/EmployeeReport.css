@@ -1,0 +1,19 @@
+.employee-granular-report {
+    display: flex;
+    flex-flow: column;
+    margin: 20px 10%;
+}
+
+.employee-granular-report > .employee-info {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.employee-info > .employee-sum {
+    padding-right: 80px;
+    font-weight: bold;
+    font-size: 2rem;
+}

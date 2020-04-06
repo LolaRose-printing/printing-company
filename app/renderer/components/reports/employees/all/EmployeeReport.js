@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import EmployeeInfo from '../EmployeeInfo';
+import { Table } from 'react-materialize';
 
 export default class EmployeeReport extends Component {
   static propTypes = {
@@ -12,34 +13,55 @@ export default class EmployeeReport extends Component {
     workTypes: PropTypes.instanceOf(Map).isRequired,
   };
 
+  format = (date) =>
+    `${date.getDate()}. ${date.getMonth()}. ${date.getFullYear()}`;
+
   render() {
     const { employee, employeeData, orders, motives, workTypes } = this.props;
 
-    const wage = employeeData.flatMap(x => x.works)
+    const sum = employeeData.flatMap(x => x.works)
       .map(work => workTypes.get(work.workTypeId).employeeWage)
       .reduce((a, b) => a + b, 0);
-    return (
-      <div>
-        <EmployeeInfo employee={employee}/>
 
-        <ul id={`"employee-list-${employee.id}`}>
+    return (
+      <div className="employee-granular-report">
+        <div className="employee-info">
+          <EmployeeInfo employee={employee}/>
+          <div className="employee-sum">
+            {sum} Eur
+          </div>
+        </div>
+
+        <Table>
+          <thead>
+          <tr>
+            <th data-field="order">Order</th>
+            <th data-field="motive">Motive</th>
+            <th data-field="date">Date</th>
+            <th data-field="workType">Work Type</th>
+            <th data-field="amount">Amount</th>
+            <th data-field="wage">Wage</th>
+          </tr>
+          </thead>
+          <tbody>
           {employeeData.flatMap(orderData => {
             const order = orders.get(orderData.orderId);
-
             return orderData.works.map((work, idx) => {
               const workType = workTypes.get(work.workTypeId);
-
               return (
-                <li key={`order-${order.id}-emp-work-${idx}`}>
-                  {order.name} - {motives.get(work.motiveId).name}
-                  - {order.date} - {workType.name} - {work.amount}
-                  - {work.amount * workType.employeeWage}
-                </li>
+                <tr key={`order-${order.id}-emp-work-${idx}`}>
+                  <td>{order.name}</td>
+                  <td>{motives.get(work.motiveId).name}</td>
+                  <td>{this.format(new Date(order.date))}</td>
+                  <td>{workType.name}</td>
+                  <td>{work.amount}</td>
+                  <td>{work.amount * workType.employeeWage} Eur</td>
+                </tr>
               );
             });
           })}
-        </ul>
-        Final wage is then - {wage} Kc.
+          </tbody>
+        </Table>
       </div>
     );
   }
