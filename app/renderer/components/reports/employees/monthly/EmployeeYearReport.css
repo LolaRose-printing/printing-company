@@ -1,0 +1,19 @@
+.employee-monthly-report {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+}
+
+.employee-monthly-report > .report-data {
+    display: flex;
+    flex-flow: column;
+}
+
+.report-data > .employee-monthly-table {
+    margin: auto;
+    min-width: 400px;
+}
+
+.employee-report-sum {
+    font-weight: bold;
+}

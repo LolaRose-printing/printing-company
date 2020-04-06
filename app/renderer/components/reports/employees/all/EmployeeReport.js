@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import EmployeeInfo from '../EmployeeInfo';
 
 export default class EmployeeReport extends Component {
   static propTypes = {
@@ -19,7 +20,8 @@ export default class EmployeeReport extends Component {
       .reduce((a, b) => a + b, 0);
     return (
       <div>
-        {employee.name}
+        <EmployeeInfo employee={employee}/>
+
         <ul id={`"employee-list-${employee.id}`}>
           {employeeData.flatMap(orderData => {
             const order = orders.get(orderData.orderId);

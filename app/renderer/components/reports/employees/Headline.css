@@ -1,0 +1,22 @@
+.employee-report-headline {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    flex-flow: column;
+}
+
+.employee-report-headline > .cadek-name {
+    font-weight: bold;
+    font-size: 3.7rem;
+}
+
+.employee-report-headline > .cadek-address {
+    font-size: 1.8rem;
+}
+
+.employee-report-headline > .report-dates {
+    font-style: italic;
+    padding-top: 10px;
+    font-size: 1.3rem;
+}

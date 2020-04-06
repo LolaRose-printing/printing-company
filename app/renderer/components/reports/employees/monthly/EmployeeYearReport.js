@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import 'materialize-css';
+import { Table } from 'react-materialize';
+import EmployeeInfo from '../EmployeeInfo';
 
 export default class EmployeeYearReport extends Component {
   static propTypes = {
@@ -12,16 +15,35 @@ export default class EmployeeYearReport extends Component {
 
     const sum = monthlyWage.reduce((a, b) => a + b.wage, 0);
     return (
-      <div>
-        {employee.name}
-        <ul id={`"employee-list-${employee.id}`}>
-          {monthlyWage.map((wage, idx) => (
-            <li key={idx}>
-              {wage.month} - {wage.wage} Eur
-            </li>
-          ))}
-        </ul>
-        Sum - {sum} Kc.
+      <div className="employee-monthly-report">
+        <EmployeeInfo employee={employee}/>
+
+        <div className="report-data">
+          <Table className="employee-monthly-table">
+            <thead>
+            <tr>
+              <th data-field="month">
+                Month
+              </th>
+              <th data-field="wage">
+                Wage
+              </th>
+            </tr>
+            </thead>
+            <tbody>
+            {monthlyWage.map((wage, idx) => (
+              <tr key={idx}>
+                <td>{wage.month}</td>
+                <td>{wage.wage} Eur</td>
+              </tr>
+            ))}
+            <tr className="employee-report-sum">
+              <td>Sum</td>
+              <td>{sum} Eur</td>
+            </tr>
+            </tbody>
+          </Table>
+        </div>
       </div>
     );
   }

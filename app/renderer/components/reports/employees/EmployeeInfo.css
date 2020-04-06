@@ -1,0 +1,25 @@
+.employee-report-info {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    padding-left: 40px;
+    padding-right: 40px;
+    width: 45%;
+}
+
+.employee-report-info > .name {
+    font-size: 1.5rem;
+}
+
+.employee-report-info > .address {
+
+}
+
+.identification > .social-security {
+
+}
+
+.identification > .identification-number {
+}

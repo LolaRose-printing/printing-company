@@ -4,6 +4,7 @@ import Headline from './Headline';
 import ClientOrdersReport from './ClientOrdersReport';
 import PropTypes from 'prop-types';
 import BackButton from '../../tools/BackButton';
+import PrintButton from '../../tools/PrintButton';
 
 export default class ClientsReportsList extends Component {
   static propTypes = {
@@ -25,7 +26,11 @@ export default class ClientsReportsList extends Component {
     return (
       <div id="clients-reports-div">
         <BackButton/>
+
+        <PrintButton/>
+
         <Headline startDate={startDate} endDate={endDate}/>
+
         <ul>
           {clients
             .filter((client) => orderClients.has(client.id))

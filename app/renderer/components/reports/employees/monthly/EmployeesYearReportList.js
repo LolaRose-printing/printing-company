@@ -3,6 +3,9 @@ import Headline from '../Headline';
 import PropTypes from 'prop-types';
 import BackButton from '../../../tools/BackButton';
 import EmployeeYearReport from './EmployeeYearReport';
+import PrintButton from '../../../tools/PrintButton';
+import 'materialize-css';
+import { Collection, CollectionItem } from 'react-materialize';
 
 export default class EmployeesYearReportList extends Component {
   static propTypes = {
@@ -20,26 +23,20 @@ export default class EmployeesYearReportList extends Component {
       <div id="employees-report-list">
         <BackButton/>
 
-        <div>
-          <button type="button" className="no-print" onClick={() => window.print()}>Print</button>
-        </div>
+        <PrintButton/>
 
         <Headline startDate={startDate} endDate={endDate}/>
 
-        <div>
-          Records for employees:
-          <ul id="report-employees-list">
-            {employees.map((emp, idx) => (
-              <li key={idx}>
-                Record for employee: {emp.name}
-                <EmployeeYearReport
-                  employee={emp}
-                  monthlyWage={employeeMonthlyWages.get(emp.id)}
-                />
-              </li>
-            ))}
-          </ul>
-        </div>
+        <Collection id="report-employees-list">
+          {employees.map((emp, idx) => (
+            <CollectionItem key={idx}>
+              <EmployeeYearReport
+                employee={emp}
+                monthlyWage={employeeMonthlyWages.get(emp.id)}
+              />
+            </CollectionItem>
+          ))}
+        </Collection>
       </div>
     );
   }
