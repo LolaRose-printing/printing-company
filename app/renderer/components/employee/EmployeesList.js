@@ -1,25 +1,12 @@
 import React, { Component } from 'react';
-import Modal from 'react-modal';
 import EmployeeEdit from './EmployeeEdit';
 import PropTypes from 'prop-types';
 import BackButton from '../tools/BackButton';
 
 import 'materialize-css';
-import { Button, Collapsible, CollapsibleItem, Icon, TextInput } from 'react-materialize';
+import { Collapsible, CollapsibleItem, Icon, TextInput } from 'react-materialize';
+import AddFromModal from '../tools/AddFromModal';
 
-const modalStyle = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    minWidth: '500px',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-  },
-};
-
-Modal.setAppElement('#app');
 
 export default class EmployeesList extends Component {
   static propTypes = {
@@ -30,7 +17,6 @@ export default class EmployeesList extends Component {
 
   state = {
     search: [],
-    modalIsOpen: false,
   };
 
   selectEmployees = (search, employeesList) => {
@@ -47,23 +33,9 @@ export default class EmployeesList extends Component {
     return displayedEmployees;
   };
 
-  openModal = () => {
-    this.setState((state) => ({
-      ...state,
-      modalIsOpen: true,
-    }));
-  };
-
-  closeModal = () => {
-    this.setState((state) => ({
-      ...state,
-      modalIsOpen: false,
-    }));
-  };
-
   render() {
     const { saveEmployee, deleteEmployee, employeesList } = this.props;
-    const { search, modalIsOpen } = this.state;
+    const { search } = this.state;
 
     const displayedEmployees = this.selectEmployees(search, employeesList);
     return (
@@ -105,36 +77,20 @@ export default class EmployeesList extends Component {
           </Collapsible>
         </div>
 
-        <Button
-          className="red"
-          icon={<Icon>add</Icon>}
-          large
-          node="button"
-          waves="light"
-          onClick={this.openModal}
-          fab={{
-            direction: 'left',
-            hoverEnabled: false,
-          }}
-          floating
-        />
-
-        <Modal
-          isOpen={modalIsOpen}
-          onRequestClose={this.closeModal}
-          style={modalStyle}
-          contentLabel="Modal">
-
-          <EmployeeEdit
-            className="employee-element"
-            saveEmployee={(e) => {
-              saveEmployee(e);
-              this.closeModal();
-            }}
-            deleteEmployee={undefined}
-            detail={undefined}
+        <div>
+          <AddFromModal childrenFactory={(close) => (
+            <EmployeeEdit
+              className="employee-element"
+              saveEmployee={(e) => {
+                saveEmployee(e);
+                close();
+              }}
+              deleteEmployee={undefined}
+              detail={undefined}
+            />
+          )}
           />
-        </Modal>
+        </div>
       </div>
     );
   }

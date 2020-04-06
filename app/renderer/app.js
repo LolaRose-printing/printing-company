@@ -6,6 +6,7 @@ import { createMemoryHistory } from 'history';
 import configureStore from './store';
 import { loadClients, loadEmployeeMap, loadMotives, loadOrders, loadWorkTypes } from './utils/dataLoading';
 import routes from './routes';
+import Modal from 'react-modal';
 
 const syncHistoryWithStore = (store, history) => {
   const { router } = store.getState();
@@ -29,6 +30,8 @@ const store = configureStore(initialState, routerHistory);
 syncHistoryWithStore(store, routerHistory);
 
 const rootElement = document.querySelector(document.currentScript.getAttribute('data-container'));
+
+Modal.setAppElement(rootElement);
 
 ReactDOM.render(
   <Provider store={store}>
