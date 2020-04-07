@@ -20,7 +20,7 @@ export default class EmployeeReport extends Component {
     const { employee, employeeData, orders, motives, workTypes } = this.props;
 
     const sum = employeeData.flatMap(x => x.works)
-      .map(work => workTypes.get(work.workTypeId).employeeWage)
+      .map(work => work.amount * workTypes.get(work.workTypeId).employeeWage)
       .reduce((a, b) => a + b, 0);
 
     return (
