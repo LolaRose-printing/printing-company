@@ -48,6 +48,7 @@ export default class WorkAssignment extends Component {
       {({ input }) => (
         <Autocomplete
           value={input.value}
+          title={label}
           placeholder={label}
           options={{
             data: this.prepareCompletionData(data),
@@ -86,7 +87,7 @@ export default class WorkAssignment extends Component {
               {this.selector('employeeId', employees, 'Employee')}
             </div>
 
-            <div className="work-assignment-cell">
+            <div className="work-assignment-cell autocomplete-cell">
               {this.autoComplete('motive', [...motives.values()], 'Motive')}
             </div>
 

@@ -19,3 +19,16 @@
     margin: 5px;
     z-index: 0 !important;
 }
+
+/* to fix positions of borders */
+.autocomplete {
+    padding-top: 6px !important;
+}
+
+.autocomplete-cell > .input-field > label {
+    transform: translateY(-14px) scale(0.8) !important;
+}
+
+/*#work-assignments-collection > ul > li:nth-child(1) > form > div:nth-child(2) > div > label {*/
+/*    transform: translateY(-14px) scale(0.8) !important;*/
+/*}*/
