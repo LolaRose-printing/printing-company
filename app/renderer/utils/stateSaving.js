@@ -22,7 +22,7 @@ export function convertState(state) {
 export function saveState(state, path = null) {
   const converted = convertState(state);
   initStorage(path);
-  storage.set('state', converted);
+  storage.set('rawAppData', converted);
 }
 
 function convertToState(data) {
@@ -37,7 +37,7 @@ function convertToState(data) {
 export function loadState(stateCallback, path = null) {
   initStorage(path);
 
-  storage.get('state', (error, data) => {
+  storage.get('rawAppData', (error, data) => {
     if (data && data !== {}) {
       stateCallback(convertToState(data.state));
     } else {
