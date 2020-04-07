@@ -1,0 +1,16 @@
+
+#save-page {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+#path-buttons button {
+    margin: 10px;
+}
+
+#stored-path {
+    margin: auto;
+    width: 100%;
+    max-width: 1000px;
+}
