@@ -14,6 +14,11 @@ export default class Home extends Component {
           <li>
             <Link to={routes.WORK_TYPES}>to Work Types</Link>
           </li>
+
+          <li>
+            <Link to={routes.CLIENTS}>to Clients</Link>
+          </li>
+
           <li>
             <Link to={routes.ORDERS}>Orders</Link>
           </li>

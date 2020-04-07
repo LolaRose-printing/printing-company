@@ -14,12 +14,18 @@ export default class OrderDetail extends Component {
     clients: PropTypes.array.isRequired,
   };
 
+  convert = (order) => {
+    return {
+      ...order,
+      clientId: parseInt(order.clientId),
+    };
+  };
 
   render() {
     const { save, order, clients } = this.props;
     return (
       <Form
-        onSubmit={save}
+        onSubmit={(o) => save(this.convert(o))}
         initialValues={order}
         render={({ handleSubmit, form, submitting, pristine }) => (
           <form

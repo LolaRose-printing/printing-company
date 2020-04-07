@@ -14,30 +14,32 @@ import ClientReportSelectionPage from './containers/reports/ClientReportSelectio
 import EmployeesReportSelectionPage from './containers/reports/EmployeesReportSelectionPage';
 import EmployeesReportListPage from './containers/reports/EmployeesReportListPage';
 import EmployeesYearReportListPage from './containers/reports/EmployeesYearReportListPage';
+import ClientsListPage from './containers/ClientsListPage';
 
 export default (
   <Switch>
-        <Route path={routes.EMPLOYEES_REPORTS} component={EmployeesReportSelectionPage}/>
-        <Route
-          path={`${routes.SPECIFIC_EMPLOYEES_REPORTS}:filter?`}
-          component={EmployeesReportListPage}
-        />
+      <Route path={routes.EMPLOYEES_REPORTS} component={EmployeesReportSelectionPage}/>
+      <Route
+        path={`${routes.SPECIFIC_EMPLOYEES_REPORTS}:filter?`}
+        component={EmployeesReportListPage}
+      />
 
-        <Route
-          path={`${routes.SPECIFIC_EMPLOYEES_YEARLY_REPORTS}:filter?`}
-          component={EmployeesYearReportListPage}
-        />
+      <Route
+        path={`${routes.SPECIFIC_EMPLOYEES_YEARLY_REPORTS}:filter?`}
+        component={EmployeesYearReportListPage}
+      />
 
-        <Route path={routes.ORDER_REPORTS} component={ClientReportSelectionPage}/>
-        <Route path={`${routes.SPECIFIC_ORDER_REPORTS}:filter?`} component={ClientsReportsListPage}/>
+      <Route path={routes.ORDER_REPORTS} component={ClientReportSelectionPage}/>
+      <Route path={`${routes.SPECIFIC_ORDER_REPORTS}:filter?`} component={ClientsReportsListPage}/>
 
-        <Route path={`${routes.ORDER_DETAIL}:id?`} component={OrderDetailPage}/>
-        <Route path={routes.ORDERS} component={OrdersListPage}/>
+      <Route path={`${routes.ORDER_DETAIL}:id?`} component={OrderDetailPage}/>
+      <Route path={routes.ORDERS} component={OrdersListPage}/>
 
-        <Route path={routes.SAVE_STATE} component={SavePage}/>
+      <Route path={routes.SAVE_STATE} component={SavePage}/>
 
-        <Route path={routes.WORK_TYPES} component={WorkTypeListPage}/>
-        <Route path={routes.EMPLOYEES} component={EmployeeListPage}/>
-        <Route path={routes.HOME} component={HomePage}/>
+      <Route path={routes.CLIENTS} component={ClientsListPage}/>
+      <Route path={routes.WORK_TYPES} component={WorkTypeListPage}/>
+      <Route path={routes.EMPLOYEES} component={EmployeeListPage}/>
+      <Route path={routes.HOME} component={HomePage}/>
   </Switch>
 );

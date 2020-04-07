@@ -8,7 +8,7 @@ export default handleActions(
     [actions.saveClient]: (state, action) => {
       return saveToMap(copyMap(state), action.payload);
     },
-    [actions.saveClient]: (state, action) => {
+    [actions.deleteClient]: (state, action) => {
       return deleteFromMap(copyMap(state), action.payload);
     },
     [stateActions.changeState]: (state, action) => {

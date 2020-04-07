@@ -11,7 +11,7 @@ export function deleteFromMap(copyMap, id) {
 
 export function saveToMap(copyMap, toSave) {
   let object;
-
+  console.log(toSave);
   if (!toSave.id) {
     object = { ...toSave };
     object.id = Math.max(...Array.from(copyMap.keys())) + 1;

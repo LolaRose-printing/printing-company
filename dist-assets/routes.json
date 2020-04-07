@@ -3,6 +3,7 @@
   "COUNTER": "/counter",
   "EMPLOYEES": "/employees",
   "WORK_TYPES": "/work-types",
+  "CLIENTS": "/clients",
   "ORDERS": "/orders",
   "ORDER_DETAIL": "/order/",
   "SAVE_STATE": "/save",
