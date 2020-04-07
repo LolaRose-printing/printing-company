@@ -90,7 +90,7 @@ class YearlyReport extends Component {
       <Link to={`${routes.SPECIFIC_EMPLOYEES_YEARLY_REPORTS}${filter}`}>
         <Button
           className="red"
-          node="a"
+          node="div"
           waves="light"
         >
           Yearly
@@ -114,7 +114,7 @@ class GranularReport extends Component {
       <Link to={`${routes.SPECIFIC_EMPLOYEES_REPORTS}${filter}`}>
         <Button
           className="red"
-          node="a"
+          node="div"
           waves="light"
         >
           Granular
