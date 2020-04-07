@@ -12,31 +12,31 @@ export default class Home extends Component {
 
         <div id="links">
           <Collection>
-            <CollectionItem href="#">
+            <CollectionItem key="employees">
               <Link to={routes.EMPLOYEES}>to Employees</Link>
             </CollectionItem>
 
-            <CollectionItem href="#">
+            <CollectionItem key="workTypes">
               <Link to={routes.WORK_TYPES}>to Work Types</Link>
             </CollectionItem>
 
-            <CollectionItem href="#">
+            <CollectionItem key="clients">
               <Link to={routes.CLIENTS}>to Clients</Link>
             </CollectionItem>
 
-            <CollectionItem href="#">
+            <CollectionItem key="orders">
               <Link to={routes.ORDERS}>Orders</Link>
             </CollectionItem>
 
-            <CollectionItem href="#">
+            <CollectionItem key="employee-reports">
               <Link to={routes.EMPLOYEES_REPORTS}>Employee Reports</Link>
             </CollectionItem>
 
-            <CollectionItem href="#">
+            <CollectionItem key="orders-reports">
               <Link to={routes.ORDER_REPORTS}>Orders Reports</Link>
             </CollectionItem>
 
-            <CollectionItem href="#">
+            <CollectionItem key="save">
               <Link to={routes.SAVE_STATE}>Save work</Link>
             </CollectionItem>
           </Collection>
