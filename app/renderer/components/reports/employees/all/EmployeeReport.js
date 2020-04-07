@@ -9,7 +9,6 @@ export default class EmployeeReport extends Component {
     employeeData: PropTypes.array.isRequired,
 
     orders: PropTypes.instanceOf(Map).isRequired,
-    motives: PropTypes.instanceOf(Map).isRequired,
     workTypes: PropTypes.instanceOf(Map).isRequired,
   };
 
@@ -17,7 +16,7 @@ export default class EmployeeReport extends Component {
     `${date.getDate()}. ${date.getMonth()}. ${date.getFullYear()}`;
 
   render() {
-    const { employee, employeeData, orders, motives, workTypes } = this.props;
+    const { employee, employeeData, orders, workTypes } = this.props;
 
     const sum = employeeData.flatMap(x => x.works)
       .map(work => work.amount * workTypes.get(work.workTypeId).employeeWage)
@@ -51,7 +50,7 @@ export default class EmployeeReport extends Component {
               return (
                 <tr key={`order-${order.id}-emp-work-${idx}`}>
                   <td>{order.name}</td>
-                  <td>{motives.get(work.motiveId).name}</td>
+                  <td>{work.motive}</td>
                   <td>{this.format(new Date(order.date))}</td>
                   <td>{workType.name}</td>
                   <td>{work.amount}</td>

@@ -10,8 +10,8 @@ export default class Order extends Component {
     save: PropTypes.func.isRequired,
     order: PropTypes.any.isRequired,
     employees: PropTypes.instanceOf(Map).isRequired,
-    motives: PropTypes.instanceOf(Map).isRequired,
     workTypes: PropTypes.instanceOf(Map).isRequired,
+    motives: PropTypes.instanceOf(Set).isRequired,
     clients: PropTypes.array.isRequired,
   };
 

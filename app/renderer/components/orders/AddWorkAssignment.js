@@ -23,8 +23,8 @@ export default class AddNewWorkAssignment extends Component {
   static propTypes = {
     addWorkRecord: PropTypes.func.isRequired,
     employees: PropTypes.instanceOf(Map).isRequired,
-    motives: PropTypes.instanceOf(Map).isRequired,
     workTypes: PropTypes.instanceOf(Map).isRequired,
+    motives: PropTypes.instanceOf(Set).isRequired,
   };
 
   state = {
@@ -77,7 +77,6 @@ export default class AddNewWorkAssignment extends Component {
             employees={employees}
             motives={motives}
             work={{
-              motiveId: 1,
               employeeId: 1,
               workTypeId: 1,
             }}

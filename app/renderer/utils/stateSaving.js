@@ -1,5 +1,5 @@
 import * as storage from 'electron-json-storage';
-import { loadClients, loadEmployeeMap, loadMotives, loadOrders, loadWorkTypes } from './dataLoading';
+import { loadClients, loadEmployeeMap, loadOrders, loadWorkTypes } from './dataLoading';
 
 function initStorage(path = null) {
   if (!path) {
@@ -15,7 +15,6 @@ export function convertState(state) {
       workTypes: [...state.workTypes.values()],
       clients: [...state.clients.values()],
       orders: [...state.orders.values()],
-      motives: [...state.motives.values()],
     },
   };
 }
@@ -32,7 +31,6 @@ function convertToState(data) {
     workTypes: loadWorkTypes(data.workTypes),
     clients: loadClients(data.clients),
     orders: loadOrders(data.orders),
-    motives: loadMotives(data.motives),
   };
 }
 
@@ -49,7 +47,6 @@ export function loadState(stateCallback, path = null) {
           workTypes: [],
           clients: [],
           orders: [],
-          motives: [],
         }),
       );
     }

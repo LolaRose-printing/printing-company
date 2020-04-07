@@ -15,13 +15,12 @@ export default class EmployeesReportList extends Component {
     orders: PropTypes.instanceOf(Map).isRequired,
     employees: PropTypes.array.isRequired,
     workTypes: PropTypes.instanceOf(Map).isRequired,
-    motives: PropTypes.instanceOf(Map).isRequired,
     // employeeId to their orderId + works
     employeeData: PropTypes.instanceOf(Map).isRequired,
   };
 
   render() {
-    const { startDate, endDate, orders, employees, workTypes, employeeData, motives } = this.props;
+    const { startDate, endDate, orders, employees, workTypes, employeeData } = this.props;
 
     return (
       <div id="employees-report-list">
@@ -39,7 +38,6 @@ export default class EmployeesReportList extends Component {
                 employeeData={employeeData.get(emp.id)}
                 orders={orders}
                 workTypes={workTypes}
-                motives={motives}
               />
             </CollectionItem>
           ))}

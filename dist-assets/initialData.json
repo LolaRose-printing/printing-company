@@ -7,25 +7,25 @@
       "date": "2020-04-01T11:21:48.713Z",
       "works": [
         {
-          "motiveId": 1,
+          "motive": "Motive 1",
           "employeeId": 1,
           "workTypeId": 1,
           "amount": 2
         },
         {
-          "motiveId": 1,
+          "motive": "Motive 1",
           "employeeId": 2,
           "workTypeId": 1,
           "amount": 4
         },
         {
-          "motiveId": 1,
+          "motive": "Motive 1",
           "employeeId": 1,
           "workTypeId": 2,
           "amount": 2
         },
         {
-          "motiveId": 2,
+          "motive": "Motive 2",
           "employeeId": 2,
           "workTypeId": 1,
           "amount": 1
@@ -39,44 +39,30 @@
       "date": "2020-04-04T11:21:48.713Z",
       "works": [
         {
-          "motiveId": 1,
+          "motive": "Motive 1",
           "employeeId": 1,
           "workTypeId": 1,
           "amount": 2
         },
         {
-          "motiveId": 1,
+          "motive": "Motive 1",
           "employeeId": 1,
           "workTypeId": 1,
           "amount": 2
         },
         {
-          "motiveId": 2,
+          "motive": "Motive 2",
           "employeeId": 1,
           "workTypeId": 2,
           "amount": 4
         },
         {
-          "motiveId": 2,
+          "motive": "Motive 2",
           "employeeId": 2,
           "workTypeId": 1,
           "amount": 1
         }
       ]
-    }
-  ],
-  "motives": [
-    {
-      "id": 1,
-      "name": "Motive 1"
-    },
-    {
-      "id": 2,
-      "name": "Motive 2"
-    },
-    {
-      "id": 3,
-      "name": "Motive 3"
     }
   ],
   "clients": [

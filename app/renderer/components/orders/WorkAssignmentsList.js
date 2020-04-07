@@ -9,8 +9,8 @@ export default class WorkAssignmentsList extends Component {
     save: PropTypes.func.isRequired,
     order: PropTypes.any.isRequired,
     employees: PropTypes.instanceOf(Map).isRequired,
-    motives: PropTypes.instanceOf(Map).isRequired,
     workTypes: PropTypes.instanceOf(Map).isRequired,
+    motives: PropTypes.instanceOf(Set).isRequired,
   };
 
   deleteRecord = (save, order, idxToRemove) => {

@@ -41,7 +41,6 @@ function mapStateToProps(state, ownProps) {
     endDate: end,
     orders: state.orders,
     workTypes: state.workTypes,
-    motives: state.motives,
     employees: affectedEmployees,
     employeeData: employeeData,
   };

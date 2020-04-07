@@ -9,27 +9,26 @@ import { Table } from 'react-materialize';
 export default class OrderReport extends Component {
   static propTypes = {
     order: PropTypes.any.isRequired,
-    motives: PropTypes.instanceOf(Map).isRequired,
     workTypes: PropTypes.instanceOf(Map).isRequired,
   };
 
-  getMapping = (works, motiveMap, workTypeMap) => {
-    const groupedMotives = groupBy(works, x => x.motiveId);
+  getMapping = (works, workTypeMap) => {
+    const groupedMotives = groupBy(works, x => x.motive);
 
-    return [...groupedMotives.keys()].flatMap(motiveId => {
-        const motiveWorks = groupedMotives.get(motiveId);
-        const workTypesForMotive = groupBy(motiveWorks, x => x.workTypeId);
+    return [...groupedMotives.keys()].flatMap(motive => {
+      const motiveWorks = groupedMotives.get(motive);
+      const workTypesForMotive = groupBy(motiveWorks, x => x.workTypeId);
 
-        return [...workTypesForMotive.keys()].map(workTypeId => {
-            const amount = workTypesForMotive.get(workTypeId).reduce((a, b) => a + b.amount, 0);
-            const workType = workTypeMap.get(workTypeId);
-            return {
-              motive: motiveMap.get(motiveId).name,
-              workType: workType.name,
-              workTypePrice: workType.priceForCustomer,
-              amount,
-              price: workType.priceForCustomer * amount,
-            };
+      return [...workTypesForMotive.keys()].map(workTypeId => {
+          const amount = workTypesForMotive.get(workTypeId).reduce((a, b) => a + b.amount, 0);
+          const workType = workTypeMap.get(workTypeId);
+          return {
+            motive,
+            workType: workType.name,
+            workTypePrice: workType.priceForCustomer,
+            amount,
+            price: workType.priceForCustomer * amount,
+          };
           },
         );
       },
@@ -37,9 +36,9 @@ export default class OrderReport extends Component {
   };
 
   render() {
-    const { order, motives, workTypes } = this.props;
+    const { order, workTypes } = this.props;
 
-    const results = this.getMapping(order.works, motives, workTypes);
+    const results = this.getMapping(order.works, workTypes);
 
     const finalPrice = results.reduce((a, b) => a + b.price, 0);
     return (

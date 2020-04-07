@@ -11,12 +11,11 @@ export default class ClientsReportsList extends Component {
     endDate: PropTypes.any.isRequired,
     clients: PropTypes.array.isRequired,
     orders: PropTypes.array.isRequired,
-    motives: PropTypes.instanceOf(Map).isRequired,
     workTypes: PropTypes.instanceOf(Map).isRequired,
   };
 
   render() {
-    const { startDate, endDate, clients, orders, motives, workTypes } = this.props;
+    const { startDate, endDate, clients, orders, workTypes } = this.props;
 
     const orderClients = new Set(orders.map(order => order.clientId));
 
@@ -36,7 +35,6 @@ export default class ClientsReportsList extends Component {
                 <ClientOrdersReport
                   client={client}
                   orders={orders.filter((x) => x.clientId === client.id)}
-                  motives={motives}
                   workTypes={workTypes}
                 />
               </li>

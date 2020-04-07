@@ -35,13 +35,3 @@ export function loadOrders(dataSet = staticDataSet.orders) {
   dataSet.forEach((wt) => resultMap.set(wt.id, wt));
   return resultMap;
 }
-
-/**
- * Loads motives.
- */
-export function loadMotives(dataSet = staticDataSet.motives) {
-  const resultMap = new Map();
-  dataSet.forEach((wt) => resultMap.set(wt.id, wt));
-  return resultMap;
-}
-

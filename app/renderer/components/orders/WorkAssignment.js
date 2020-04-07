@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Field, Form } from 'react-final-form';
 import PropTypes from 'prop-types';
 import 'materialize-css';
-import { Select } from 'react-materialize';
+import { Autocomplete, Select } from 'react-materialize';
 import SubmitButton from '../tools/SubmitButton';
 import ResetButton from '../tools/ResetButton';
 import DeleteButton from '../tools/DeleteButton';
@@ -11,7 +11,7 @@ export default class WorkAssignment extends Component {
   static propTypes = {
     employees: PropTypes.instanceOf(Map).isRequired,
     workTypes: PropTypes.instanceOf(Map).isRequired,
-    motives: PropTypes.instanceOf(Map).isRequired,
+    motives: PropTypes.instanceOf(Set).isRequired,
     work: PropTypes.any.isRequired,
     onChange: PropTypes.func.isRequired,
     deleteAssignment: PropTypes.func.isRequired,
@@ -37,9 +37,33 @@ export default class WorkAssignment extends Component {
     </Field>
   );
 
+  prepareCompletionData = (data) => {
+    const obj = {};
+    data.forEach(d => obj[d] = null);
+    return obj;
+  };
+
+  autoComplete = (value, data, label) => (
+    <Field name={value}>
+      {({ input }) => (
+        <Autocomplete
+          value={input.value}
+          placeholder={label}
+          options={{
+            data: this.prepareCompletionData(data),
+          }}
+          onChange={(event) => {
+            input.onChange(event);
+          }}
+        />
+      )}
+    </Field>
+
+  );
+
   convert = (work) => {
     return {
-      motiveId: parseInt(work.motiveId),
+      ...work,
       employeeId: parseInt(work.employeeId),
       workTypeId: parseInt(work.workTypeId),
       amount: parseInt(work.amount),
@@ -60,9 +84,8 @@ export default class WorkAssignment extends Component {
             </div>
 
             <div className="work-assignment-cell">
-              {this.selector('motiveId', motives, 'Motive')}
+              {this.autoComplete('motive', [...motives.values()], 'Motive')}
             </div>
-
 
             <div className="work-assignment-cell">
               {this.selector('workTypeId', workTypes, 'Work Type')}
