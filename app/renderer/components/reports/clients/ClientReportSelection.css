@@ -1,0 +1,33 @@
+.client-report-selection {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin: auto;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.client-report-selection > .selection-container {
+  margin-top: 20px;
+  min-width: 600px;
+}
+
+.selection-container > .data-selector {
+  margin-top: 10px;
+
+}
+
+.data-selector > .selection-label {
+  padding-right: 10px;
+}
+
+.selection-container > .link-to-detail {
+  margin-top: 40px;
+
+  display: flex;
+  justify-content: center;
+}
+
+.link-to-detail a {
+  z-index: 0 !important;
+}

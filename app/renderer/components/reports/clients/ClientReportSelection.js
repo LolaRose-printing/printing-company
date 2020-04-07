@@ -6,6 +6,7 @@ import routes from '../../../../../dist-assets/routes';
 import DateRangeSelector from '../../tools/DateRangeSelector';
 import PropTypes from 'prop-types';
 import BackButton from '../../tools/BackButton';
+import { Button } from 'react-materialize';
 
 export default class ClientReportSelection extends Component {
   static propTypes = {
@@ -75,28 +76,41 @@ export default class ClientReportSelection extends Component {
     return (
       <div>
         <BackButton/>
-        <DateRangeSelector rangeOnChange={(x) => this.setState(x)}/>
-        Client
-        <Select
-          value={selectedClients}
-          onChange={(x) => this.setState({ selectedClients: x || [] })}
-          isMulti
-          name="clients"
-          options={clientsOptions}
-          className="basic-multi-select"
-          classNamePrefix="select"
-        />
-        Orders
-        <Select
-          value={selectedOrders}
-          onChange={(x) => this.setState({ selectedOrders: x || [] })}
-          isMulti
-          name="orders"
-          options={ordersOptions}
-          className="basic-multi-select"
-          classNamePrefix="select"
-        />
-        {this.dataSelected(this.state) ? <RenderLink filter={this.serialize(this.state)}/> : null}
+
+        <div className="client-report-selection">
+          <DateRangeSelector rangeOnChange={(x) => this.setState(x)}/>
+
+          <div className="selection-container">
+            <div className="data-selector">
+              <span className="selection-label">Client</span>
+              <Select
+                value={selectedClients}
+                onChange={(x) => this.setState({ selectedClients: x || [] })}
+                isMulti
+                name="clients"
+                options={clientsOptions}
+                className="basic-multi-select"
+                classNamePrefix="select"
+              />
+            </div>
+            <div className="data-selector">
+              <span className="selection-label">Orders</span>
+              <Select
+                value={selectedOrders}
+                onChange={(x) => this.setState({ selectedOrders: x || [] })}
+                isMulti
+                name="orders"
+                options={ordersOptions}
+                className="basic-multi-select"
+                classNamePrefix="select"
+              />
+            </div>
+
+            <div className="link-to-detail">
+              {this.dataSelected(this.state) ? <RenderLink filter={this.serialize(this.state)}/> : null}
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
@@ -110,6 +124,17 @@ class RenderLink extends Component {
   render() {
     const { filter } = this.props;
 
-    return <Link to={`${routes.SPECIFIC_ORDER_REPORTS}${filter}`}>Generate report.</Link>;
+    return (
+      <Link to={`${routes.SPECIFIC_ORDER_REPORTS}${filter}`}>
+        <Button
+          className="red"
+          node="div"
+          waves="light"
+        >
+          Generate Report
+        </Button>
+
+      </Link>
+    );
   }
 }
