@@ -51,6 +51,9 @@ export default class WorkAssignment extends Component {
           placeholder={label}
           options={{
             data: this.prepareCompletionData(data),
+            onAutocomplete: (e) => {
+              input.onChange(e);
+            },
           }}
           onChange={(event) => {
             input.onChange(event);
