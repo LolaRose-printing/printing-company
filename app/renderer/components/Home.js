@@ -41,7 +41,6 @@ export default class Home extends Component {
             </CollectionItem>
           </Collection>
         </div>
-
       </div>
     );
   }
