@@ -64,7 +64,7 @@ export default class ClientReportSelection extends Component {
       .map((x) => {
         return {
           clientName: x.label,
-          clientOrders: orders[x.value].filter((o) => this.rangeFilter(o.date)),
+          clientOrders: orders.get(x.value).filter((o) => this.rangeFilter(o.date)),
         };
       })
       .flatMap((x) => {

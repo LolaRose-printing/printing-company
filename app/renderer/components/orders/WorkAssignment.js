@@ -37,12 +37,21 @@ export default class WorkAssignment extends Component {
     </Field>
   );
 
+  convert = (work) => {
+    return {
+      motiveId: parseInt(work.motiveId),
+      employeeId: parseInt(work.employeeId),
+      workTypeId: parseInt(work.workTypeId),
+      amount: parseInt(work.amount),
+    };
+  };
+
   render() {
     const { employees, motives, workTypes, work, onChange, deleteAssignment } = this.props;
 
     return (
       <Form
-        onSubmit={onChange}
+        onSubmit={(w) => onChange(this.convert(w))}
         initialValues={work}
         render={({ handleSubmit, form, submitting, pristine }) => (
           <form onSubmit={handleSubmit} className="work-assignment-container">

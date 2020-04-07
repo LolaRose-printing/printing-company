@@ -1,0 +1,14 @@
+.client-headline {
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+}
+
+.client-headline > .client-name {
+    font-weight: bold;
+    font-size: 1.7rem;
+}
+
+.client-headline > .client-address {
+    font-size: 1.2rem;
+}

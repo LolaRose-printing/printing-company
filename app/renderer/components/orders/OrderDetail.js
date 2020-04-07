@@ -4,6 +4,8 @@ import DatePickerWrapper from '../tools/DatePickerWrapper';
 import PropTypes from 'prop-types';
 import 'materialize-css';
 import { Select } from 'react-materialize';
+import SubmitButton from '../tools/SubmitButton';
+import ResetButton from '../tools/ResetButton';
 
 export default class OrderDetail extends Component {
   static propTypes = {
@@ -67,13 +69,9 @@ export default class OrderDetail extends Component {
               </Field>
             </div>
 
-            <div className="buttons">
-              <button type="submit" disabled={submitting || pristine}>
-                Submit
-              </button>
-              <button type="button" onClick={form.reset} disabled={submitting || pristine}>
-                Reset
-              </button>
+            <div className="employee-edit-buttons">
+              <SubmitButton disabled={submitting || pristine}/>
+              <ResetButton disabled={submitting || pristine} onClick={form.reset}/>
             </div>
           </form>
         )}

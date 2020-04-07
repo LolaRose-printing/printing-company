@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import OrderReport from './OrderReport';
 import { getPriceForMultipleOrders } from '../../../utils/PriceComputation';
 import PropTypes from 'prop-types';
+import 'materialize-css';
+import { Collection, CollectionItem } from 'react-materialize';
+import ClientHeadline from './headlines/ClientHeadline';
 
 export default class ClientOrdersReport extends Component {
   static propTypes = {
@@ -15,19 +18,27 @@ export default class ClientOrdersReport extends Component {
     const { client, orders, motives, workTypes } = this.props;
     const clientPrice = getPriceForMultipleOrders(orders, workTypes);
 
-    console.log(orders);
-
     return (
-      <div id={`client-${client.id}-orders-report`}>
-        Report for client {client.name}.
-        <ul>
-          {orders.map((order) => (
-            <li key={`client-${client.id}-order-${order.id}`}>
-              <OrderReport order={order} motives={motives} workTypes={workTypes}/>
-            </li>
-          ))}
-        </ul>
-        Final price: {clientPrice}.
+      <div className="clients-order-report">
+
+        <div className="client-info-box">
+          <div className="client-info-headline">
+            <ClientHeadline client={client}/>
+          </div>
+          <div className="final-price">
+            {clientPrice} Eur
+          </div>
+        </div>
+
+        <div className="clients-orders">
+          <Collection>
+            {orders.map((order, idx) => (
+              <CollectionItem key={idx}>
+                <OrderReport order={order} motives={motives} workTypes={workTypes}/>
+              </CollectionItem>
+            ))}
+          </Collection>
+        </div>
       </div>
     );
   }

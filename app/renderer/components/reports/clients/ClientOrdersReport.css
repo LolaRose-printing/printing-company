@@ -1,0 +1,30 @@
+.clients-order-report {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.clients-order-report > .client-info-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.client-info-box > .client-info-headline {
+
+}
+
+.client-info-box > .final-price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+
+.clients-order-report > .clients-orders {
+    width: 100%;
+    max-width: 1000px;
+
+}

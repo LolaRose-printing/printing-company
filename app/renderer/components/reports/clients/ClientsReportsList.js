@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { getPriceForMultipleOrders } from '../../../utils/PriceComputation';
-import Headline from './Headline';
+import CadekHeadline from './headlines/CadekHeadline';
 import ClientOrdersReport from './ClientOrdersReport';
 import PropTypes from 'prop-types';
 import BackButton from '../../tools/BackButton';
@@ -19,8 +18,6 @@ export default class ClientsReportsList extends Component {
   render() {
     const { startDate, endDate, clients, orders, motives, workTypes } = this.props;
 
-    const finalPrice = getPriceForMultipleOrders(orders, workTypes);
-
     const orderClients = new Set(orders.map(order => order.clientId));
 
     return (
@@ -29,7 +26,7 @@ export default class ClientsReportsList extends Component {
 
         <PrintButton/>
 
-        <Headline startDate={startDate} endDate={endDate}/>
+        <CadekHeadline startDate={startDate} endDate={endDate}/>
 
         <ul>
           {clients
@@ -45,7 +42,6 @@ export default class ClientsReportsList extends Component {
               </li>
             ))}
         </ul>
-        Final price: {finalPrice}.
       </div>
     );
   }

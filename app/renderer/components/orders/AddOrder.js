@@ -21,6 +21,7 @@ export default class AddNewOrder extends Component {
             clients={clients}
             order={{
               date: new Date(),
+              clientId: 1,
               works: [],
             }}
             save={(x) => {

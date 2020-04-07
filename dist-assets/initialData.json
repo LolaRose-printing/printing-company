@@ -84,12 +84,14 @@
       "id": 1,
       "name": "Client A",
       "email": "info@clientA.com",
+      "address": "CLietnsA address",
       "phone": "151 222 333"
     },
     {
       "id": 2,
       "name": "Client B",
       "email": "info@clientA.com",
+      "address": "B address",
       "phone": "151 222 333"
     }
   ],

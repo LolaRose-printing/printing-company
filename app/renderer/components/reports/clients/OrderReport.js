@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import WorkReport from './WorkReport';
 import PropTypes from 'prop-types';
 import groupBy from '../../../utils/groupBy';
+
+import 'materialize-css';
+import { Table } from 'react-materialize';
 
 
 export default class OrderReport extends Component {
@@ -11,44 +13,70 @@ export default class OrderReport extends Component {
     workTypes: PropTypes.instanceOf(Map).isRequired,
   };
 
-  render() {
-    const { order, motives, workTypes } = this.props;
+  getMapping = (works, motiveMap, workTypeMap) => {
+    const groupedMotives = groupBy(works, x => x.motiveId);
 
-    const groupedMotives = groupBy(order.works, x => x.motiveId);
-
-    const results = [...groupedMotives.keys()].flatMap(motiveId => {
+    return [...groupedMotives.keys()].flatMap(motiveId => {
         const motiveWorks = groupedMotives.get(motiveId);
         const workTypesForMotive = groupBy(motiveWorks, x => x.workTypeId);
+
         return [...workTypesForMotive.keys()].map(workTypeId => {
+            const amount = workTypesForMotive.get(workTypeId).reduce((a, b) => a + b.amount, 0);
+            const workType = workTypeMap.get(workTypeId);
             return {
-              motiveId,
-              workTypeId,
-              amount: workTypesForMotive.get(workTypeId).reduce((a, b) => a + b.amount, 0),
+              motive: motiveMap.get(motiveId).name,
+              workType: workType.name,
+              workTypePrice: workType.priceForCustomer,
+              amount,
+              price: workType.priceForCustomer * amount,
             };
           },
         );
       },
     );
+  };
 
-    const finalPrice = results.reduce((a, b) =>
-      a + workTypes.get(b.workTypeId).priceForCustomer * b.amount, 0);
+  render() {
+    const { order, motives, workTypes } = this.props;
+
+    const results = this.getMapping(order.works, motives, workTypes);
+
+    const finalPrice = results.reduce((a, b) => a + b.price, 0);
     return (
-      <div>
-        Order: {order.name}
-        Client id: {order.clientId}
-        <div>
-          <ul>
+      <div className="order-report">
+        <span className="order-name">Order: {order.name}</span>
+
+        <div className="report-data">
+          <Table className="employee-monthly-table">
+            <thead>
+            <tr>
+              <th data-field="motive">Motive</th>
+              <th data-field="amount">Amount</th>
+              <th data-field="workType">Wage</th>
+              <th data-field="workTypePrice">Price per unit</th>
+              <th data-field="price">Sum Price</th>
+            </tr>
+            </thead>
+            <tbody>
             {results.map((record, idx) => (
-              <li key={idx}>
-                <WorkReport work={{ amount: record.amount }}
-                            motive={motives.get(record.motiveId)}
-                            workType={workTypes.get(record.workTypeId)}
-                            showWage={false}/>
-              </li>
+              <tr key={idx}>
+                <td>{record.motive}</td>
+                <td>{record.amount}</td>
+                <td>{record.workType}</td>
+                <td>{record.workTypePrice}</td>
+                <td>{record.price}</td>
+              </tr>
             ))}
-          </ul>
+            <tr className="employee-report-sum">
+              <td>Sum</td>
+              <td/>
+              <td/>
+              <td/>
+              <td>{finalPrice} Eur</td>
+            </tr>
+            </tbody>
+          </Table>
         </div>
-        Final price: {finalPrice}Eur.
       </div>
     );
   }

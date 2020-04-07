@@ -76,7 +76,11 @@ export default class AddNewWorkAssignment extends Component {
             workTypes={workTypes}
             employees={employees}
             motives={motives}
-            work={{}}
+            work={{
+              motiveId: 1,
+              employeeId: 1,
+              workTypeId: 1,
+            }}
             onChange={(x) => {
               addWorkRecord(x);
               this.closeModal();
