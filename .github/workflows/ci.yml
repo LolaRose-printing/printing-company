@@ -26,14 +26,14 @@ jobs:
       - name: Linux Release App Image
         uses: actions/upload-artifact@v1
         with:
-          name: CadekCompanyManagement-1.0.0.AppImage
-          path: dist/CadekCompanyManagement-1.0.0.AppImage
+          name: CadekCompanyManagement.AppImage
+          path: dist/CadekCompanyManagement.AppImage
 
       - name: Linux Release deb package
         uses: actions/upload-artifact@v1
         with:
-          name: company-management_1.0.0_amd64.deb
-          path: dist/company-management_1.0.0_amd64.deb
+          name: CadekCompanyManagement.deb
+          path: dist/CadekCompanyManagement.deb
 
 
   windows:
@@ -59,8 +59,8 @@ jobs:
       - name: Windows Release Setup.exe
         uses: actions/upload-artifact@v1
         with:
-          name: "CadekCompanyManagement Setup 1.0.0.exe"
-          path: "dist/CadekCompanyManagement Setup 1.0.0.exe"
+          name: CadekCompanyManagement.exe
+          path: dist/CadekCompanyManagement.exe
 
 
   mac:
@@ -87,5 +87,5 @@ jobs:
       - name: Mac Release dmg
         uses: actions/upload-artifact@v1
         with:
-          name: CadekCompanyManagement-1.0.0.dmg
-          path: dist/CadekCompanyManagement-1.0.0.dmg
+          name: CadekCompanyManagement.dmg
+          path: dist/CadekCompanyManagement.dmg

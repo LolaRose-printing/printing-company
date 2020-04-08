@@ -27,11 +27,14 @@ dmg:
 mac:
   target: dmg
   category: public.app-category.tools
+  artifactName: ${productName}.${ext}
 
 win:
   target: nsis
+  artifactName: ${productName}.${ext}
 
 linux:
   target:
     - deb
     - AppImage
+  artifactName: ${productName}.${ext}
