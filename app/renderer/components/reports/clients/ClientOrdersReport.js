@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
 import OrderReport from './OrderReport';
-import { getPriceForMultipleOrders } from '../../../utils/PriceComputation';
 import PropTypes from 'prop-types';
 import 'materialize-css';
 import { Collection, CollectionItem } from 'react-materialize';
 import ClientHeadline from './headlines/ClientHeadline';
+
+const geOrderPrice = (order, workTypes) =>
+  order.works
+    .map((x) => workTypes[x.workTypeId].priceForCustomer * x.amount)
+    .reduce((a, b) => a + b, 0);
+
+const getPriceForMultipleOrders = (orders, workTypes) =>
+  orders.map((x) => geOrderPrice(x, workTypes)).reduce((a, b) => a + b, 0);
+
 
 export default class ClientOrdersReport extends Component {
   static propTypes = {
