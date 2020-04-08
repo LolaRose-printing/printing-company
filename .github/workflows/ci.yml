@@ -23,11 +23,18 @@ jobs:
           GH_TOKEN: ${{ secrets.github_token }}
         run: npm run pack:linux
 
-      - name: Linux Release result
+      - name: Linux Release App Image
         uses: actions/upload-artifact@v1
         with:
           name: CadekCompanyManagement-1.0.0.AppImage
           path: dist/CadekCompanyManagement-1.0.0.AppImage
+
+      - name: Linux Release deb package
+        uses: actions/upload-artifact@v1
+        with:
+          name: company-management_1.0.0_amd64.deb
+          path: dist/company-management_1.0.0_amd64.deb
+
 
   windows:
     name: Release on Windows
@@ -49,7 +56,7 @@ jobs:
           GH_TOKEN: ${{ secrets.github_token }}
         run: npm run pack:win
 
-      - name: Windows Release result
+      - name: Windows Release Setup.exe
         uses: actions/upload-artifact@v1
         with:
           name: CadekCompanyManagement-Setup-1.0.0.exe
@@ -76,7 +83,7 @@ jobs:
           GH_TOKEN: ${{ secrets.github_token }}
         run: npm run pack:mac
 
-      - name: Mac Release result
+      - name: Mac Release dmg
         uses: actions/upload-artifact@v1
         with:
           name: CadekCompanyManagement-1.0.0.dmg
