@@ -3,13 +3,63 @@ name: Build/release
 on: push
 
 jobs:
-  release:
-    runs-on: ${{ matrix.os }}
+  linux:
+    name: Release on Linux
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v1
 
-    strategy:
-      matrix:
-        os: [macos-latest, ubuntu-latest, windows-latest]
+      - name: Install Node.js, NPM and Yarn
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10
 
+      - name: Download dependencies
+        run: npm install
+
+      - name: Release Linux
+        env:
+          GH_TOKEN: ${{ secrets.github_token }}
+        run: npm run pack:linux
+
+      - name: Linux Release result
+        uses: actions/upload-artifact@v1
+        with:
+          name: CadekCompanyManagement-1.0.0.AppImage
+          path: dist/CadekCompanyManagement-1.0.0.AppImage
+
+  windows:
+    name: Release on Windows
+    runs-on: windows-latest
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v1
+
+      - name: Install Node.js, NPM and Yarn
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10
+
+      - name: Download dependencies
+        run: npm install
+
+      - name: Release Windows
+        if: startsWith(matrix.os,'windows')
+        env:
+          GH_TOKEN: ${{ secrets.github_token }}
+        run: npm run pack:win
+
+      - name: Windows Release result
+        uses: actions/upload-artifact@v1
+        with:
+          name: CadekCompanyManagement-Setup-1.0.0.exe
+          path: dist/CadekCompanyManagement-Setup-1.0.0.exe
+
+
+  mac:
+    name: Release on Mac
+    runs-on: macOS-latest
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v1
@@ -23,26 +73,12 @@ jobs:
         run: npm install
 
       - name: Release Mac
-        if: startsWith(matrix.os, 'macos')
         env:
           GH_TOKEN: ${{ secrets.github_token }}
         run: npm run pack:mac
 
       - name: Mac Release result
-        if: startsWith(matrix.os, 'macos')
         uses: actions/upload-artifact@v1
         with:
           name: CadekCompanyManagement-1.0.0.dmg
           path: dist/CadekCompanyManagement-1.0.0.dmg
-
-      - name: Release Linux
-        if: startsWith(matrix.os,'ubuntu')
-        env:
-          GH_TOKEN: ${{ secrets.github_token }}
-        run: npm run pack:linux
-
-      - name: Release Windows
-        if: startsWith(matrix.os,'windows')
-        env:
-          GH_TOKEN: ${{ secrets.github_token }}
-        run: npm run pack:win
