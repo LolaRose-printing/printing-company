@@ -45,7 +45,6 @@ jobs:
         run: npm install
 
       - name: Release Windows
-        if: startsWith(matrix.os,'windows')
         env:
           GH_TOKEN: ${{ secrets.github_token }}
         run: npm run pack:win
