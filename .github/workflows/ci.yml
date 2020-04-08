@@ -28,6 +28,13 @@ jobs:
           GH_TOKEN: ${{ secrets.github_token }}
         run: npm run pack:mac
 
+      - name: Mac Release result
+        if: startsWith(matrix.os, 'macos')
+        uses: actions/upload-artifact@v1
+        with:
+          name: CadekCompanyManagement-1.0.0.dmg
+          path: dist/CadekCompanyManagement-1.0.0.dmg
+
       - name: Release Linux
         if: startsWith(matrix.os,'ubuntu')
         env:
