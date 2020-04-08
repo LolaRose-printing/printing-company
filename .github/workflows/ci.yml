@@ -22,6 +22,8 @@ jobs:
           npm install
 
       - name:  Release
+        with:
+          github_token: ${{ secrets.github_token }}
         run: |
           if [ "$RUNNER_OS" == "Linux" ]; then
                npm run pack:linux
@@ -31,5 +33,3 @@ jobs:
                npm run pack:mac
           fi
         shell: bash
-        with:
-          github_token: ${{ secrets.github_token }}
