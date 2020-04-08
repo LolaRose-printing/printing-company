@@ -26,16 +26,16 @@ jobs:
         if: startsWith(matrix.os, 'macos')
         env:
           GH_TOKEN: ${{ secrets.github_token }}
-        run: electron-builder --mac
+        run: npm run pack:mac
 
       - name: Release Linux
         if: startsWith(matrix.os,'ubuntu')
         env:
           GH_TOKEN: ${{ secrets.github_token }}
-        run: electron-builder --linux
+        run: npm run pack:linux
 
       - name: Release Windows
         if: startsWith(matrix.os,'windows')
         env:
           GH_TOKEN: ${{ secrets.github_token }}
-        run: electron-builder --windows
+        run: npm run pack:win
