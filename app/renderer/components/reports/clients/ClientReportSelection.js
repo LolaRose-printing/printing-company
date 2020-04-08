@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Select from 'react-select';
 import { Link } from 'react-router-dom';
 
-import routes from '../../../../../dist-assets/routes';
+import routes from '../../../data/routes';
 import DateRangeSelector from '../../tools/DateRangeSelector';
 import PropTypes from 'prop-types';
 import BackButton from '../../tools/BackButton';

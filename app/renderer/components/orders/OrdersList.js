@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import routes from '../../../../dist-assets/routes';
+import routes from '../../data/routes';
 import PropTypes from 'prop-types';
 import BackButton from '../tools/BackButton';
 

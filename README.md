@@ -41,7 +41,3 @@ npm run pack:linux
 ```
 npm run test
 ```
-
-## Licence
-This project is licensed on a case-by-case basis. 
-Parties interested in using printing management software must contact [author](https://lukas.forst.pw/).

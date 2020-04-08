@@ -1,6 +1,6 @@
 import React from 'react';
 
-import routes from '../../dist-assets/routes';
+import routes from './data/routes';
 
 import { Route, Switch } from 'react-router-dom';
 import HomePage from './components/HomePage';

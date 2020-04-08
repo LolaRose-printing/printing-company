@@ -7,7 +7,7 @@
     "name": "Lukas Forst",
     "email": "lukas@forst.pw"
   },
-  "license": "proprietary",
+  "license": "MIT",
   "repository": "https://github.com/LukasForst/printing-company",
   "dependencies": {
     "@babel/register": "^7.6.2",
@@ -44,7 +44,7 @@
     "chai": "^4.1.0",
     "chokidar": "^3.3.1",
     "electron": "^6.0.10",
-    "electron-builder": "^22.4.1",
+    "electron-builder": "^21.2.0",
     "electron-devtools-installer": "^2.2.4",
     "electron-mocha": "^8.1.2",
     "eslint": "^6.4.0",
@@ -61,8 +61,6 @@
   },
   "scripts": {
     "postinstall": "electron-builder install-app-deps",
-    "build": "electron-builder --mac --windows --linux",
-    "release": "electron-builder --mac --windows --linux --publish always",
     "develop": "gulp develop",
     "test": "electron-mocha --renderer -R spec --require @babel/register test/**/*.spec.js",
     "lint": "eslint --no-ignore tasks app test *.js",

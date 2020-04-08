@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import BackButton from '../../tools/BackButton';
 import DateRangeSelector from '../../tools/DateRangeSelector';
-import routes from '../../../../../dist-assets/routes';
+import routes from '../../../data/routes';
 import { Button } from 'react-materialize';
 
 export default class ReportFilter extends Component {

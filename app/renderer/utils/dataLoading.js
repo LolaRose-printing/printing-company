@@ -1,4 +1,4 @@
-import staticDataSet from '../../../dist-assets/initialData';
+import staticDataSet from '../data/initialData';
 
 /**
  * Loads employees and returns map of them.

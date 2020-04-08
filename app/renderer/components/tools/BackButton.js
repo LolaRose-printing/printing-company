@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import 'materialize-css';
 import { Button } from 'react-materialize';
-import routes from '../../../../dist-assets/routes';
+import routes from '../../data/routes';
 
 class BackButton extends Component {
   homeButton = () => (
