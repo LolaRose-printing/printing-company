@@ -24,7 +24,7 @@ export default function configureStore(initialState, routerHistory) {
     return compose;
   })();
 
-  const persist = false;
+  const persist = true;
   const enhancer = persist
     ? composeEnhancers(applyMiddleware(...middlewares), persistState())
     : composeEnhancers(applyMiddleware(...middlewares));

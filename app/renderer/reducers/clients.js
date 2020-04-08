@@ -15,5 +15,5 @@ export default handleActions(
       return action.payload.clients;
     },
   },
-  new Map(),
+  {},
 );

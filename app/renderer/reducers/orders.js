@@ -15,5 +15,5 @@ export default handleActions(
       return action.payload.orders;
     },
   },
-  new Map(),
+  {},
 );
