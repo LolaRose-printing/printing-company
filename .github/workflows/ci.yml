@@ -59,13 +59,14 @@ jobs:
       - name: Windows Release Setup.exe
         uses: actions/upload-artifact@v1
         with:
-          name: CadekCompanyManagement-Setup-1.0.0.exe
-          path: dist/CadekCompanyManagement-Setup-1.0.0.exe
+          name: "CadekCompanyManagement Setup 1.0.0.exe"
+          path: "dist/CadekCompanyManagement Setup 1.0.0.exe"
 
 
   mac:
     name: Release on Mac
-    runs-on: macOS-latest
+    runs-on: macos-latest
+    needs: [windows, linux]
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v1
