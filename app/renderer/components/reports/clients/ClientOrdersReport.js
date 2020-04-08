@@ -10,7 +10,7 @@ export default class ClientOrdersReport extends Component {
   static propTypes = {
     client: PropTypes.any.isRequired,
     orders: PropTypes.array.isRequired,
-    workTypes: PropTypes.instanceOf(Map).isRequired,
+    workTypes: PropTypes.instanceOf(Object).isRequired,
   };
 
   render() {

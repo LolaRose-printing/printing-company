@@ -9,8 +9,8 @@ import DeleteButton from '../tools/DeleteButton';
 
 export default class WorkAssignment extends Component {
   static propTypes = {
-    employees: PropTypes.instanceOf(Map).isRequired,
-    workTypes: PropTypes.instanceOf(Map).isRequired,
+    employees: PropTypes.instanceOf(Object).isRequired,
+    workTypes: PropTypes.instanceOf(Object).isRequired,
     motives: PropTypes.instanceOf(Set).isRequired,
     work: PropTypes.any.isRequired,
     onChange: PropTypes.func.isRequired,
@@ -27,7 +27,7 @@ export default class WorkAssignment extends Component {
             input.onChange(d);
           }}
         >
-          {[...data.values()].map((x) => (
+          {Object.values(data).map((x) => (
             <option key={x.id} value={x.id} name={x.name}>
               {x.name}
             </option>

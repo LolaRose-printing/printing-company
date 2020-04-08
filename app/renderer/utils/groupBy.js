@@ -1,10 +1,10 @@
 export default function groupBy(list, keyGetter) {
-  const map = new Map();
+  const map = {};
   list.forEach((item) => {
     const key = keyGetter(item);
-    const collection = map.get(key);
+    const collection = map[key];
     if (!collection) {
-      map.set(key, [item]);
+      map[key] = [item];
     } else {
       collection.push(item);
     }

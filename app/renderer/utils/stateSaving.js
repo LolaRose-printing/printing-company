@@ -1,5 +1,4 @@
 import * as storage from 'electron-json-storage';
-import { loadClients, loadEmployeeMap, loadOrders, loadWorkTypes } from './dataLoading';
 
 function initStorage(path = null) {
   if (!path) {
@@ -11,10 +10,10 @@ function initStorage(path = null) {
 export function convertState(state) {
   return {
     state: {
-      employees: [...state.employees.values()],
-      workTypes: [...state.workTypes.values()],
-      clients: [...state.clients.values()],
-      orders: [...state.orders.values()],
+      employees: state.employees,
+      workTypes: state.workTypes,
+      clients: state.clients,
+      orders: state.orders,
     },
   };
 }
@@ -25,30 +24,15 @@ export function saveState(state, path = null) {
   storage.set('rawAppData', converted);
 }
 
-function convertToState(data) {
-  return {
-    employees: loadEmployeeMap(data.employees),
-    workTypes: loadWorkTypes(data.workTypes),
-    clients: loadClients(data.clients),
-    orders: loadOrders(data.orders),
-  };
-}
 
 export function loadState(stateCallback, path = null) {
   initStorage(path);
 
   storage.get('rawAppData', (error, data) => {
     if (data && data !== {}) {
-      stateCallback(convertToState(data.state));
+      stateCallback(data.state);
     } else {
-      stateCallback(
-        convertToState({
-          employees: [],
-          workTypes: [],
-          clients: [],
-          orders: [],
-        }),
-      );
+      console.log('It was not possible to load data.');
     }
   });
 }

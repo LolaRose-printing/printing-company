@@ -23,16 +23,14 @@ function mapStateToProps(state, ownProps) {
   const affectedOrders = getAffectedOrders(state.orders, start, end);
   const affectedEmployees = getAffectedEmployees(state.employees, employeesIds);
 
-  const employeeData = new Map();
+  const employeeData = {};
   affectedEmployees.forEach(employee => {
-    const works = affectedOrders.map(order => {
+    employeeData[employee.id] = affectedOrders.map(order => {
       return {
         orderId: order.id,
         works: order.works.filter(work => work.employeeId === employee.id),
       };
     });
-
-    employeeData.set(employee.id, works);
   });
 
 
@@ -47,14 +45,14 @@ function mapStateToProps(state, ownProps) {
 }
 
 const getAffectedOrders = (orders, startDate, endDate) =>
-  [...orders.values()].filter(v => {
+  Object.values(orders).filter(v => {
     const date = new Date(v.date);
     return startDate <= date && date <= endDate;
   });
 
 
 const getAffectedEmployees = (employees, employeesIds) =>
-  [...employees.values()].filter((x) => employeesIds.includes(x.id));
+  Object.values(employees).filter((x) => employeesIds.includes(x.id));
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({}, dispatch);

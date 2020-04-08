@@ -5,8 +5,8 @@ import OrdersList from '../components/orders/OrdersList';
 
 function mapStateToProps(state) {
   return {
-    orders: [...state.orders.values()],
-    clients: [...state.clients.values()],
+    orders: Object.values(state.orders),
+    clients: Object.values(state.clients),
   };
 }
 

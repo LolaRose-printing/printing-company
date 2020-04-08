@@ -6,7 +6,7 @@ import EmployeesList from '../components/employee/EmployeesList';
 
 function mapStateToProps(state) {
   return {
-    employeesList: [...state.employees.values()],
+    employeesList: Object.values(state.employees),
   };
 }
 

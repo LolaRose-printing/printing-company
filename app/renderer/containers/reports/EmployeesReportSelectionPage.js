@@ -4,7 +4,7 @@ import ReportFilter from '../../components/reports/employees/ReportFilter';
 
 function mapStateToProps(state) {
   return {
-    employees: [...state.employees.values()],
+    employees: Object.values(state.employees),
   };
 }
 

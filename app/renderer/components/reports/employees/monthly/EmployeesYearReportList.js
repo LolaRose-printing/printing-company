@@ -13,7 +13,7 @@ export default class EmployeesYearReportList extends Component {
     endDate: PropTypes.any.isRequired,
     employees: PropTypes.array.isRequired,
     // employeeId to their monthly wage
-    employeeMonthlyWages: PropTypes.instanceOf(Map).isRequired,
+    employeeMonthlyWages: PropTypes.instanceOf(Object).isRequired,
   };
 
   render() {
@@ -32,7 +32,7 @@ export default class EmployeesYearReportList extends Component {
             <CollectionItem key={idx}>
               <EmployeeYearReport
                 employee={emp}
-                monthlyWage={employeeMonthlyWages.get(emp.id)}
+                monthlyWage={employeeMonthlyWages[emp.id]}
               />
             </CollectionItem>
           ))}

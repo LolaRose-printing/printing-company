@@ -8,8 +8,8 @@ export default class EmployeeReport extends Component {
     employee: PropTypes.any.isRequired,
     employeeData: PropTypes.array.isRequired,
 
-    orders: PropTypes.instanceOf(Map).isRequired,
-    workTypes: PropTypes.instanceOf(Map).isRequired,
+    orders: PropTypes.instanceOf(Object).isRequired,
+    workTypes: PropTypes.instanceOf(Object).isRequired,
   };
 
   format = (date) =>
@@ -19,7 +19,7 @@ export default class EmployeeReport extends Component {
     const { employee, employeeData, orders, workTypes } = this.props;
 
     const sum = employeeData.flatMap(x => x.works)
-      .map(work => work.amount * workTypes.get(work.workTypeId).employeeWage)
+      .map(work => work.amount * workTypes[work.workTypeId].employeeWage)
       .reduce((a, b) => a + b, 0);
 
     return (
@@ -44,9 +44,9 @@ export default class EmployeeReport extends Component {
           </thead>
           <tbody>
           {employeeData.flatMap(orderData => {
-            const order = orders.get(orderData.orderId);
+            const order = orders[orderData.orderId];
             return orderData.works.map((work, idx) => {
-              const workType = workTypes.get(work.workTypeId);
+              const workType = workTypes[work.workTypeId];
               return (
                 <tr key={`order-${order.id}-emp-work-${idx}`}>
                   <td>{order.name}</td>

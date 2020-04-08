@@ -11,7 +11,7 @@ export default class ClientsReportsList extends Component {
     endDate: PropTypes.any.isRequired,
     clients: PropTypes.array.isRequired,
     orders: PropTypes.array.isRequired,
-    workTypes: PropTypes.instanceOf(Map).isRequired,
+    workTypes: PropTypes.instanceOf(Object).isRequired,
   };
 
   render() {

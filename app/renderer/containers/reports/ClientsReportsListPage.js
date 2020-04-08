@@ -10,7 +10,7 @@ function mapStateToProps(state, ownProps) {
       endDate: undefined,
       clients: [],
       orders: [],
-      workTypes: new Map(),
+      workTypes: {},
     };
   }
 
@@ -19,9 +19,9 @@ function mapStateToProps(state, ownProps) {
   const start = new Date(startDate);
   const end = new Date(endDate);
 
-  const clients = [...state.clients.values()].filter((x) => clientIds.includes(x.id));
+  const clients = Object.values(state.clients).filter((x) => clientIds.includes(x.id));
 
-  const orders = [...state.orders.values()].filter((o) => {
+  const orders = Object.values(state.orders).filter((o) => {
     const date = new Date(o.date);
     return (
       orderIds.includes(o.id) && clientIds.includes(o.clientId) && start <= date && date <= end

@@ -5,9 +5,9 @@ import Order from '../components/orders/Order';
 
 function mapStateToProps(state, ownProps) {
   const orderId = JSON.parse(ownProps.match.params.id);
-  const order = state.orders.get(orderId);
+  const order = state.orders[orderId];
 
-  let motives = [...state.orders.values()].flatMap(o => o.works.map(w => w.motive));
+  let motives = Object.values(state.orders).flatMap(o => o.works.map(w => w.motive));
   motives = new Set(motives);
 
   return {
@@ -15,7 +15,7 @@ function mapStateToProps(state, ownProps) {
     employees: state.employees,
     workTypes: state.workTypes,
     motives,
-    clients: [...state.clients.values()],
+    clients: Object.values(state.clients),
   };
 }
 

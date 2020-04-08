@@ -1,11 +1,9 @@
 export function copyMap(state) {
-  const copyMap = new Map();
-  state.forEach((e) => copyMap.set(e.id, e));
-  return copyMap;
+  return { ...state };
 }
 
 export function deleteFromMap(copyMap, id) {
-  copyMap.delete(id);
+  copyMap[id] = undefined;
   return copyMap;
 }
 
@@ -14,11 +12,10 @@ export function saveToMap(copyMap, toSave) {
 
   if (!toSave.id) {
     object = { ...toSave };
-    object.id = Math.max(...Array.from(copyMap.keys())) + 1;
+    object.id = Math.max(...Object.keys(copyMap)) + 1;
   } else {
     object = toSave;
   }
-
-  copyMap.set(object.id, object);
+  copyMap[object.id] = object;
   return copyMap;
 }

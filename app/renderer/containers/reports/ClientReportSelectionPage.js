@@ -3,20 +3,20 @@ import { connect } from 'react-redux';
 import ClientReportSelection from '../../components/reports/clients/ClientReportSelection';
 
 function mapStateToProps(state) {
-  const clients = [...state.clients.values()];
+  const clients = Object.values(state.clients);
 
-  const clientsOrders = new Map();
+  const clientsOrders = {};
   clients.forEach((x) => {
-    clientsOrders.set(x.id, []);
+    clientsOrders[x.id] = [];
   });
 
-  [...state.orders.values()].forEach((x) => {
-    clientsOrders.get(x.clientId).push(x);
+  Object.values(state.orders).forEach((x) => {
+    clientsOrders[x.clientId].push(x);
   });
 
   return {
     clients,
-    orders: clientsOrders,
+    clientsOrders,
   };
 }
 

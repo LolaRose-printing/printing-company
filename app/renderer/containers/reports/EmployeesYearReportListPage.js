@@ -9,7 +9,7 @@ function mapStateToProps(state, ownProps) {
       startDate: undefined,
       endDate: undefined,
       employees: [],
-      employeeMonthlyWages: new Map(),
+      employeeMonthlyWages: {},
     };
   }
 
@@ -18,7 +18,7 @@ function mapStateToProps(state, ownProps) {
   const start = new Date(startDate);
   const end = new Date(endDate);
 
-  const orders = [...state.orders.values()].filter((o) => {
+  const orders = Object.values(state.orders).filter((o) => {
     const date = new Date(o.date);
     return (
       start <= date && date <= end
@@ -28,35 +28,35 @@ function mapStateToProps(state, ownProps) {
   const employeeMonthlyWages = prepareMap(start, end, employeesIds);
   fillWorkData(orders, employeesIds, state.workTypes, employeeMonthlyWages);
 
-  [...employeeMonthlyWages.keys()].forEach(employee => {
-    const monthData = employeeMonthlyWages.get(employee);
-    employeeMonthlyWages.set(employee, [...monthData.values()]);
+  Object.keys(employeeMonthlyWages).forEach(employee => {
+    const monthData = employeeMonthlyWages[employee];
+    employeeMonthlyWages[employee] = Object.values(monthData);
   });
 
   return {
     startDate: start,
     endDate: end,
-    employees: [...state.employees.values()].filter(x => employeesIds.includes(x.id)),
+    employees: Object.values(state.employees).filter(x => employeesIds.includes(x.id)),
     employeeMonthlyWages,
   };
 }
 
 function prepareMap(start, end, employeesIds) {
-  const employeeMonthlyWages = new Map();
+  const employeeMonthlyWages = {};
   employeesIds.forEach(x => {
-    const monthlyMap = new Map();
+    const monthlyMap = {};
     let month = start.getMonth();
     let year = start.getFullYear();
 
     while (year < end.getFullYear() || (year === end.getFullYear() && month <= end.getMonth())) {
-      monthlyMap.set(`${year}-${month}`, { month: `${year}-${month}`, wage: 0 });
+      monthlyMap[`${year}-${month}`] = { month: `${year}-${month}`, wage: 0 };
 
       if (++month > 12) {
         month = 1;
         year++;
       }
     }
-    employeeMonthlyWages.set(x, monthlyMap);
+    employeeMonthlyWages[x] = monthlyMap;
   });
   return employeeMonthlyWages;
 }
@@ -69,8 +69,8 @@ function fillWorkData(orders, employeesIds, workTypes, employeeMonthlyWages) {
     order.works.forEach(work => {
       if (!employeesIds.includes(work.employeeId)) return;
 
-      const wage = workTypes.get(work.workTypeId).employeeWage;
-      employeeMonthlyWages.get(work.employeeId).get(key).wage += work.amount * wage;
+      const wage = workTypes[work.workTypeId].employeeWage;
+      employeeMonthlyWages[work.employeeId][key].wage += work.amount * wage;
     });
   });
 }

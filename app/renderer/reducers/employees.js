@@ -6,6 +6,8 @@ import actions from '../actions/employees';
 export default handleActions(
   {
     [actions.saveEmployee]: (state, action) => {
+      console.log(state);
+      console.log(action);
       return saveToMap(copyMap(state), action.payload);
     },
     [actions.deleteEmployee]: (state, action) => {

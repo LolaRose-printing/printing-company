@@ -5,7 +5,7 @@ import WorkTypeList from '../components/workType/WorkTypeList';
 
 function mapStateToProps(state) {
   return {
-    workTypeList: [...state.workTypes.values()],
+    workTypeList: Object.values(state.workTypes),
   };
 }
 

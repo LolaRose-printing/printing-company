@@ -5,7 +5,7 @@ import ClientList from '../components/client/ClientList';
 
 function mapStateToProps(state) {
   return {
-    clients: [...state.clients.values()],
+    clients: Object.values(state.clients),
   };
 }
 

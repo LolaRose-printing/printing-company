@@ -9,26 +9,26 @@ import { Table } from 'react-materialize';
 export default class OrderReport extends Component {
   static propTypes = {
     order: PropTypes.any.isRequired,
-    workTypes: PropTypes.instanceOf(Map).isRequired,
+    workTypes: PropTypes.instanceOf(Object).isRequired,
   };
 
   getMapping = (works, workTypeMap) => {
     const groupedMotives = groupBy(works, x => x.motive);
 
-    return [...groupedMotives.keys()].flatMap(motive => {
-      const motiveWorks = groupedMotives.get(motive);
-      const workTypesForMotive = groupBy(motiveWorks, x => x.workTypeId);
+    return Object.keys(groupedMotives).flatMap(motive => {
+        const motiveWorks = groupedMotives[motive];
+        const workTypesForMotive = groupBy(motiveWorks, x => x.workTypeId);
 
-      return [...workTypesForMotive.keys()].map(workTypeId => {
-          const amount = workTypesForMotive.get(workTypeId).reduce((a, b) => a + b.amount, 0);
-          const workType = workTypeMap.get(workTypeId);
-          return {
-            motive,
-            workType: workType.name,
-            workTypePrice: workType.priceForCustomer,
-            amount,
-            price: workType.priceForCustomer * amount,
-          };
+        return Object.keys(workTypesForMotive).map(workTypeId => {
+            const amount = workTypesForMotive[workTypeId].reduce((a, b) => a + b.amount, 0);
+            const workType = workTypeMap[workTypeId];
+            return {
+              motive,
+              workType: workType.name,
+              workTypePrice: workType.priceForCustomer,
+              amount,
+              price: workType.priceForCustomer * amount,
+            };
           },
         );
       },

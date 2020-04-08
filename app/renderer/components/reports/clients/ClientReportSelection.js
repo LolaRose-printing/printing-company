@@ -10,8 +10,8 @@ import { Button } from 'react-materialize';
 
 export default class ClientReportSelection extends Component {
   static propTypes = {
-    orders: PropTypes.any.isRequired,
-    clients: PropTypes.any.isRequired,
+    clientsOrders: PropTypes.instanceOf(Object).isRequired,
+    clients: PropTypes.array.isRequired,
   };
 
   state = {
@@ -53,7 +53,7 @@ export default class ClientReportSelection extends Component {
   };
 
   render() {
-    const { clients, orders } = this.props;
+    const { clients, clientsOrders } = this.props;
     const { selectedClients, selectedOrders } = this.state;
 
     const clientsOptions = clients.map((cl) => {
@@ -64,7 +64,7 @@ export default class ClientReportSelection extends Component {
       .map((x) => {
         return {
           clientName: x.label,
-          clientOrders: orders.get(x.value).filter((o) => this.rangeFilter(o.date)),
+          clientOrders: clientsOrders[x.value].filter((o) => this.rangeFilter(o.date)),
         };
       })
       .flatMap((x) => {
