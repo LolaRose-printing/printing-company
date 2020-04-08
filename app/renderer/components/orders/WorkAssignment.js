@@ -25,8 +25,7 @@ export default class WorkAssignment extends Component {
           label={label}
           onChange={(d) => {
             input.onChange(d);
-          }}
-        >
+          }}>
           {Object.values(data).map((x) => (
             <option key={x.id} value={x.id} name={x.name}>
               {x.name}
@@ -39,7 +38,7 @@ export default class WorkAssignment extends Component {
 
   prepareCompletionData = (data) => {
     const obj = {};
-    data.forEach(d => obj[d] = null);
+    data.forEach((d) => (obj[d] = null));
     return obj;
   };
 
@@ -62,7 +61,6 @@ export default class WorkAssignment extends Component {
         />
       )}
     </Field>
-
   );
 
   convert = (work) => {
@@ -97,15 +95,15 @@ export default class WorkAssignment extends Component {
 
             <div className="work-assignment-cell">
               <label>Amount</label>
-              <Field name="amount" component="input" placeholder="Amount"/>
+              <Field name="amount" component="input" placeholder="Amount" />
             </div>
 
             <div className="work-assignment-buttons">
-              <SubmitButton disabled={submitting || pristine}/>
+              <SubmitButton disabled={submitting || pristine} />
 
-              <ResetButton disabled={submitting || pristine} onClick={form.reset}/>
+              <ResetButton disabled={submitting || pristine} onClick={form.reset} />
 
-              <DeleteButton onClick={deleteAssignment}/>
+              <DeleteButton onClick={deleteAssignment} />
             </div>
           </form>
         )}

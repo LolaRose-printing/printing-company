@@ -24,7 +24,6 @@ export function saveState(state, path = null) {
   storage.set('rawAppData', converted);
 }
 
-
 export function loadState(stateCallback, path = null) {
   initStorage(path);
 

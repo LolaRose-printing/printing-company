@@ -15,17 +15,11 @@ export default class EmployeeInfo extends Component {
         <div className="name">
           {employee.name} {employee.surname}
         </div>
-        <div className="address">
-          {employee.address}
-        </div>
+        <div className="address">{employee.address}</div>
 
-        <div className="social-security">
-          Social Security: {employee.socialSecurityNumber}
-        </div>
+        <div className="social-security">Social Security: {employee.socialSecurityNumber}</div>
 
-        <div className="identification-number">
-          ICO: {employee.identificationNumber}
-        </div>
+        <div className="identification-number">ICO: {employee.identificationNumber}</div>
       </div>
     );
   }

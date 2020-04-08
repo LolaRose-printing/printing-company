@@ -38,13 +38,17 @@ export default class Order extends Component {
     const { save, order, employees, motives, workTypes, clients } = this.props;
     return (
       <div id="order-detail-container">
-        <BackButton/>
+        <BackButton />
 
-        <OrderDetail clients={clients} save={save} order={order}/>
+        <OrderDetail clients={clients} save={save} order={order} />
 
-        <WorkAssignmentsList order={order} save={save}
-                             workTypes={workTypes} motives={motives}
-                             employees={employees}/>
+        <WorkAssignmentsList
+          order={order}
+          save={save}
+          workTypes={workTypes}
+          motives={motives}
+          employees={employees}
+        />
       </div>
     );
   }

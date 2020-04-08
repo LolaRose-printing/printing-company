@@ -7,7 +7,6 @@ import 'materialize-css';
 import { Collapsible, CollapsibleItem, Icon, TextInput } from 'react-materialize';
 import AddFromModal from '../tools/AddFromModal';
 
-
 export default class EmployeesList extends Component {
   static propTypes = {
     employeesList: PropTypes.array.isRequired,
@@ -40,7 +39,7 @@ export default class EmployeesList extends Component {
     const displayedEmployees = this.selectEmployees(search, employeesList);
     return (
       <div id="employees-div">
-        <BackButton/>
+        <BackButton />
 
         <div id="search-bar">
           <TextInput
@@ -65,8 +64,7 @@ export default class EmployeesList extends Component {
                 key={e.id}
                 expanded={false}
                 header={`${e.name} ${e.surname}`}
-                node="div"
-              >
+                node="div">
                 <EmployeeEdit
                   saveEmployee={saveEmployee}
                   detail={e}
@@ -78,20 +76,21 @@ export default class EmployeesList extends Component {
         </div>
 
         <div>
-          <AddFromModal childrenFactory={(close) => (
-            <EmployeeEdit
-              className="employee-element"
-              saveEmployee={(e) => {
-                saveEmployee(e);
-                close();
-              }}
-              deleteEmployee={undefined}
-              detail={undefined}
-            />
-          )}
+          <AddFromModal
+            childrenFactory={(close) => (
+              <EmployeeEdit
+                className="employee-element"
+                saveEmployee={(e) => {
+                  saveEmployee(e);
+                  close();
+                }}
+                deleteEmployee={undefined}
+                detail={undefined}
+              />
+            )}
           />
         </div>
       </div>
     );
   }
-};
+}

@@ -61,9 +61,12 @@ export default class WorkAssignmentsList extends Component {
           </ul>
         </div>
 
-        <AddNewWorkAssignment employees={employees} motives={motives} workTypes={workTypes}
-                              addWorkRecord={newWork => this.addWorkRecord(save, order, newWork)}/>
-
+        <AddNewWorkAssignment
+          employees={employees}
+          motives={motives}
+          workTypes={workTypes}
+          addWorkRecord={(newWork) => this.addWorkRecord(save, order, newWork)}
+        />
       </div>
     );
   }

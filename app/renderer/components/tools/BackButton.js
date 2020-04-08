@@ -5,13 +5,12 @@ import { Button } from 'react-materialize';
 import routes from '../../../../dist-assets/routes';
 
 class BackButton extends Component {
-
   homeButton = () => (
     <Link to={routes.HOME}>
       <Button
         className="red"
         floating
-        icon={<i className="fa fa-arrow-left fa-3x"/>}
+        icon={<i className="fa fa-arrow-left fa-3x" />}
         large
         node="button"
         waves="light"
@@ -23,7 +22,7 @@ class BackButton extends Component {
     <Button
       className="red"
       floating
-      icon={<i className="fa fa-arrow-left fa-3x"/>}
+      icon={<i className="fa fa-arrow-left fa-3x" />}
       large
       onClick={history.goBack}
       node="button"

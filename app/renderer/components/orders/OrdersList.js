@@ -8,7 +8,6 @@ import 'materialize-css';
 import { Collection, CollectionItem, Icon, TextInput } from 'react-materialize';
 import AddNewOrder from './AddOrder';
 
-
 export default class OrdersList extends Component {
   static propTypes = {
     save: PropTypes.func.isRequired,
@@ -34,7 +33,6 @@ export default class OrdersList extends Component {
     return displayed;
   };
 
-
   render() {
     const { orders, clients, save } = this.props;
     const { search } = this.state;
@@ -42,7 +40,7 @@ export default class OrdersList extends Component {
 
     return (
       <div id="order-list-container">
-        <BackButton/>
+        <BackButton />
 
         <div id="search-bar">
           <TextInput
@@ -67,8 +65,7 @@ export default class OrdersList extends Component {
           ))}
         </Collection>
 
-        <AddNewOrder
-          clients={clients} save={save}/>
+        <AddNewOrder clients={clients} save={save} />
       </div>
     );
   }

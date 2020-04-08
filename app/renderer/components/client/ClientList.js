@@ -17,7 +17,7 @@ export default class ClientList extends Component {
 
     return (
       <div id="work-types-div">
-        <BackButton/>
+        <BackButton />
 
         <div id="employees-list">
           <Collapsible accordion={false}>
@@ -27,29 +27,25 @@ export default class ClientList extends Component {
                 key={e.id}
                 expanded={false}
                 header={e.name}
-                node="div"
-              >
-                <ClientEdit
-                  save={saveClient}
-                  client={e}
-                  delete={deleteClient}
-                />
+                node="div">
+                <ClientEdit save={saveClient} client={e} delete={deleteClient} />
               </CollapsibleItem>
             ))}
           </Collapsible>
         </div>
 
         <div>
-          <AddFromModal childrenFactory={(close) => (
-            <ClientEdit
-              className="employee-element"
-              save={(e) => {
-                saveClient(e);
-                close();
-              }}
-              client={undefined}
-            />
-          )}
+          <AddFromModal
+            childrenFactory={(close) => (
+              <ClientEdit
+                className="employee-element"
+                save={(e) => {
+                  saveClient(e);
+                  close();
+                }}
+                client={undefined}
+              />
+            )}
           />
         </div>
       </div>

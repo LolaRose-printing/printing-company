@@ -18,7 +18,6 @@ const modalStyle = {
   },
 };
 
-
 export default class AddNewWorkAssignment extends Component {
   static propTypes = {
     addWorkRecord: PropTypes.func.isRequired,
@@ -45,7 +44,6 @@ export default class AddNewWorkAssignment extends Component {
     }));
   };
 
-
   render() {
     const { addWorkRecord, employees, motives, workTypes } = this.props;
     const { modalIsOpen } = this.state;
@@ -71,7 +69,6 @@ export default class AddNewWorkAssignment extends Component {
           onRequestClose={this.closeModal}
           style={modalStyle}
           contentLabel="Modal">
-
           <WorkAssignment
             workTypes={workTypes}
             employees={employees}
@@ -84,11 +81,9 @@ export default class AddNewWorkAssignment extends Component {
               addWorkRecord(x);
               this.closeModal();
             }}
-            deleteAssignment={() => {
-            }}
+            deleteAssignment={() => {}}
           />
         </Modal>
-
       </div>
     );
   }

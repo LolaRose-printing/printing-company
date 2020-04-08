@@ -17,7 +17,7 @@ export default class WorkTypeList extends Component {
 
     return (
       <div id="work-types-div">
-        <BackButton/>
+        <BackButton />
 
         <div id="employees-list">
           <Collapsible accordion={false}>
@@ -27,29 +27,25 @@ export default class WorkTypeList extends Component {
                 key={e.id}
                 expanded={false}
                 header={e.name}
-                node="div"
-              >
-                <WorkTypeEdit
-                  save={saveWorkType}
-                  workType={e}
-                  delete={deleteWorkType}
-                />
+                node="div">
+                <WorkTypeEdit save={saveWorkType} workType={e} delete={deleteWorkType} />
               </CollapsibleItem>
             ))}
           </Collapsible>
         </div>
 
         <div>
-          <AddFromModal childrenFactory={(close) => (
-            <WorkTypeEdit
-              className="employee-element"
-              save={(e) => {
-                saveWorkType(e);
-                close();
-              }}
-              detail={undefined}
-            />
-          )}
+          <AddFromModal
+            childrenFactory={(close) => (
+              <WorkTypeEdit
+                className="employee-element"
+                save={(e) => {
+                  saveWorkType(e);
+                  close();
+                }}
+                detail={undefined}
+              />
+            )}
           />
         </div>
       </div>

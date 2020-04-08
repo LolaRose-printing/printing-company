@@ -23,7 +23,7 @@ export default class DatePickerWrapper extends Component {
 
     return (
       <div>
-        <DatePicker onChange={this.update} selected={date}/>
+        <DatePicker onChange={this.update} selected={date} />
       </div>
     );
   }

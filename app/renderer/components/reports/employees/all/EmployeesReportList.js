@@ -24,11 +24,11 @@ export default class EmployeesReportList extends Component {
 
     return (
       <div id="employees-report-list">
-        <BackButton/>
+        <BackButton />
 
-        <PrintButton/>
+        <PrintButton />
 
-        <Headline startDate={startDate} endDate={endDate}/>
+        <Headline startDate={startDate} endDate={endDate} />
 
         <Collection id="report-employees-list">
           {employees.map((emp, idx) => (

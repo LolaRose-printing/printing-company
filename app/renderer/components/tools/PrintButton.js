@@ -3,13 +3,12 @@ import 'materialize-css';
 import { Button } from 'react-materialize';
 
 export default class PrintButton extends Component {
-
   render() {
     return (
       <div className="no-print">
         <Button
           className="blue"
-          icon={<i className="fa fa-print" aria-hidden="true"/>}
+          icon={<i className="fa fa-print" aria-hidden="true" />}
           large
           node="button"
           waves="light"

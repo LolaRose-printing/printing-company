@@ -5,7 +5,7 @@ import staticDataSet from '../../../dist-assets/initialData';
  */
 export function loadEmployeeMap(dataSet = staticDataSet.employees) {
   const resultMap = {};
-  dataSet.forEach((e) => resultMap[e.id] = e);
+  dataSet.forEach((e) => (resultMap[e.id] = e));
   return resultMap;
 }
 
@@ -14,7 +14,7 @@ export function loadEmployeeMap(dataSet = staticDataSet.employees) {
  */
 export function loadWorkTypes(dataSet = staticDataSet.workTypes) {
   const resultMap = {};
-  dataSet.forEach((e) => resultMap[e.id] = e);
+  dataSet.forEach((e) => (resultMap[e.id] = e));
   return resultMap;
 }
 
@@ -23,7 +23,7 @@ export function loadWorkTypes(dataSet = staticDataSet.workTypes) {
  */
 export function loadClients(dataSet = staticDataSet.clients) {
   const resultMap = {};
-  dataSet.forEach((e) => resultMap[e.id] = e);
+  dataSet.forEach((e) => (resultMap[e.id] = e));
   return resultMap;
 }
 
@@ -32,6 +32,6 @@ export function loadClients(dataSet = staticDataSet.clients) {
  */
 export function loadOrders(dataSet = staticDataSet.orders) {
   const resultMap = {};
-  dataSet.forEach((e) => resultMap[e.id] = e);
+  dataSet.forEach((e) => (resultMap[e.id] = e));
   return resultMap;
 }

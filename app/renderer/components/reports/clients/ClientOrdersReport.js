@@ -19,21 +19,18 @@ export default class ClientOrdersReport extends Component {
 
     return (
       <div className="clients-order-report">
-
         <div className="client-info-box">
           <div className="client-info-headline">
-            <ClientHeadline client={client}/>
+            <ClientHeadline client={client} />
           </div>
-          <div className="final-price">
-            {clientPrice} Eur
-          </div>
+          <div className="final-price">{clientPrice} Eur</div>
         </div>
 
         <div className="clients-orders">
           <Collection>
             {orders.map((order, idx) => (
               <CollectionItem key={idx}>
-                <OrderReport order={order} workTypes={workTypes}/>
+                <OrderReport order={order} workTypes={workTypes} />
               </CollectionItem>
             ))}
           </Collection>

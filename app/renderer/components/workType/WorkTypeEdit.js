@@ -23,24 +23,29 @@ export default class WorkTypeEdit extends Component {
             <form onSubmit={handleSubmit}>
               <div style={workType ? {} : { display: 'none' }}>
                 <label>Id</label>
-                <Field name="id" component="input" type="text" placeholder="Id" disabled/>
+                <Field name="id" component="input" type="text" placeholder="Id" disabled />
               </div>
               <div>
                 <label>Name</label>
-                <Field name="name" component="input" type="text" placeholder="Name"/>
+                <Field name="name" component="input" type="text" placeholder="Name" />
               </div>
               <div>
                 <label>Employee Wage</label>
-                <Field name="employeeWage" component="input" type="text" placeholder="Employee Wage"/>
+                <Field
+                  name="employeeWage"
+                  component="input"
+                  type="text"
+                  placeholder="Employee Wage"
+                />
               </div>
               <div>
                 <label>Price for customer</label>
-                <Field name="priceForCustomer" component="input" placeholder="Price for customer"/>
+                <Field name="priceForCustomer" component="input" placeholder="Price for customer" />
               </div>
 
               <div className="employee-edit-buttons">
-                <SubmitButton disabled={submitting || pristine}/>
-                <ResetButton disabled={submitting || pristine} onClick={form.reset}/>
+                <SubmitButton disabled={submitting || pristine} />
+                <ResetButton disabled={submitting || pristine} onClick={form.reset} />
               </div>
             </form>
           )}

@@ -28,13 +28,10 @@ export default class OrderDetail extends Component {
         onSubmit={(o) => save(this.convert(o))}
         initialValues={order}
         render={({ handleSubmit, form, submitting, pristine }) => (
-          <form
-            id="order-detail-form"
-            onSubmit={handleSubmit}
-          >
+          <form id="order-detail-form" onSubmit={handleSubmit}>
             <div>
               <label>Name</label>
-              <Field name="name" component="input" type="text" placeholder="Order Name"/>
+              <Field name="name" component="input" type="text" placeholder="Order Name" />
             </div>
 
             <div>
@@ -45,8 +42,7 @@ export default class OrderDetail extends Component {
                     label="Client"
                     onChange={(d) => {
                       input.onChange(d);
-                    }}
-                  >
+                    }}>
                     {clients.map((x) => (
                       <option key={x.id} value={x.id} name={x.name}>
                         {x.name}
@@ -59,7 +55,7 @@ export default class OrderDetail extends Component {
 
             <div>
               <label>Notes</label>
-              <Field name="notes" component="textarea" placeholder="Notes"/>
+              <Field name="notes" component="textarea" placeholder="Notes" />
             </div>
 
             <div>
@@ -76,8 +72,8 @@ export default class OrderDetail extends Component {
             </div>
 
             <div className="employee-edit-buttons">
-              <SubmitButton disabled={submitting || pristine}/>
-              <ResetButton disabled={submitting || pristine} onClick={form.reset}/>
+              <SubmitButton disabled={submitting || pristine} />
+              <ResetButton disabled={submitting || pristine} onClick={form.reset} />
             </div>
           </form>
         )}

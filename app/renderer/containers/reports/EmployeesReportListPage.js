@@ -24,15 +24,14 @@ function mapStateToProps(state, ownProps) {
   const affectedEmployees = getAffectedEmployees(state.employees, employeesIds);
 
   const employeeData = {};
-  affectedEmployees.forEach(employee => {
-    employeeData[employee.id] = affectedOrders.map(order => {
+  affectedEmployees.forEach((employee) => {
+    employeeData[employee.id] = affectedOrders.map((order) => {
       return {
         orderId: order.id,
-        works: order.works.filter(work => work.employeeId === employee.id),
+        works: order.works.filter((work) => work.employeeId === employee.id),
       };
     });
   });
-
 
   return {
     startDate: start,
@@ -45,11 +44,10 @@ function mapStateToProps(state, ownProps) {
 }
 
 const getAffectedOrders = (orders, startDate, endDate) =>
-  Object.values(orders).filter(v => {
+  Object.values(orders).filter((v) => {
     const date = new Date(v.date);
     return startDate <= date && date <= endDate;
   });
-
 
 const getAffectedEmployees = (employees, employeesIds) =>
   Object.values(employees).filter((x) => employeesIds.includes(x.id));

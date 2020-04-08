@@ -17,15 +17,15 @@ export default class ClientsReportsList extends Component {
   render() {
     const { startDate, endDate, clients, orders, workTypes } = this.props;
 
-    const orderClients = new Set(orders.map(order => order.clientId));
+    const orderClients = new Set(orders.map((order) => order.clientId));
 
     return (
       <div id="clients-reports-div">
-        <BackButton/>
+        <BackButton />
 
-        <PrintButton/>
+        <PrintButton />
 
-        <CadekHeadline startDate={startDate} endDate={endDate}/>
+        <CadekHeadline startDate={startDate} endDate={endDate} />
 
         <ul>
           {clients

@@ -17,7 +17,6 @@ const modalStyle = {
   },
 };
 
-
 export default class AddNewOrder extends Component {
   static propTypes = {
     childrenFactory: PropTypes.func.isRequired,
@@ -40,7 +39,6 @@ export default class AddNewOrder extends Component {
       modalIsOpen: false,
     }));
   };
-
 
   render() {
     const { childrenFactory } = this.props;
@@ -67,10 +65,8 @@ export default class AddNewOrder extends Component {
           onRequestClose={this.closeModal}
           style={modalStyle}
           contentLabel="Modal">
-
           {childrenFactory(this.closeModal)}
         </Modal>
-
       </div>
     );
   }

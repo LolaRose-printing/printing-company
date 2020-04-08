@@ -20,15 +20,13 @@ function mapStateToProps(state, ownProps) {
 
   const orders = Object.values(state.orders).filter((o) => {
     const date = new Date(o.date);
-    return (
-      start <= date && date <= end
-    );
+    return start <= date && date <= end;
   });
 
   const employeeMonthlyWages = prepareMap(start, end, employeesIds);
   fillWorkData(orders, employeesIds, state.workTypes, employeeMonthlyWages);
 
-  Object.keys(employeeMonthlyWages).forEach(employee => {
+  Object.keys(employeeMonthlyWages).forEach((employee) => {
     const monthData = employeeMonthlyWages[employee];
     employeeMonthlyWages[employee] = Object.values(monthData);
   });
@@ -36,14 +34,14 @@ function mapStateToProps(state, ownProps) {
   return {
     startDate: start,
     endDate: end,
-    employees: Object.values(state.employees).filter(x => employeesIds.includes(x.id)),
+    employees: Object.values(state.employees).filter((x) => employeesIds.includes(x.id)),
     employeeMonthlyWages,
   };
 }
 
 function prepareMap(start, end, employeesIds) {
   const employeeMonthlyWages = {};
-  employeesIds.forEach(x => {
+  employeesIds.forEach((x) => {
     const monthlyMap = {};
     let month = start.getMonth();
     let year = start.getFullYear();
@@ -62,11 +60,11 @@ function prepareMap(start, end, employeesIds) {
 }
 
 function fillWorkData(orders, employeesIds, workTypes, employeeMonthlyWages) {
-  orders.forEach(order => {
+  orders.forEach((order) => {
     const date = new Date(order.date);
     const key = `${date.getFullYear()}-${date.getMonth()}`;
 
-    order.works.forEach(work => {
+    order.works.forEach((work) => {
       if (!employeesIds.includes(work.employeeId)) return;
 
       const wage = workTypes[work.workTypeId].employeeWage;

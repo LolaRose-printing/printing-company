@@ -8,7 +8,6 @@ import { Button, Icon, TextInput } from 'react-materialize';
 import 'materialize-css';
 
 export default class Save extends Component {
-
   static propTypes = {
     state: PropTypes.any.isRequired,
     changeState: PropTypes.func.isRequired,
@@ -20,10 +19,9 @@ export default class Save extends Component {
 
   setPath() {
     const { dialog } = remote;
-    dialog.showOpenDialog({ properties: ['openDirectory'] },
-      (dirs) => {
-        if (dirs[0]) this.setState({ path: dirs[0] });
-      });
+    dialog.showOpenDialog({ properties: ['openDirectory'] }, (dirs) => {
+      if (dirs[0]) this.setState({ path: dirs[0] });
+    });
   }
 
   render() {
@@ -32,14 +30,10 @@ export default class Save extends Component {
 
     return (
       <div>
-        <BackButton/>
+        <BackButton />
         <div id="save-page">
           <div id="stored-path">
-            <TextInput
-              disabled
-              icon={<Icon>folder</Icon>}
-              value={path}
-            />
+            <TextInput disabled icon={<Icon>folder</Icon>} value={path} />
           </div>
 
           <div id="path-buttons">
@@ -47,8 +41,7 @@ export default class Save extends Component {
               className="red"
               node="button"
               waves="light"
-              onClick={() => saveState(state, path)}
-            >
+              onClick={() => saveState(state, path)}>
               Save state
             </Button>
 
@@ -56,17 +49,11 @@ export default class Save extends Component {
               className="red"
               node="button"
               waves="light"
-              onClick={() => loadState(changeState, path)}
-            >
+              onClick={() => loadState(changeState, path)}>
               Load state
             </Button>
 
-            <Button
-              className="red"
-              node="button"
-              waves="light"
-              onClick={() => this.setPath()}
-            >
+            <Button className="red" node="button" waves="light" onClick={() => this.setPath()}>
               Open
             </Button>
           </div>

@@ -41,11 +41,10 @@ export default class ReportFilter extends Component {
 
     return (
       <div>
-        <BackButton/>
+        <BackButton />
 
         <div className="employee-reports-filter">
-
-          <DateRangeSelector rangeOnChange={(x) => this.setState(x)}/>
+          <DateRangeSelector rangeOnChange={(x) => this.setState(x)} />
 
           <div className="employees-select">
             <Select
@@ -62,15 +61,14 @@ export default class ReportFilter extends Component {
           {this.dataSelected(this.state) ? (
             <div className="to-report-navigation">
               <div className="to-report-link">
-                <GranularReport selected={selected} endDate={endDate} startDate={startDate}/>
+                <GranularReport selected={selected} endDate={endDate} startDate={startDate} />
               </div>
               <div className="to-report-link">
-                <YearlyReport selected={selected} endDate={endDate} startDate={startDate}/>
+                <YearlyReport selected={selected} endDate={endDate} startDate={startDate} />
               </div>
             </div>
           ) : null}
         </div>
-
       </div>
     );
   }
@@ -88,11 +86,7 @@ class YearlyReport extends Component {
     const filter = serialize(selected, startDate, endDate);
     return (
       <Link to={`${routes.SPECIFIC_EMPLOYEES_YEARLY_REPORTS}${filter}`}>
-        <Button
-          className="red"
-          node="div"
-          waves="light"
-        >
+        <Button className="red" node="div" waves="light">
           Yearly
         </Button>
       </Link>
@@ -112,18 +106,13 @@ class GranularReport extends Component {
     const filter = serialize(selected, startDate, endDate);
     return (
       <Link to={`${routes.SPECIFIC_EMPLOYEES_REPORTS}${filter}`}>
-        <Button
-          className="red"
-          node="div"
-          waves="light"
-        >
+        <Button className="red" node="div" waves="light">
           Granular
         </Button>
       </Link>
     );
   }
 }
-
 
 const stateToFilter = (selected, startDate, endDate) => {
   return {
