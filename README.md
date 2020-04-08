@@ -1,4 +1,4 @@
-# Tiskarna Cadkova
+# Printing company management software
 Including:
 
 * [React Router](https://reacttraining.com/react-router/)
@@ -50,13 +50,6 @@ npm run pack:linux
 npm run test
 ```
 
-## Maintainers
-
-- [@jschr](https://github.com/jschr)
-- [@pronebird](https://github.com/pronebird)
-
-## Apps using this boilerplate
-
-- [Mullvad VPN app](https://github.com/mullvad/mullvadvpn-app)
-- [YouTube Downloader Electron](https://github.com/vanzylv/youtube-downloader-electron)
-- [Martian: A Websocket test tool](https://github.com/drex44/martian)
+## Licence
+This project is licensed on a case-by-case basis. 
+Parties interested in using printing management software must contact [author](https://lukas.forst.pw/).

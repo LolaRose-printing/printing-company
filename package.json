@@ -1,7 +1,7 @@
 {
-  "name": "tiskarna-cadkova",
+  "name": "company-management",
   "version": "0.0.0",
-  "description": "Tiskarna projekt.",
+  "description": "Management tool for Cadek company.",
   "main": "init.js",
   "author": {
     "name": "Lukas Forst",
