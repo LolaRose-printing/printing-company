@@ -8,7 +8,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [windows-latest]
+        os: [macos-latest, ubuntu-latest, windows-latest]
 
     steps:
       - name: Check out Git repository
@@ -16,19 +16,16 @@ jobs:
 
       - name: Install Node.js, NPM and Yarn
         uses: actions/setup-node@v1
+        with:
+          node-version: 10
 
-      - name: NPM install
-        run: |
-          npm install
+      - name: Build/release Electron app
+        uses: samuelmeuli/action-electron-builder@v1
+        with:
+          # GitHub token, automatically provided to the action
+          # (No need to define this secret in the repo settings)
+          github_token: ${{ secrets.github_token }}
 
-      - name:  Release
-        env:
-          GH_TOKEN: ${{ secrets.github_token }}
-        run: |
-          if [ "$RUNNER_OS" == "Linux" ]; then
-               npm run pack:linux
-          elif [ "$RUNNER_OS" == "Windows ]; then
-               npm run pack:win
-          else
-               npm run pack:mac
-          fi
+          # If the commit is tagged with a version (e.g. "v1.0.0"),
+          # release the app after building
+          release: ${{ startsWith(github.ref, 'refs/tags/v') }}
