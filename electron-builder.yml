@@ -1,6 +1,6 @@
-appId: pw.forst.tiskarna
+appId: pw.forst.company.management
 copyright: Lukas Forst
-productName: System pro tiskarnu
+productName: Company Management
 
 asar: true
 

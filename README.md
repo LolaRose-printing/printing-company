@@ -22,14 +22,6 @@ Development
 npm run develop
 ```
 
-## DevTools
-
-Toggle DevTools:
-
-* macOS: <kbd>Cmd</kbd> <kbd>Alt</kbd> <kbd>I</kbd> or <kbd>F12</kbd>
-* Linux: <kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>I</kbd> or <kbd>F12</kbd>
-* Windows: <kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>I</kbd> or <kbd>F12</kbd>
-
 ## Packaging
 
 Modify [electron-builder.yml](./electron-builder.yml) to edit package info.

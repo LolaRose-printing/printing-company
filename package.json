@@ -7,12 +7,10 @@
     "name": "Lukas Forst",
     "email": "lukas@forst.pw"
   },
-  "repository": "https://github.com/jschr/electron-react-redux-boilerplate",
-  "license": "MIT",
+  "repository": "https://github.com/LukasForst/printing-company",
   "dependencies": {
     "@babel/register": "^7.6.2",
     "@material-ui/core": "^4.9.9",
-    "chokidar": "^3.3.1",
     "connected-react-router": "^6.8.0",
     "electron-json-storage": "^4.1.8",
     "final-form": "^4.18.7",
@@ -43,6 +41,7 @@
     "babel-eslint": "^10.0.3",
     "browser-sync": "^2.26.7",
     "chai": "^4.1.0",
+    "chokidar": "^3.3.1",
     "electron": "^6.0.10",
     "electron-builder": "^21.2.0",
     "electron-devtools-installer": "^2.2.4",

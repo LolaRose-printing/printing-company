@@ -15,12 +15,21 @@ const syncHistoryWithStore = (store, history) => {
   }
 };
 
-const initialState = {
-  employees: loadEmployeeMap(),
-  workTypes: loadWorkTypes(),
-  clients: loadClients(),
-  orders: loadOrders(),
-};
+const isDevelopment = process.env.NODE_ENV === 'development';
+
+const initialState = isDevelopment ?
+  {
+    employees: loadEmployeeMap(),
+    workTypes: loadWorkTypes(),
+    clients: loadClients(),
+    orders: loadOrders(),
+  } :
+  {
+    employees: {},
+    workTypes: {},
+    clients: {},
+    orders: {},
+  };
 
 const routerHistory = createMemoryHistory();
 
