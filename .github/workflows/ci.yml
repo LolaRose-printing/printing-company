@@ -8,7 +8,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-latest]
+        os: [windows-latest]
 
     steps:
       - name: Check out Git repository
@@ -22,5 +22,20 @@ jobs:
       - name: NPM install
         run: npm install
 
-      - name: Release
+      - name: Release Mac
+        if: startsWith(matrix.os, 'macOS')
+        with:
+          GH_TOKEN: ${{ secrets.github_token }}
+        run: npm run pack:mac
+
+      - name: Release Linux
+        if: startsWith(matrix.os,'ubuntu')
+        with:
+          GH_TOKEN: ${{ secrets.github_token }}
         run: npm run pack:linux
+
+      - name: Release Windows
+        if: startsWith(matrix.os,'windows')
+        with:
+          GH_TOKEN: ${{ secrets.github_token }}
+        run: npm run pack:win
