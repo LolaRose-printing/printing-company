@@ -16,26 +16,28 @@ jobs:
 
       - name: Install Node.js, NPM and Yarn
         uses: actions/setup-node@v1
-        with:
-          node-version: 10
 
       - name: NPM install
-        run: npm install
+        run: |
+          npm install
 
       - name: Release Mac
-        if: startsWith(matrix.os, 'macOS')
+        if: startsWith(matrix.os, 'macos')
         with:
           GH_TOKEN: ${{ secrets.github_token }}
-        run: npm run pack:mac
+        run: |
+          npm run pack:mac
 
       - name: Release Linux
         if: startsWith(matrix.os,'ubuntu')
         with:
           GH_TOKEN: ${{ secrets.github_token }}
-        run: npm run pack:linux
+        run: |
+          npm run pack:linux
 
       - name: Release Windows
         if: startsWith(matrix.os,'windows')
         with:
           GH_TOKEN: ${{ secrets.github_token }}
-        run: npm run pack:win
+        run: |
+          npm run pack:win
