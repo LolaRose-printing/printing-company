@@ -59,6 +59,9 @@ export default class WorkAssignmentsList extends Component {
               </li>
             ))}
           </ul>
+          <div className="work-assignments-help">
+            {order.works.length === 0 ? <p>Přidejte nové práce pomocí tlačítka plus.</p> : <p/>}
+          </div>
         </div>
 
         <AddNewWorkAssignment

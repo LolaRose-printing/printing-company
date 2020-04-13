@@ -6,6 +6,7 @@ import actions from '../actions/orders';
 export default handleActions(
   {
     [actions.saveOrder]: (state, action) => {
+      console.log(action.payload.date)
       return saveToMap(copyMap(state), action.payload);
     },
     [actions.deleteOrder]: (state, action) => {

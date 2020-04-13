@@ -20,7 +20,7 @@ export default class AddNewOrder extends Component {
             <OrderDetail
               clients={clients}
               order={{
-                date: new Date(),
+                date: (new Date()).toISOString(),
                 clientId: 1,
                 works: [],
               }}

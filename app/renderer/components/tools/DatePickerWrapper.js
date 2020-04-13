@@ -20,7 +20,7 @@ export default class DatePickerWrapper extends Component {
 
   update = (date) => {
     this.setState({ date });
-    this.props.onChange(date.toLocaleString());
+    this.props.onChange(date.toISOString());
   };
 
   render() {

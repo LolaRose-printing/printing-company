@@ -54,6 +54,7 @@ app.on('ready', async () => {
 
   // show window once on first load
   mainWindow.webContents.once('did-finish-load', () => {
+    mainWindow.themeSource = 'light'
     mainWindow.show();
   });
 

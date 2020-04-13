@@ -37,7 +37,7 @@ export default class Home extends Component {
             </CollectionItem>
 
             <CollectionItem key="save">
-              <Link to={routes.SAVE_STATE}>Uložit ptáci</Link>
+              <Link to={routes.SAVE_STATE}>Uložit práci</Link>
             </CollectionItem>
           </Collection>
         </div>

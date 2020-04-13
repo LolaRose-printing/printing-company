@@ -63,7 +63,7 @@ export default class OrderDetail extends Component {
               <Field name="date">
                 {({ input }) => (
                   <DatePickerWrapper
-                    initDate={input.value}
+                    initDate={input.value || (new Date()).toISOString()}
                     onChange={(d) => {
                       input.onChange(d);
                     }}

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { loadState, saveState } from '../../utils/stateSaving';
 import PropTypes from 'prop-types';
 import BackButton from './BackButton';
-import { remote } from 'electron';
 import * as storage from 'electron-json-storage';
 import { Button, Icon, TextInput } from 'react-materialize';
 import 'materialize-css';
@@ -18,10 +17,11 @@ export default class Save extends Component {
   };
 
   setPath() {
-    const { dialog } = remote;
-    dialog.showOpenDialog({ properties: ['openDirectory'] }, (dirs) => {
-      if (dirs[0]) this.setState({ path: dirs[0] });
-    });
+    const { dialog } = require('electron').remote;
+    dialog.showOpenDialog({ properties: ['openDirectory'] })
+      .then((dirs) => {
+        if (dirs.filePaths[0]) this.setState({ path: dirs.filePaths[0] });
+      });
   }
 
   render() {
@@ -30,10 +30,10 @@ export default class Save extends Component {
 
     return (
       <div>
-        <BackButton />
+        <BackButton/>
         <div id="save-page">
           <div id="stored-path">
-            <TextInput disabled icon={<Icon>folder</Icon>} value={path} />
+            <TextInput disabled icon={<Icon>folder</Icon>} value={path}/>
           </div>
 
           <div id="path-buttons">
