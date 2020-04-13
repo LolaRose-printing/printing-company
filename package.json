@@ -7,7 +7,7 @@
     "name": "Lukas Forst",
     "email": "lukas@forst.pw"
   },
-  "license": "MIT",
+  "license": "See LICENCE",
   "repository": "https://github.com/LukasForst/printing-company",
   "dependencies": {
     "@babel/register": "^7.6.2",
