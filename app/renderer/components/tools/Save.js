@@ -42,7 +42,7 @@ export default class Save extends Component {
               node="button"
               waves="light"
               onClick={() => saveState(state, path)}>
-              Save state
+              Uložit data
             </Button>
 
             <Button
@@ -50,11 +50,11 @@ export default class Save extends Component {
               node="button"
               waves="light"
               onClick={() => loadState(changeState, path)}>
-              Load state
+              Nahrát data
             </Button>
 
             <Button className="red" node="button" waves="light" onClick={() => this.setPath()}>
-              Open
+              Vybrat složku
             </Button>
           </div>
         </div>

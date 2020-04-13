@@ -8,36 +8,36 @@ export default class Home extends Component {
   render() {
     return (
       <div className="container">
-        <h2>Home</h2>
+        <h2>Domov</h2>
 
         <div id="links">
           <Collection>
             <CollectionItem key="employees">
-              <Link to={routes.EMPLOYEES}>to Employees</Link>
+              <Link to={routes.EMPLOYEES}>Zaměstnanci</Link>
             </CollectionItem>
 
             <CollectionItem key="workTypes">
-              <Link to={routes.WORK_TYPES}>to Work Types</Link>
+              <Link to={routes.WORK_TYPES}>Typy práce</Link>
             </CollectionItem>
 
             <CollectionItem key="clients">
-              <Link to={routes.CLIENTS}>to Clients</Link>
+              <Link to={routes.CLIENTS}>Zákazníci</Link>
             </CollectionItem>
 
             <CollectionItem key="orders">
-              <Link to={routes.ORDERS}>Orders</Link>
+              <Link to={routes.ORDERS}>Objednávky</Link>
             </CollectionItem>
 
             <CollectionItem key="employee-reports">
-              <Link to={routes.EMPLOYEES_REPORTS}>Employee Reports</Link>
+              <Link to={routes.EMPLOYEES_REPORTS}>Přehled pracovníka</Link>
             </CollectionItem>
 
             <CollectionItem key="orders-reports">
-              <Link to={routes.ORDER_REPORTS}>Orders Reports</Link>
+              <Link to={routes.ORDER_REPORTS}>Vytvořit fakturu</Link>
             </CollectionItem>
 
             <CollectionItem key="save">
-              <Link to={routes.SAVE_STATE}>Save work</Link>
+              <Link to={routes.SAVE_STATE}>Uložit ptáci</Link>
             </CollectionItem>
           </Collection>
         </div>

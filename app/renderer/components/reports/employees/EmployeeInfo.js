@@ -17,9 +17,9 @@ export default class EmployeeInfo extends Component {
         </div>
         <div className="address">{employee.address}</div>
 
-        <div className="social-security">Social Security: {employee.socialSecurityNumber}</div>
+        <div className="social-security">Rodné číslo: {employee.socialSecurityNumber}</div>
 
-        <div className="identification-number">ICO: {employee.identificationNumber}</div>
+        <div className="identification-number">IČO: {employee.identificationNumber}</div>
       </div>
     );
   }

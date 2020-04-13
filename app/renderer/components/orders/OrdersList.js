@@ -46,7 +46,7 @@ export default class OrdersList extends Component {
           <TextInput
             icon={<Icon>search</Icon>}
             id="employees-search"
-            label="Search"
+            label="Hledej"
             onChange={(e) => {
               const searchValues = e.target.value.split(' ');
               this.setState((state) => ({

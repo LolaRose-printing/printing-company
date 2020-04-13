@@ -36,7 +36,7 @@ export default class ReportFilter extends Component {
     const { startDate, endDate, selected } = this.state;
 
     const employeesOptions = employees.map((emp) => {
-      return { value: emp.id, label: emp.name };
+      return { value: emp.id, label: `${emp.name} ${emp.surname}` };
     });
 
     return (
@@ -48,6 +48,7 @@ export default class ReportFilter extends Component {
 
           <div className="employees-select">
             <Select
+              placeholder="Vybrat zaměstnance"
               value={selected}
               onChange={(x) => this.setState({ selected: x || [] })}
               isMulti
@@ -87,7 +88,7 @@ class YearlyReport extends Component {
     return (
       <Link to={`${routes.SPECIFIC_EMPLOYEES_YEARLY_REPORTS}${filter}`}>
         <Button className="red" node="div" waves="light">
-          Yearly
+          Po měsících
         </Button>
       </Link>
     );
@@ -107,7 +108,7 @@ class GranularReport extends Component {
     return (
       <Link to={`${routes.SPECIFIC_EMPLOYEES_REPORTS}${filter}`}>
         <Button className="red" node="div" waves="light">
-          Granular
+          Po pracích
         </Button>
       </Link>
     );

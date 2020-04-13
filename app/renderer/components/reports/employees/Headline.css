@@ -12,7 +12,11 @@
 }
 
 .employee-report-headline > .cadek-address {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
+}
+
+.employee-report-headline > .cadek-ico {
+    font-size: 1.6rem;
 }
 
 .employee-report-headline > .report-dates {

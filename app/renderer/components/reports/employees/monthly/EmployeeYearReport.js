@@ -22,8 +22,8 @@ export default class EmployeeYearReport extends Component {
           <Table className="employee-monthly-table">
             <thead>
               <tr>
-                <th data-field="month">Month</th>
-                <th data-field="wage">Wage</th>
+                <th data-field="month">Měsíc</th>
+                <th data-field="wage">Mzda</th>
               </tr>
             </thead>
             <tbody>
@@ -34,7 +34,7 @@ export default class EmployeeYearReport extends Component {
                 </tr>
               ))}
               <tr className="employee-report-sum">
-                <td>Sum</td>
+                <td>Suma</td>
                 <td>{sum} Eur</td>
               </tr>
             </tbody>

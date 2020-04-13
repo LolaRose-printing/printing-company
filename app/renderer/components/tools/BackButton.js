@@ -32,9 +32,10 @@ class BackButton extends Component {
 
   render() {
     const { history } = this.props;
+    console.log(history)
     return (
       <div data-tid="backButton" className="no-print back-button">
-        {history.entries.length >= 1 ? this.homeButton() : this.backButton(history)}
+        {history.length <= 1 ? this.homeButton() : this.backButton(history)}
       </div>
     );
   }

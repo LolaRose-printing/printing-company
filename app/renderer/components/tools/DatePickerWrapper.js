@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import DatePicker from 'react-datepicker';
 import PropTypes from 'prop-types';
+import cs from 'date-fns/locale/cs';
+import {registerLocale, setDefaultLocale} from 'react-datepicker';
+
+registerLocale('cs', cs)
+setDefaultLocale('cs')
 
 export default class DatePickerWrapper extends Component {
   static propTypes = {

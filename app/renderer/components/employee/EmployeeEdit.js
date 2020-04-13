@@ -23,20 +23,36 @@ export default class EmployeeEdit extends Component {
           render={({ handleSubmit, form, submitting, pristine }) => (
             <form onSubmit={handleSubmit}>
               <div style={detail ? {} : { display: 'none' }}>
-                <label>Id</label>
-                <Field name="id" component="input" type="text" placeholder="Id" disabled />
+                <label>Číslo Zaměstnance</label>
+                <Field name="id" component="input" type="text" placeholder="Číslo Zaměstnance" disabled />
               </div>
               <div>
-                <label>First Name</label>
-                <Field name="name" component="input" type="text" placeholder="First Name" />
+                <label>Jméno</label>
+                <Field name="name" component="input" type="text" placeholder="Jméno" />
               </div>
               <div>
-                <label>Last Name</label>
-                <Field name="surname" component="input" type="text" placeholder="Last Name" />
+                <label>Příjmení</label>
+                <Field name="surname" component="input" type="text" placeholder="Příjmení" />
               </div>
               <div>
-                <label>Notes</label>
-                <Field name="notes" component="textarea" placeholder="Notes" />
+                <label>Rodné Číslo</label>
+                <Field name="socialSecurityNumber" component="input" type="text" placeholder="Rodné Číslo" />
+              </div>
+              <div>
+                <label>IČO</label>
+                <Field name="identificationNumber" component="input" type="text" placeholder="IČO" />
+              </div>
+              <div>
+                <label>Telefon</label>
+                <Field name="phone" component="input" type="text" placeholder="Telefon" />
+              </div>
+              <div>
+                <label>Adresa</label>
+                <Field name="address" component="textarea" placeholder="Adresa" />
+              </div>
+              <div>
+                <label>Poznámky</label>
+                <Field name="notes" component="textarea" placeholder="Poznámky" />
               </div>
 
               <div className="employee-edit-buttons">

@@ -32,12 +32,12 @@ export default class EmployeeReport extends Component {
         <Table>
           <thead>
             <tr>
-              <th data-field="order">Order</th>
-              <th data-field="motive">Motive</th>
-              <th data-field="date">Date</th>
-              <th data-field="workType">Work Type</th>
-              <th data-field="amount">Amount</th>
-              <th data-field="wage">Wage</th>
+              <th data-field="order">Objednávka</th>
+              <th data-field="motive">Motiv</th>
+              <th data-field="date">Datum</th>
+              <th data-field="workType">Typ práce</th>
+              <th data-field="amount">Množtví</th>
+              <th data-field="wage">Mzda</th>
             </tr>
           </thead>
           <tbody>

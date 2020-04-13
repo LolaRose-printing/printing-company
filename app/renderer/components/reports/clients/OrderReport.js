@@ -40,17 +40,17 @@ export default class OrderReport extends Component {
     const finalPrice = results.reduce((a, b) => a + b.price, 0);
     return (
       <div className="order-report">
-        <span className="order-name">Order: {order.name}</span>
+        <span className="order-name">Objednávka: {order.name}</span>
 
         <div className="report-data">
           <Table className="employee-monthly-table">
             <thead>
               <tr>
-                <th data-field="motive">Motive</th>
-                <th data-field="amount">Amount</th>
-                <th data-field="workType">Wage</th>
-                <th data-field="workTypePrice">Price per unit</th>
-                <th data-field="price">Sum Price</th>
+                <th data-field="motive">Motiv</th>
+                <th data-field="amount">Množství</th>
+                <th data-field="workType">Typ práce</th>
+                <th data-field="workTypePrice">Cena za kus</th>
+                <th data-field="price">Suma</th>
               </tr>
             </thead>
             <tbody>
@@ -64,7 +64,7 @@ export default class OrderReport extends Component {
                 </tr>
               ))}
               <tr className="employee-report-sum">
-                <td>Sum</td>
+                <td>Suma</td>
                 <td />
                 <td />
                 <td />

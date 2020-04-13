@@ -30,8 +30,8 @@ export default class OrderDetail extends Component {
         render={({ handleSubmit, form, submitting, pristine }) => (
           <form id="order-detail-form" onSubmit={handleSubmit}>
             <div>
-              <label>Name</label>
-              <Field name="name" component="input" type="text" placeholder="Order Name" />
+              <label>Název objednávky</label>
+              <Field name="name" component="input" type="text" placeholder="Název" />
             </div>
 
             <div>
@@ -39,7 +39,7 @@ export default class OrderDetail extends Component {
                 {({ input }) => (
                   <Select
                     value={`${input.value}`}
-                    label="Client"
+                    label="Zákazník"
                     onChange={(d) => {
                       input.onChange(d);
                     }}>
@@ -54,11 +54,12 @@ export default class OrderDetail extends Component {
             </div>
 
             <div>
-              <label>Notes</label>
-              <Field name="notes" component="textarea" placeholder="Notes" />
+              <label>Poznámky k objednávce</label>
+              <Field name="notes" component="textarea" placeholder="Poznámky" />
             </div>
 
             <div>
+              <label>Datum</label>
               <Field name="date">
                 {({ input }) => (
                   <DatePickerWrapper

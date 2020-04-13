@@ -22,25 +22,25 @@ export default class WorkTypeEdit extends Component {
           render={({ handleSubmit, form, submitting, pristine }) => (
             <form onSubmit={handleSubmit}>
               <div style={workType ? {} : { display: 'none' }}>
-                <label>Id</label>
-                <Field name="id" component="input" type="text" placeholder="Id" disabled />
+                <label>Číslo práce</label>
+                <Field name="id" component="input" type="text" placeholder="Číslo práce" disabled />
               </div>
               <div>
-                <label>Name</label>
-                <Field name="name" component="input" type="text" placeholder="Name" />
+                <label>Jméno práce</label>
+                <Field name="name" component="input" type="text" placeholder="Jméno práce" />
               </div>
               <div>
-                <label>Employee Wage</label>
+                <label>Mzda zaměstnance</label>
                 <Field
                   name="employeeWage"
                   component="input"
                   type="text"
-                  placeholder="Employee Wage"
+                  placeholder="Mzda zaměstnance"
                 />
               </div>
               <div>
-                <label>Price for customer</label>
-                <Field name="priceForCustomer" component="input" placeholder="Price for customer" />
+                <label>Cena pro zákazníka</label>
+                <Field name="priceForCustomer" component="input" placeholder="Cena pro zákazníka" />
               </div>
 
               <div className="employee-edit-buttons">

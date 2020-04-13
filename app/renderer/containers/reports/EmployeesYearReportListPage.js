@@ -47,7 +47,7 @@ function prepareMap(start, end, employeesIds) {
     let year = start.getFullYear();
 
     while (year < end.getFullYear() || (year === end.getFullYear() && month <= end.getMonth())) {
-      monthlyMap[`${year}-${month}`] = { month: `${year}-${month}`, wage: 0 };
+      monthlyMap[`${year}-${month}`] = { month: `${year}-${('0' + month).slice(-2)}`, wage: 0 };
 
       if (++month > 12) {
         month = 1;

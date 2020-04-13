@@ -22,16 +22,24 @@ export default class ClientEdit extends Component {
           render={({ handleSubmit, form, submitting, pristine }) => (
             <form onSubmit={handleSubmit}>
               <div style={client ? {} : { display: 'none' }}>
-                <label>Id</label>
-                <Field name="id" component="input" type="text" placeholder="Id" disabled />
+                <label>Číslo zákazníka</label>
+                <Field name="id" component="input" type="text" placeholder="Číslo zákazníka" disabled />
               </div>
               <div>
-                <label>Name</label>
-                <Field name="name" component="input" type="text" placeholder="Name" />
+                <label>Jméno</label>
+                <Field name="name" component="input" type="text" placeholder="Jméno" />
               </div>
               <div>
-                <label>Address</label>
-                <Field name="address" component="textarea" type="text" placeholder="Address" />
+                <label>Telefon</label>
+                <Field name="phone" component="input" type="text" placeholder="Telefon" />
+              </div>
+              <div>
+                <label>E-Mail</label>
+                <Field name="email" component="input" type="text" placeholder="E-Mail" />
+              </div>
+              <div>
+                <label>Adresa</label>
+                <Field name="address" component="textarea" type="text" placeholder="Adresa" />
               </div>
 
               <div className="employee-edit-buttons">

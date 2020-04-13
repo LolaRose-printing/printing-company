@@ -82,8 +82,9 @@ export default class ClientReportSelection extends Component {
 
           <div className="selection-container">
             <div className="data-selector">
-              <span className="selection-label">Client</span>
+              <span className="selection-label">Zákazníci</span>
               <Select
+                placeholder="Vyber zákazníky"
                 value={selectedClients}
                 onChange={(x) => this.setState({ selectedClients: x || [] })}
                 isMulti
@@ -94,8 +95,9 @@ export default class ClientReportSelection extends Component {
               />
             </div>
             <div className="data-selector">
-              <span className="selection-label">Orders</span>
+              <span className="selection-label">Objednávky</span>
               <Select
+                placeholder="Vyber objednávky"
                 value={selectedOrders}
                 onChange={(x) => this.setState({ selectedOrders: x || [] })}
                 isMulti
@@ -129,7 +131,7 @@ class RenderLink extends Component {
     return (
       <Link to={`${routes.SPECIFIC_ORDER_REPORTS}${filter}`}>
         <Button className="red" node="div" waves="light">
-          Generate Report
+          Vytvořit fakturu
         </Button>
       </Link>
     );

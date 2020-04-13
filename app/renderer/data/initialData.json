@@ -2,31 +2,37 @@
   "orders": [
     {
       "id": 1,
-      "name": "Order #1 for client 1",
+      "name": "0688",
       "clientId": 1,
       "date": "2020-04-01T11:21:48.713Z",
       "works": [
         {
-          "motive": "Motive 1",
+          "motive": "22-11228",
           "employeeId": 1,
           "workTypeId": 1,
           "amount": 2
         },
         {
-          "motive": "Motive 1",
+          "motive": "22-11228",
           "employeeId": 2,
           "workTypeId": 1,
           "amount": 4
         },
         {
-          "motive": "Motive 1",
+          "motive": "22-11228",
           "employeeId": 1,
           "workTypeId": 2,
           "amount": 2
         },
         {
-          "motive": "Motive 2",
+          "motive": "22-11235",
           "employeeId": 2,
+          "workTypeId": 1,
+          "amount": 12
+        },
+        {
+          "motive": "22-11235",
+          "employeeId": 3,
           "workTypeId": 1,
           "amount": 1
         }
@@ -34,30 +40,30 @@
     },
     {
       "id": 2,
-      "name": "Order #2 for client 2",
+      "name": "Obj. 2-2",
       "clientId": 2,
       "date": "2020-04-04T11:21:48.713Z",
       "works": [
         {
-          "motive": "Motive 1",
+          "motive": "Motiv 1",
           "employeeId": 1,
           "workTypeId": 1,
           "amount": 2
         },
         {
-          "motive": "Motive 1",
+          "motive": "Motiv 1",
           "employeeId": 1,
           "workTypeId": 1,
           "amount": 2
         },
         {
-          "motive": "Motive 2",
+          "motive": "Motiv 2",
           "employeeId": 1,
           "workTypeId": 2,
           "amount": 4
         },
         {
-          "motive": "Motive 2",
+          "motive": "Motiv 2",
           "employeeId": 2,
           "workTypeId": 1,
           "amount": 1
@@ -68,9 +74,9 @@
   "clients": [
     {
       "id": 1,
-      "name": "Client A",
+      "name": "Verlag Hanra GmbH",
       "email": "info@clientA.com",
-      "address": "CLietnsA address",
+      "address": "Breitenbach str. 6\n83538 Geredstriet",
       "phone": "151 222 333"
     },
     {
@@ -84,51 +90,51 @@
   "employees": [
     {
       "id": 1,
-      "name": "John",
-      "surname": "Doe",
-      "email": "john.doe@dd.com",
+      "name": "Pavel",
+      "surname": "Slanek",
+      "email": "pavel.slanek@dd.com",
       "phone": "151 222 333",
-      "address": "Mrakov 1234, 1345 01 Domazlice",
+      "address": "Mrákov 1234, 1345 01 Domažlice",
       "socialSecurityNumber": "123546/12358",
       "identificationNumber": "123456345345"
     },
     {
       "id": 2,
-      "name": "Herbert",
-      "surname": "Frank",
-      "email": "herbert.frank@gmail.com",
+      "name": "Šimon",
+      "surname": "Pacel",
+      "email": "simon.pacel@gmail.com",
       "phone": "101 222 335",
-      "address": "Tulumacov 1234, 1345 01 Jama",
+      "address": "Tlumačov 1234, 1345 01 Jama",
       "socialSecurityNumber": "0222/12358",
       "identificationNumber": "9832532"
     },
     {
       "id": 3,
       "name": "Alice",
-      "surname": "A",
+      "surname": "Novotná",
       "email": "alice.a@seznam.cz",
       "phone": "122 453 434",
-      "address": "Mrakov 1234, 1345 01 Domazlice",
+      "address": "Mrákov 1234, 1345 01 Domažlice",
       "socialSecurityNumber": "123546/12358",
       "identificationNumber": "123456345345"
     },
     {
       "id": 4,
       "name": "Bob",
-      "surname": "B",
+      "surname": "Balda",
       "email": "bobby.b@horde.cz",
       "phone": "09347 4098",
-      "address": "Mrakov 1234, 1345 01 Domazlice",
+      "address": "Nevolice 1234, 1345 01 Domazlice",
       "socialSecurityNumber": "123546/12358",
       "identificationNumber": "123456345345"
     },
     {
       "id": 5,
-      "name": "Bobby",
-      "surname": "Frank",
-      "email": "bobby@b.com",
+      "name": "Josef",
+      "surname": "Paral",
+      "email": "josef@b.com",
       "phone": "111 222 333",
-      "address": "Mrakov 1234, 1345 01 Domazlice",
+      "address": "Domažlice 1234, 1345 01 Domazlice",
       "socialSecurityNumber": "123546/12358",
       "identificationNumber": "123456345345"
     }
@@ -136,31 +142,31 @@
   "workTypes": [
     {
       "id": 1,
-      "name": "cutting",
+      "name": "FR",
       "employeeWage": 100,
       "priceForCustomer": 200
     },
     {
       "id": 2,
-      "name": "printing",
+      "name": "H1",
       "employeeWage": 50,
       "priceForCustomer": 10000
     },
     {
       "id": 3,
-      "name": "some stuff",
+      "name": "DR2B",
       "employeeWage": 500,
       "priceForCustomer": 500
     },
     {
       "id": 4,
-      "name": "yeeying",
+      "name": "K2C",
       "employeeWage": 2,
       "priceForCustomer": 400
     },
     {
       "id": 5,
-      "name": "not doing anything",
+      "name": "ZK4",
       "employeeWage": 0,
       "priceForCustomer": 20
     }

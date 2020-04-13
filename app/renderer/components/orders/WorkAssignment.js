@@ -17,7 +17,7 @@ export default class WorkAssignment extends Component {
     deleteAssignment: PropTypes.func.isRequired,
   };
 
-  selector = (value, data, label) => (
+  selector = (value, data, label, nameSelector) => (
     <Field name={value}>
       {({ input }) => (
         <Select
@@ -28,7 +28,7 @@ export default class WorkAssignment extends Component {
           }}>
           {Object.values(data).map((x) => (
             <option key={x.id} value={x.id} name={x.name}>
-              {x.name}
+              {nameSelector(x)}
             </option>
           ))}
         </Select>
@@ -82,28 +82,28 @@ export default class WorkAssignment extends Component {
         render={({ handleSubmit, form, submitting, pristine }) => (
           <form onSubmit={handleSubmit} className="work-assignment-container">
             <div className="work-assignment-cell">
-              {this.selector('employeeId', employees, 'Employee')}
+              {this.selector('employeeId', employees, 'Zaměstnanec', x => `${x.name} ${x.surname}`)}
             </div>
 
             <div className="work-assignment-cell autocomplete-cell">
-              {this.autoComplete('motive', [...motives.values()], 'Motive')}
+              {this.autoComplete('motive', [...motives.values()], 'Motiv')}
             </div>
 
             <div className="work-assignment-cell">
-              {this.selector('workTypeId', workTypes, 'Work Type')}
+              {this.selector('workTypeId', workTypes, 'Typ práce', x => x.name)}
             </div>
 
             <div className="work-assignment-cell">
-              <label>Amount</label>
-              <Field name="amount" component="input" placeholder="Amount" />
+              <label>Množství</label>
+              <Field name="amount" component="input" placeholder="Množství"/>
             </div>
 
             <div className="work-assignment-buttons">
-              <SubmitButton disabled={submitting || pristine} />
+              <SubmitButton disabled={submitting || pristine}/>
 
-              <ResetButton disabled={submitting || pristine} onClick={form.reset} />
+              <ResetButton disabled={submitting || pristine} onClick={form.reset}/>
 
-              <DeleteButton onClick={deleteAssignment} />
+              <DeleteButton onClick={deleteAssignment}/>
             </div>
           </form>
         )}
