@@ -4,6 +4,7 @@ import groupBy from '../../../utils/groupBy';
 
 import 'materialize-css';
 import { Table } from 'react-materialize';
+import format from '../../../utils/dateFormatter';
 
 export default class OrderReport extends Component {
   static propTypes = {
@@ -40,8 +41,7 @@ export default class OrderReport extends Component {
     const finalPrice = results.reduce((a, b) => a + b.price, 0);
     return (
       <div className="order-report">
-        <span className="order-name">Objednávka: {order.name}</span>
-
+        <span className="order-name">Objednávka: {order.name} - {format(new Date(order.date))}</span>
         <div className="report-data">
           <Table className="employee-monthly-table">
             <thead>

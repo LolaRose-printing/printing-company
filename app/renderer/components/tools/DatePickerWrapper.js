@@ -20,7 +20,7 @@ export default class DatePickerWrapper extends Component {
 
   update = (date) => {
     this.setState({ date });
-    this.props.onChange(date.toISOString());
+    this.props.onChange(date);
   };
 
   render() {
@@ -28,7 +28,7 @@ export default class DatePickerWrapper extends Component {
 
     return (
       <div>
-        <DatePicker onChange={this.update} selected={date} />
+        <DatePicker onChange={this.update} selected={date} dateFormat="dd/MM/yyyy" />
       </div>
     );
   }

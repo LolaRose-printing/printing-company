@@ -29,11 +29,11 @@ export default class DateRangeSelector extends Component {
       <div className="range-selector-bot">
         <div className="start">
           <span className="text">Od:</span>
-          <DatePicker label="StartDate" onChange={this.startChange} selected={startDate} />
+          <DatePicker label="StartDate" onChange={this.startChange} selected={startDate} dateFormat="dd/MM/yyyy"/>
         </div>
         <div className="end">
           <span className="text">Do:</span>
-          <DatePicker label="EndDate" onChange={this.endChange} selected={endDate} />
+          <DatePicker label="EndDate" onChange={this.endChange} selected={endDate} dateFormat="dd/MM/yyyy"/>
         </div>
       </div>
     );
