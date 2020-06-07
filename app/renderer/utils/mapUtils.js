@@ -12,7 +12,7 @@ export function saveToMap(copyMap, toSave) {
 
   if (!toSave.id) {
     object = { ...toSave };
-    object.id = Math.max(...Object.keys(copyMap)) + 1;
+    object.id = Math.max(...Object.keys(copyMap), 0) + 1;
   } else {
     object = toSave;
   }
