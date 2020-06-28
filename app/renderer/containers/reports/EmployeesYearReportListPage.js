@@ -1,6 +1,7 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import EmployeesYearReportList from '../../components/reports/employees/monthly/EmployeesYearReportList';
+import roundTwoDecimals from '../../utils/rounding';
 
 function mapStateToProps(state, ownProps) {
   if (!ownProps.match.params.filter) {
@@ -43,10 +44,10 @@ function prepareMap(start, end, employeesIds) {
   const employeeMonthlyWages = {};
   employeesIds.forEach((x) => {
     const monthlyMap = {};
-    let month = start.getMonth();
+    let month = start.getMonth() + 1;
     let year = start.getFullYear();
 
-    while (year < end.getFullYear() || (year === end.getFullYear() && month <= end.getMonth())) {
+    while (year < end.getFullYear() || (year === end.getFullYear() && month <= end.getMonth() + 1)) {
       monthlyMap[`${year}-${month}`] = { month: `${year}-${('0' + month).slice(-2)}`, wage: 0 };
 
       if (++month > 12) {
@@ -62,13 +63,13 @@ function prepareMap(start, end, employeesIds) {
 function fillWorkData(orders, employeesIds, workTypes, employeeMonthlyWages) {
   orders.forEach((order) => {
     const date = new Date(order.date);
-    const key = `${date.getFullYear()}-${date.getMonth()}`;
+    const key = `${date.getFullYear()}-${date.getMonth() + 1}`;
 
     order.works.forEach((work) => {
       if (!employeesIds.includes(work.employeeId)) return;
 
       const wage = workTypes[work.workTypeId].employeeWage;
-      employeeMonthlyWages[work.employeeId][key].wage += work.amount * wage;
+      employeeMonthlyWages[work.employeeId][key].wage += roundTwoDecimals(work.amount * wage);
     });
   });
 }

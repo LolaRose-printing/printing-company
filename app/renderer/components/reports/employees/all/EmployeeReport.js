@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import EmployeeInfo from '../EmployeeInfo';
 import { Table } from 'react-materialize';
+import roundTwoDecimals from '../../../../utils/rounding';
+import format from '../../../../utils/dateFormatter';
 
 export default class EmployeeReport extends Component {
   static propTypes = {
@@ -12,14 +14,12 @@ export default class EmployeeReport extends Component {
     workTypes: PropTypes.instanceOf(Object).isRequired,
   };
 
-  format = (date) => `${date.getDate()}. ${date.getMonth()}. ${date.getFullYear()}`;
-
   render() {
     const { employee, employeeData, orders, workTypes } = this.props;
 
     const sum = employeeData
       .flatMap((x) => x.works)
-      .map((work) => work.amount * workTypes[work.workTypeId].employeeWage)
+      .map((work) => roundTwoDecimals(work.amount * workTypes[work.workTypeId].employeeWage))
       .reduce((a, b) => a + b, 0);
 
     return (
@@ -49,10 +49,10 @@ export default class EmployeeReport extends Component {
                   <tr key={`order-${order.id}-emp-work-${idx}`}>
                     <td>{order.name}</td>
                     <td>{work.motive}</td>
-                    <td>{this.format(new Date(order.date))}</td>
+                    <td>{format(new Date(order.date))}</td>
                     <td>{workType.name}</td>
                     <td>{work.amount}</td>
-                    <td>{work.amount * workType.employeeWage} Eur</td>
+                    <td>{roundTwoDecimals(work.amount * workType.employeeWage)} Eur</td>
                   </tr>
                 );
               });

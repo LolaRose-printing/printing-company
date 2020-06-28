@@ -7,6 +7,10 @@ export default class EmployeeInfo extends Component {
     employee: PropTypes.any.isRequired,
   };
 
+  showIco = employee => (<div className="identification-number">IČO: {employee.identificationNumber}</div>);
+
+  showsocialSecurityNumber = employee => (<div className="social-security">Datum narození: {employee.socialSecurityNumber}</div>);
+
   render() {
     const { employee } = this.props;
 
@@ -17,9 +21,9 @@ export default class EmployeeInfo extends Component {
         </div>
         <div className="address">{employee.address}</div>
 
-        <div className="social-security">Rodné číslo: {employee.socialSecurityNumber}</div>
+        {employee.socialSecurityNumber ? this.showsocialSecurityNumber(employee) : {}}
+        {employee.identificationNumber ? this.showIco(employee) : {}}
 
-        <div className="identification-number">IČO: {employee.identificationNumber}</div>
       </div>
     );
   }

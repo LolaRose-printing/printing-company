@@ -35,8 +35,8 @@ export default class EmployeeEdit extends Component {
                 <Field name="surname" component="input" type="text" placeholder="Příjmení" />
               </div>
               <div>
-                <label>Rodné Číslo</label>
-                <Field name="socialSecurityNumber" component="input" type="text" placeholder="Rodné Číslo" />
+                <label>Datum narození</label>
+                <Field name="socialSecurityNumber" component="input" type="text" placeholder="Datum narození" />
               </div>
               <div>
                 <label>IČO</label>
