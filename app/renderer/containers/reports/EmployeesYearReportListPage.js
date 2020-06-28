@@ -69,7 +69,7 @@ function fillWorkData(orders, employeesIds, workTypes, employeeMonthlyWages) {
       if (!employeesIds.includes(work.employeeId)) return;
 
       const wage = workTypes[work.workTypeId].employeeWage;
-      employeeMonthlyWages[work.employeeId][key].wage += roundTwoDecimals(work.amount * wage);
+      employeeMonthlyWages[work.employeeId][key].wage += roundTwoDecimals((work.amount / 1000) * wage);
     });
   });
 }

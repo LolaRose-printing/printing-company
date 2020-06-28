@@ -4,10 +4,11 @@ import PropTypes from 'prop-types';
 import 'materialize-css';
 import { Collection, CollectionItem } from 'react-materialize';
 import ClientHeadline from './headlines/ClientHeadline';
+import roundTwoDecimals from '../../../utils/rounding';
 
 const geOrderPrice = (order, workTypes) =>
   order.works
-    .map((x) => workTypes[x.workTypeId].priceForCustomer * x.amount)
+    .map((x) => roundTwoDecimals(workTypes[x.workTypeId].priceForCustomer * (x.amount / 1000)))
     .reduce((a, b) => a + b, 0);
 
 const getPriceForMultipleOrders = (orders, workTypes) =>

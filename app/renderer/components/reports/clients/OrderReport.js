@@ -5,6 +5,7 @@ import groupBy from '../../../utils/groupBy';
 import 'materialize-css';
 import { Table } from 'react-materialize';
 import format from '../../../utils/dateFormatter';
+import roundTwoDecimals from '../../../utils/rounding';
 
 export default class OrderReport extends Component {
   static propTypes = {
@@ -27,7 +28,7 @@ export default class OrderReport extends Component {
           workType: workType.name,
           workTypePrice: workType.priceForCustomer,
           amount,
-          price: workType.priceForCustomer * amount,
+          price: roundTwoDecimals(workType.priceForCustomer * (amount / 1000)),
         };
       });
     });

@@ -30,17 +30,17 @@ export default class WorkTypeEdit extends Component {
                 <Field name="name" component="input" type="text" placeholder="Jméno práce" />
               </div>
               <div>
-                <label>Mzda zaměstnance</label>
+                <label>Mzda zaměstnance za 1000</label>
                 <Field
                   name="employeeWage"
                   component="input"
                   type="text"
-                  placeholder="Mzda zaměstnance"
+                  placeholder="Mzda zaměstnance za 1000"
                 />
               </div>
               <div>
-                <label>Cena pro zákazníka</label>
-                <Field name="priceForCustomer" component="input" placeholder="Cena pro zákazníka" />
+                <label>Cena pro zákazníka za 1000</label>
+                <Field name="priceForCustomer" component="input" placeholder="Cena pro zákazníka za 1000" />
               </div>
 
               <div className="employee-edit-buttons">

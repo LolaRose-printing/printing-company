@@ -19,7 +19,7 @@ export default class EmployeeReport extends Component {
 
     const sum = employeeData
       .flatMap((x) => x.works)
-      .map((work) => roundTwoDecimals(work.amount * workTypes[work.workTypeId].employeeWage))
+      .map((work) => roundTwoDecimals((work.amount / 1000) * workTypes[work.workTypeId].employeeWage))
       .reduce((a, b) => a + b, 0);
 
     return (
@@ -52,7 +52,7 @@ export default class EmployeeReport extends Component {
                     <td>{format(new Date(order.date))}</td>
                     <td>{workType.name}</td>
                     <td>{work.amount}</td>
-                    <td>{roundTwoDecimals(work.amount * workType.employeeWage)} Eur</td>
+                    <td>{roundTwoDecimals((work.amount / 1000) * workType.employeeWage)} Eur</td>
                   </tr>
                 );
               });
