@@ -67,6 +67,9 @@ export default class ReportFilter extends Component {
               <div className="to-report-link">
                 <YearlyReport selected={selected} endDate={endDate} startDate={startDate} />
               </div>
+              <div className="to-report-link">
+                <TaxCard selected={selected} endDate={endDate} startDate={startDate} />
+              </div>
             </div>
           ) : null}
         </div>
@@ -114,6 +117,29 @@ class GranularReport extends Component {
     );
   }
 }
+
+class TaxCard extends Component {
+  static propTypes = {
+    startDate: PropTypes.instanceOf(Date).isRequired,
+    endDate: PropTypes.instanceOf(Date).isRequired,
+    selected: PropTypes.array.isRequired,
+  };
+
+  shouldShow = selected => selected.length === 1
+
+  render() {
+    const { startDate, endDate, selected } = this.props;
+    const filter = serialize(selected, startDate, endDate);
+    return this.shouldShow(selected) ? (
+      <Link to={`${routes.SPECIFIC_EMPLOYEES_TAX_CARD}${filter}`}>
+        <Button className="red" node="div" waves="light">
+          Daňový doklad
+        </Button>
+      </Link>
+    ) : null;
+  }
+}
+
 
 const stateToFilter = (selected, startDate, endDate) => {
   return {

@@ -1,0 +1,19 @@
+.employee-tax-card {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+}
+
+.employee-tax-card > .report-data {
+    display: flex;
+    flex-flow: column;
+}
+
+.report-data > .employee-tax-card-table {
+    margin: auto;
+    min-width: 400px;
+}
+
+.employee-report-sum {
+    font-weight: bold;
+}
