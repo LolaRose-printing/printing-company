@@ -14,8 +14,8 @@ export default class Headline extends Component {
     return (
       <div className="employee-report-headline">
         <div className="cadek-name">Pavel Čadek</div>
-        <div className="cadek-address">Cihlářská 649, Domažlice</div>
-        <div className="cadek-ico">IČO CZ7102021773, DIČ 7102021773</div>
+        <div className="cadek-address">Cihlářská 649, 344 01 Domažlice</div>
+        <div className="cadek-ico">IČO 72218088, DIČ CZ7102021773</div>
         <div className="report-dates">
           Od: {format(startDate)} Do: {format(endDate)}
         </div>

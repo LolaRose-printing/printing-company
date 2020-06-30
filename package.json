@@ -1,6 +1,6 @@
 {
-  "name": "company-management",
-  "version": "1.0.0",
+  "name": "company-management2",
+  "version": "1.0.1",
   "description": "Management tool for Cadek company.",
   "main": "init.js",
   "author": {

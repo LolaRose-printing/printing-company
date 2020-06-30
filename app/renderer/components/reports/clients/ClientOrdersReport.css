@@ -17,6 +17,11 @@
 
 }
 
+.client-order-rechnung {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
 .client-info-box > .final-price {
     font-size: 1.2rem;
     font-weight: bold;

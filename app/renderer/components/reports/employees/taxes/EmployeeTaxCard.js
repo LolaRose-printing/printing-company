@@ -28,7 +28,7 @@ export default class EmployeeTaxCard extends Component {
         <div className="employee-tax-card-headline">
           <div className="employee-tax-card-cadek-headline">
             <div className="cadek-name">Pavel Čadek</div>
-            <div className="cadek-address">Cihlářská 649, Domažlice</div>
+            <div className="cadek-address">Cihlářská 649, 344 01 Domažlice</div>
             <div className="cadek-ico">IČO 72218088</div>
             <div className="cadek-ico">DIČ CZ7102021773</div>
           </div>
@@ -49,15 +49,16 @@ export default class EmployeeTaxCard extends Component {
             </div>
             <div>{employee.address}</div>
 
-            {employee.socialSecurityNumber ? this.showsocialSecurityNumber(employee) : {}}
-            {employee.identificationNumber ? this.showIco(employee) : {}}
+            {employee.socialSecurityNumber ? this.showsocialSecurityNumber(employee) : null}
+            {employee.identificationNumber ? this.showIco(employee) : null}
           </div>
-
-          <div className="reason">
-            Účel: <i>Balící činnost</i>
-          </div>
-          <div className="wage">
-            Celkem: <b>{roundTwoDecimals(wage, 2)} Eur</b>
+          <div>
+            <div className="reason">
+              Účel: <i>Balící činnost</i>
+            </div>
+            <div className="wage">
+              Celkem: <b>{roundTwoDecimals(wage)} Eur</b>
+            </div>
           </div>
         </div>
 

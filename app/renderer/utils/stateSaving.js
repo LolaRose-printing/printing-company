@@ -22,6 +22,7 @@ export function saveState(state, path = null) {
   const converted = convertState(state);
   initStorage(path);
   storage.set('rawAppData', converted);
+  alert("Uloženo!")
 }
 
 export function loadState(stateCallback, path = null) {

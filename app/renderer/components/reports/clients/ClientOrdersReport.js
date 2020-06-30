@@ -28,11 +28,12 @@ export default class ClientOrdersReport extends Component {
 
     return (
       <div className="clients-order-report">
+        <div className="client-order-rechnung">Rechnung</div>
         <div className="client-info-box">
           <div className="client-info-headline">
             <ClientHeadline client={client} />
           </div>
-          <div className="final-price">{clientPrice} Eur</div>
+          <div className="final-price">{roundTwoDecimals(clientPrice)} Eur</div>
         </div>
 
         <div className="clients-orders">

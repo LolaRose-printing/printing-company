@@ -1,6 +1,6 @@
-appId: pw.forst.company.management
+appId: pw.forst.company.management.v2
 copyright: Lukas Forst
-productName: CadekCompanyManagement
+productName: CadekCompanyManagementv2
 
 asar: true
 

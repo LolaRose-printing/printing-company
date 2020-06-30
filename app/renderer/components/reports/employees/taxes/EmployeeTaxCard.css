@@ -1,3 +1,7 @@
+.employee-tax-card {
+    font-size: 1.8rem;
+}
+
 .employee-tax-card-base {
     display: flex;
     flex-flow: column;
@@ -5,7 +9,7 @@
 }
 
 .employee-tax-card-base > .divider {
-    margin-top: 20px;
+    margin-top: 100px;
     margin-bottom: 20px;
 }
 
@@ -19,7 +23,7 @@
     flex-flow: column;
     justify-content: center;
 
-    min-width: 70%;
+    min-width: 90%;
 }
 
 .employee-tax-card-headline {
@@ -30,7 +34,7 @@
     justify-content: space-evenly;
     align-items: flex-start;
 
-    min-width: 80%;
+    min-width: 90%;
 
     margin-top: 20px;
     border-style: solid;

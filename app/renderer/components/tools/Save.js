@@ -41,7 +41,9 @@ export default class Save extends Component {
               className="red"
               node="button"
               waves="light"
-              onClick={() => saveState(state, path)}>
+              onClick={() => {
+                saveState(state, path)
+              }}>
               Uložit data
             </Button>
 

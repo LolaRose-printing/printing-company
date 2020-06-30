@@ -31,12 +31,12 @@ export default class EmployeeYearReport extends Component {
             {monthlyWage.map((wage, idx) => (
               <tr key={idx}>
                 <td>{wage.month}</td>
-                <td>{wage.wage} Eur</td>
+                <td>{roundTwoDecimals(wage.wage)} Eur</td>
               </tr>
             ))}
             <tr className="employee-report-sum">
               <td>Suma</td>
-              <td>{sum} Eur</td>
+              <td>{roundTwoDecimals(sum)} Eur</td>
             </tr>
             </tbody>
           </Table>

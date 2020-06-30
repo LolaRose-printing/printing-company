@@ -21,8 +21,8 @@ export default class EmployeeInfo extends Component {
         </div>
         <div className="address">{employee.address}</div>
 
-        {employee.socialSecurityNumber ? this.showsocialSecurityNumber(employee) : {}}
-        {employee.identificationNumber ? this.showIco(employee) : {}}
+        {employee.socialSecurityNumber ? this.showsocialSecurityNumber(employee) : null}
+        {employee.identificationNumber ? this.showIco(employee) : null}
 
       </div>
     );
