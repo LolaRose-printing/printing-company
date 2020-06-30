@@ -4,7 +4,8 @@ import 'materialize-css';
 import EmployeeInfo from '../EmployeeInfo';
 import BackButton from '../../../tools/BackButton';
 import PrintButton from '../../../tools/PrintButton';
-import Headline from '../Headline';
+import format from '../../../../utils/dateFormatter';
+import roundTwoDecimals from '../../../../utils/rounding';
 
 export default class EmployeeTaxCard extends Component {
   static propTypes = {
@@ -14,21 +15,76 @@ export default class EmployeeTaxCard extends Component {
     wage: PropTypes.number.isRequired,
   };
 
-  render() {
+  showIco = employee => (<div className="identification-number">IČO: {employee.identificationNumber}</div>);
+
+  showsocialSecurityNumber = employee => (<div className="social-security">Datum narození: {employee.socialSecurityNumber}</div>);
+
+
+  card = () => {
     const { startDate, endDate, employee, wage } = this.props;
 
     return (
-      <div id="employees-report-list">
+      <div className="employee-tax-card">
+        <div className="employee-tax-card-headline">
+          <div className="employee-tax-card-cadek-headline">
+            <div className="cadek-name">Pavel Čadek</div>
+            <div className="cadek-address">Cihlářská 649, Domažlice</div>
+            <div className="cadek-ico">IČO 72218088</div>
+            <div className="cadek-ico">DIČ CZ7102021773</div>
+          </div>
+
+          <div className="employee-tax-card-card-headline">
+            <div className="tax-head">Výdajový pokladní doklad</div>
+            Od:  {format(startDate)}<br/>
+            Do:  {format(endDate)}<br/>
+            Dne: {format(new Date())}<br/>
+          </div>
+
+        </div>
+
+        <div className="employee-tax-card-headline">
+          <div className="employee-tax-card-cadek-headline">
+            <div className="cadek-name">
+              {employee.name} {employee.surname}
+            </div>
+            <div>{employee.address}</div>
+
+            {employee.socialSecurityNumber ? this.showsocialSecurityNumber(employee) : {}}
+            {employee.identificationNumber ? this.showIco(employee) : {}}
+          </div>
+
+          <div className="reason">
+            Účel: <i>Balící činnost</i>
+          </div>
+          <div className="wage">
+            Celkem: <b>{roundTwoDecimals(wage, 2)} Eur</b>
+          </div>
+        </div>
+
+        <div className="employee-tax-card-bottom">
+          <div>Schválil(i):</div>
+          <div>Podpis příjemce:</div>
+          <div>Podpis pokladníka:</div>
+        </div>
+      </div>
+    );
+  };
+
+  render() {
+    return (
+      <div className="employee-tax-card-base">
         <BackButton/>
 
         <PrintButton/>
 
-        <Headline startDate={startDate} endDate={endDate}/>
+        <div className="employee-tax-card-box">
+          {this.card()}
+        </div>
 
-        <EmployeeInfo employee={employee}/>
+        <div className="divider"/>
 
-        <div>
-          TODO SOME INFO ABOUT WAGE {wage}
+        <div className="employee-tax-card-box">
+          {this.card()}
         </div>
       </div>
     );
