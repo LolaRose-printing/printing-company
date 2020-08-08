@@ -1,7 +1,6 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import EmployeesReportList from '../../components/reports/employees/all/EmployeesReportList';
-import { roundThousandsWorks } from '../../utils/rounding';
 import { computedWageToDisplayed, wageFunction } from '../../utils/wageComputation';
 
 function mapStateToProps(state, ownProps) {

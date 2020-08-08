@@ -18,11 +18,11 @@ export default class ClientsReportsList extends Component {
 
     return (
       <div id="clients-reports-div">
-        <BackButton />
+        <BackButton/>
 
-        <PrintButton />
+        <PrintButton/>
 
-        <CadekHeadline startDate={startDate} endDate={endDate} />
+        <CadekHeadline startDate={startDate} endDate={endDate}/>
 
         <ul>
           {clients

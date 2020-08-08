@@ -41,10 +41,10 @@ export default class ReportFilter extends Component {
 
     return (
       <div>
-        <BackButton />
+        <BackButton/>
 
         <div className="employee-reports-filter">
-          <DateRangeSelector rangeOnChange={(x) => this.setState(x)} />
+          <DateRangeSelector rangeOnChange={(x) => this.setState(x)}/>
 
           <div className="employees-select">
             <Select
@@ -62,13 +62,13 @@ export default class ReportFilter extends Component {
           {this.dataSelected(this.state) ? (
             <div className="to-report-navigation">
               <div className="to-report-link">
-                <GranularReport selected={selected} endDate={endDate} startDate={startDate} />
+                <GranularReport selected={selected} endDate={endDate} startDate={startDate}/>
               </div>
               <div className="to-report-link">
-                <YearlyReport selected={selected} endDate={endDate} startDate={startDate} />
+                <YearlyReport selected={selected} endDate={endDate} startDate={startDate}/>
               </div>
               <div className="to-report-link">
-                <TaxCard selected={selected} endDate={endDate} startDate={startDate} />
+                <TaxCard selected={selected} endDate={endDate} startDate={startDate}/>
               </div>
             </div>
           ) : null}
@@ -125,7 +125,7 @@ class TaxCard extends Component {
     selected: PropTypes.array.isRequired,
   };
 
-  shouldShow = selected => selected.length === 1
+  shouldShow = selected => selected.length === 1;
 
   render() {
     const { startDate, endDate, selected } = this.props;

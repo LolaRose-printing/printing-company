@@ -75,10 +75,10 @@ export default class ClientReportSelection extends Component {
 
     return (
       <div>
-        <BackButton />
+        <BackButton/>
 
         <div className="client-report-selection">
-          <DateRangeSelector rangeOnChange={(x) => this.setState(x)} />
+          <DateRangeSelector rangeOnChange={(x) => this.setState(x)}/>
 
           <div className="selection-container">
             <div className="data-selector">
@@ -110,7 +110,7 @@ export default class ClientReportSelection extends Component {
 
             <div className="link-to-detail">
               {this.dataSelected(this.state) ? (
-                <RenderLink filter={this.serialize(this.state)} />
+                <RenderLink filter={this.serialize(this.state)}/>
               ) : null}
             </div>
           </div>

@@ -7,7 +7,7 @@ export default class Headline extends Component {
     startDate: PropTypes.any.isRequired,
     endDate: PropTypes.any.isRequired,
   };
-  
+
   render() {
     const { startDate, endDate } = this.props;
 
