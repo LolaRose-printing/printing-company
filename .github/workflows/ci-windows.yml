@@ -1,0 +1,30 @@
+name: Build/release
+
+on: push
+
+jobs:
+  windows:
+    name: Release on Windows
+    runs-on: windows-latest
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v1
+
+      - name: Install Node.js, NPM and Yarn
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10
+
+      - name: Download dependencies
+        run: npm install
+
+      - name: Release Windows
+        env:
+          GH_TOKEN: ${{ secrets.github_token }}
+        run: npm run pack:win
+
+      - name: Windows Release Setup.exe
+        uses: actions/upload-artifact@v1
+        with:
+          name: CadekCompanyManagementv2.exe
+          path: dist/CadekCompanyManagementv2.exe
