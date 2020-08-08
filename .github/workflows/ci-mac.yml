@@ -1,0 +1,31 @@
+name: Build/release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  mac:
+    name: Release on Mac
+    runs-on: macos-latest
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v1
+
+      - name: Install Node.js, NPM and Yarn
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10
+
+      - name: Download dependencies
+        run: npm install
+
+      - name: Release Mac
+        env:
+          GH_TOKEN: ${{ secrets.github_token }}
+        run: npm run pack:mac
+
+      - name: Mac Release dmg
+        uses: actions/upload-artifact@v1
+        with:
+          name: CadekCompanyManagementv2.dmg
+          path: dist/CadekCompanyManagementv2.dmg
