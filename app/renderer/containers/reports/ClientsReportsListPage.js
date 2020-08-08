@@ -1,6 +1,8 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import ClientsReportsList from '../../components/reports/clients/ClientsReportsList';
+import groupBy from '../../utils/groupBy';
+import { computedWageToDisplayed, wageFunction } from '../../utils/wageComputation';
 
 function mapStateToProps(state, ownProps) {
   if (!ownProps.match.params.filter) {
@@ -9,7 +11,6 @@ function mapStateToProps(state, ownProps) {
       startDate: undefined,
       endDate: undefined,
       clients: [],
-      orders: [],
       workTypes: {},
     };
   }
@@ -19,22 +20,66 @@ function mapStateToProps(state, ownProps) {
   const start = new Date(startDate);
   const end = new Date(endDate);
 
-  const clients = Object.values(state.clients).filter((x) => clientIds.includes(x.id));
-
-  const orders = Object.values(state.orders).filter((o) => {
+  const filteredClients = Object.values(state.clients).filter((x) => clientIds.includes(x.id));
+  const filteredOrders = Object.values(state.orders).filter((o) => {
     const date = new Date(o.date);
     return (
       orderIds.includes(o.id) && clientIds.includes(o.clientId) && start <= date && date <= end
     );
   });
 
+  const clientsOrders = groupBy(filteredOrders, o => o.clientId);
+
+  const clients = filteredClients.map(client => {
+    const orders = mapOrders(clientsOrders[client.id], state.workTypes);
+    return {
+      ...client,
+      orders,
+      displayPrice: computedWageToDisplayed(orders.reduce((sum, o) => sum + o.computedPrice, 0)),
+    };
+  });
+
   return {
     startDate: start,
     endDate: end,
     clients,
-    orders,
     workTypes: state.workTypes,
   };
+}
+
+function mapOrders(clientOrders, workTypeMap) {
+  return clientOrders.map(order => {
+    const workRecords = mapWorkRecords(order.works, workTypeMap);
+    const computedPrice = workRecords.reduce((sum, w) => sum + w.computedPrice, 0);
+    return {
+      name: order.name,
+      date: new Date(order.date),
+      computedPrice,
+      displayPrice: computedWageToDisplayed(computedPrice),
+      workRecords,
+    };
+  });
+}
+
+function mapWorkRecords(works, workTypeMap) {
+  const groupedMotives = groupBy(works, (x) => x.motive);
+  // group them first by motives
+  return Object.keys(groupedMotives).flatMap((motive) => {
+    const motiveWorks = groupedMotives[motive];
+    const workTypesForMotive = groupBy(motiveWorks, (x) => x.workTypeId);
+    // then by work types
+    return Object.keys(workTypesForMotive).map((workTypeId) => {
+      const amount = workTypesForMotive[workTypeId].reduce((a, b) => a + b.amount, 0);
+      const price = wageFunction(amount, workTypeMap[workTypeId].priceForCustomer);
+      return {
+        motive,
+        amount,
+        workTypeId,
+        displayPrice: price.displayed,
+        computedPrice: price.computed,
+      };
+    });
+  });
 }
 
 function mapDispatchToProps(dispatch) {

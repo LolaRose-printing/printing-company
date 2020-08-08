@@ -4,7 +4,7 @@ import 'materialize-css';
 
 export default class EmployeeInfo extends Component {
   static propTypes = {
-    employee: PropTypes.any.isRequired,
+    employee: PropTypes.instanceOf(Object).isRequired,
   };
 
   showIco = employee => (<div className="identification-number">IČO: {employee.identificationNumber}</div>);

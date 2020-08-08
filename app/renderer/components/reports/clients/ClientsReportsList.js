@@ -10,14 +10,11 @@ export default class ClientsReportsList extends Component {
     startDate: PropTypes.any.isRequired,
     endDate: PropTypes.any.isRequired,
     clients: PropTypes.array.isRequired,
-    orders: PropTypes.array.isRequired,
     workTypes: PropTypes.instanceOf(Object).isRequired,
   };
 
   render() {
-    const { startDate, endDate, clients, orders, workTypes } = this.props;
-
-    const orderClients = new Set(orders.map((order) => order.clientId));
+    const { startDate, endDate, clients, workTypes } = this.props;
 
     return (
       <div id="clients-reports-div">
@@ -29,12 +26,10 @@ export default class ClientsReportsList extends Component {
 
         <ul>
           {clients
-            .filter((client) => orderClients.has(client.id))
             .map((client) => (
               <li key={`client-${client.id}-report`}>
                 <ClientOrdersReport
                   client={client}
-                  orders={orders.filter((x) => x.clientId === client.id)}
                   workTypes={workTypes}
                 />
               </li>

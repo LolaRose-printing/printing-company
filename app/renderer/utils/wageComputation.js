@@ -7,7 +7,7 @@ export function wageFunction(amount, wagePerThousands) {
 }
 
 export function computeWage(amount, wagePerThousands) {
-  return Math.floor((amount * wagePerThousands) / 10);
+  return Math.round((amount * wagePerThousands) / 10);
 }
 
 export function computedWageToDisplayed(computedWage) {
