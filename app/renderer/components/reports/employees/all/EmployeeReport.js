@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import EmployeeInfo from '../EmployeeInfo';
 import { Table } from 'react-materialize';
-import { roundThousandsWorks } from '../../../../utils/rounding';
 import format from '../../../../utils/dateFormatter';
 
 export default class EmployeeReport extends Component {
@@ -15,8 +14,7 @@ export default class EmployeeReport extends Component {
   };
 
   render() {
-    const { employee, employeeData,employeeWageSum, orders, workTypes } = this.props;
-
+    const { employee, employeeData, employeeWageSum, orders, workTypes } = this.props;
     return (
       <div className="employee-granular-report">
         <div className="employee-info">
@@ -47,7 +45,7 @@ export default class EmployeeReport extends Component {
                   <td>{format(new Date(order.date))}</td>
                   <td>{workType.name}</td>
                   <td>{work.amount}</td>
-                  <td>{roundThousandsWorks(work.amount * workType.employeeWage)} Eur</td>
+                  <td>{work.wageToDisplay} Eur</td>
                 </tr>
               );
             });

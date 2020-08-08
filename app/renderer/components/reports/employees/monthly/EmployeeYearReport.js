@@ -30,7 +30,7 @@ export default class EmployeeYearReport extends Component {
             {monthlyWage.map((wage, idx) => (
               <tr key={idx}>
                 <td>{wage.month}</td>
-                <td>{wage.wage} Eur</td>
+                <td>{wage.wageToDisplay} Eur</td>
               </tr>
             ))}
             <tr className="employee-report-sum">

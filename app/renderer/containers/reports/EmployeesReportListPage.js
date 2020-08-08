@@ -2,6 +2,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import EmployeesReportList from '../../components/reports/employees/all/EmployeesReportList';
 import { roundThousandsWorks } from '../../utils/rounding';
+import { computedWageToDisplayed, wageFunction } from '../../utils/wageComputation';
 
 function mapStateToProps(state, ownProps) {
   if (!ownProps.match.params.filter) {
@@ -28,21 +29,29 @@ function mapStateToProps(state, ownProps) {
   const employeeData = {};
   affectedEmployees.forEach((employee) => {
     employeeData[employee.id] = affectedOrders.map((order) => {
+      const works = order.works.filter((work) => work.employeeId === employee.id);
       return {
         orderId: order.id,
-        works: order.works.filter((work) => work.employeeId === employee.id),
+        works: works.map((work) => {
+          const wage = wageFunction(work.amount, state.workTypes[work.workTypeId].employeeWage);
+          return {
+            ...work,
+            wageComputed: wage.computed,
+            wageToDisplay: wage.displayed,
+          };
+        }),
       };
     });
   });
 
   const employeeWagesSums = {};
   Object.keys(employeeData).forEach(employeeId => {
-    const wageInThousands = employeeData[employeeId]
+    const computedWages = employeeData[employeeId]
       .flatMap((x) => x.works)
-      .map((work) => work.amount * state.workTypes[work.workTypeId].employeeWage)
+      .map((work) => work.wageComputed)
       .reduce((a, b) => a + b, 0);
 
-    employeeWagesSums[employeeId] = roundThousandsWorks(wageInThousands);
+    employeeWagesSums[employeeId] = computedWageToDisplayed(computedWages);
   });
 
   return {

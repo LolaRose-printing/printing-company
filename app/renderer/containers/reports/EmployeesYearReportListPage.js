@@ -1,7 +1,7 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import EmployeesYearReportList from '../../components/reports/employees/monthly/EmployeesYearReportList';
-import { roundThousandsWorks } from '../../utils/rounding';
+import { computedWageToDisplayed, computeWage } from '../../utils/wageComputation';
 
 function mapStateToProps(state, ownProps) {
   if (!ownProps.match.params.filter) {
@@ -50,7 +50,11 @@ function prepareMap(start, end, employeesIds) {
     let year = start.getFullYear();
 
     while (year < end.getFullYear() || (year === end.getFullYear() && month <= end.getMonth() + 1)) {
-      monthlyMap[`${year}-${month}`] = { month: `${year}-${('0' + month).slice(-2)}`, wage: 0 };
+      monthlyMap[`${year}-${month}`] = {
+        month: `${year}-${('0' + month).slice(-2)}`,
+        computedWage: 0,
+        wageToDisplay: 0,
+      };
 
       if (++month > 12) {
         month = 1;
@@ -67,11 +71,12 @@ function fillWorkDataAndGetSum(orders, employeesIds, workTypes, employeeMonthlyW
     const date = new Date(order.date);
     const key = `${date.getFullYear()}-${date.getMonth() + 1}`;
 
-    order.works.forEach((work) => {
-      if (!employeesIds.includes(work.employeeId)) return;
-      employeeMonthlyWages[work.employeeId][key].wage +=
-        work.amount * workTypes[work.workTypeId].employeeWage;
-    });
+    order.works
+      .filter((work) => employeesIds.includes(work.employeeId))
+      .forEach((work) => {
+        const obj = employeeMonthlyWages[work.employeeId][key];
+        obj.computedWage += computeWage(work.amount, workTypes[work.workTypeId].employeeWage);
+      });
   });
 
   const employeeWageSums = {};
@@ -79,11 +84,12 @@ function fillWorkDataAndGetSum(orders, employeesIds, workTypes, employeeMonthlyW
   Object.keys(employeeMonthlyWages).forEach(employee => {
     employeeWageSums[employee] = 0;
     Object.keys(employeeMonthlyWages[employee]).forEach(key => {
-      const wage = employeeMonthlyWages[employee][key].wage;
+      const wage = employeeMonthlyWages[employee][key].computedWage;
       employeeWageSums[employee] += wage;
-      employeeMonthlyWages[employee][key].wage = roundThousandsWorks(wage);
+      employeeMonthlyWages[employee][key].wageToDisplay = computedWageToDisplayed(wage);
     });
-    employeeWageSums[employee] = roundThousandsWorks(employeeWageSums[employee]);
+
+    employeeWageSums[employee] = computedWageToDisplayed(employeeWageSums[employee]);
   });
   return employeeWageSums;
 }

@@ -1,7 +1,7 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import roundTwoDecimals, { roundThousandsWorks } from '../../utils/rounding';
 import EmployeeTaxCard from '../../components/reports/employees/taxes/EmployeeTaxCard';
+import { computedWageToDisplayed, computeWage } from '../../utils/wageComputation';
 
 function mapStateToProps(state, ownProps) {
   if (!ownProps.match.params.filter) {
@@ -20,7 +20,7 @@ function mapStateToProps(state, ownProps) {
   const start = new Date(startDate);
   const end = new Date(endDate);
 
-  const wageInThousands = Object.values(state.orders)
+  const computedWage = Object.values(state.orders)
     .filter((o) => {
       const date = new Date(o.date);
       return start <= date && date <= end;
@@ -28,15 +28,15 @@ function mapStateToProps(state, ownProps) {
     .map((o) =>
       o.works
         .filter(w => w.employeeId === employeeId)
-        .map(w => w.amount * state.workTypes[w.workTypeId].employeeWage)
+        .map(w => computeWage(w.amount, state.workTypes[w.workTypeId].employeeWage))
         .reduce((a, b) => a + b, 0),
-    ).reduce((a, b) => a + b, 0)
+    ).reduce((a, b) => a + b, 0);
 
   return {
     startDate: start,
     endDate: end,
     employee: state.employees[employeeId],
-    wage: roundThousandsWorks(wageInThousands),
+    wage: computedWageToDisplayed(computedWage),
   };
 }
 
