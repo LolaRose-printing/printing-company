@@ -1,7 +1,7 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import EmployeesYearReportList from '../../components/reports/employees/monthly/EmployeesYearReportList';
-import roundTwoDecimals from '../../utils/rounding';
+import { roundThousandsWorks } from '../../utils/rounding';
 
 function mapStateToProps(state, ownProps) {
   if (!ownProps.match.params.filter) {
@@ -11,6 +11,7 @@ function mapStateToProps(state, ownProps) {
       endDate: undefined,
       employees: [],
       employeeMonthlyWages: {},
+      employeeWagesSums: {},
     };
   }
 
@@ -25,7 +26,7 @@ function mapStateToProps(state, ownProps) {
   });
 
   const employeeMonthlyWages = prepareMap(start, end, employeesIds);
-  fillWorkData(orders, employeesIds, state.workTypes, employeeMonthlyWages);
+  const employeeWagesSums = fillWorkDataAndGetSum(orders, employeesIds, state.workTypes, employeeMonthlyWages);
 
   Object.keys(employeeMonthlyWages).forEach((employee) => {
     const monthData = employeeMonthlyWages[employee];
@@ -37,6 +38,7 @@ function mapStateToProps(state, ownProps) {
     endDate: end,
     employees: Object.values(state.employees).filter((x) => employeesIds.includes(x.id)),
     employeeMonthlyWages,
+    employeeWagesSums,
   };
 }
 
@@ -60,18 +62,30 @@ function prepareMap(start, end, employeesIds) {
   return employeeMonthlyWages;
 }
 
-function fillWorkData(orders, employeesIds, workTypes, employeeMonthlyWages) {
+function fillWorkDataAndGetSum(orders, employeesIds, workTypes, employeeMonthlyWages) {
   orders.forEach((order) => {
     const date = new Date(order.date);
     const key = `${date.getFullYear()}-${date.getMonth() + 1}`;
 
     order.works.forEach((work) => {
       if (!employeesIds.includes(work.employeeId)) return;
-
-      const wage = workTypes[work.workTypeId].employeeWage;
-      employeeMonthlyWages[work.employeeId][key].wage += roundTwoDecimals((work.amount / 1000) * wage);
+      employeeMonthlyWages[work.employeeId][key].wage +=
+        work.amount * workTypes[work.workTypeId].employeeWage;
     });
   });
+
+  const employeeWageSums = {};
+  // take current values in thousands and round them
+  Object.keys(employeeMonthlyWages).forEach(employee => {
+    employeeWageSums[employee] = 0;
+    Object.keys(employeeMonthlyWages[employee]).forEach(key => {
+      const wage = employeeMonthlyWages[employee][key].wage;
+      employeeWageSums[employee] += wage;
+      employeeMonthlyWages[employee][key].wage = roundThousandsWorks(wage);
+    });
+    employeeWageSums[employee] = roundThousandsWorks(employeeWageSums[employee]);
+  });
+  return employeeWageSums;
 }
 
 function mapDispatchToProps(dispatch) {

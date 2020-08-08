@@ -17,10 +17,12 @@ export default class EmployeesReportList extends Component {
     workTypes: PropTypes.instanceOf(Object).isRequired,
     // employeeId to their orderId + works
     employeeData: PropTypes.instanceOf(Object).isRequired,
+    // employeeId to their sum per all works
+    employeeWagesSums: PropTypes.instanceOf(Object).isRequired
   };
 
   render() {
-    const { startDate, endDate, orders, employees, workTypes, employeeData } = this.props;
+    const { startDate, endDate, orders, employees, workTypes, employeeData, employeeWagesSums } = this.props;
 
     return (
       <div id="employees-report-list">
@@ -36,6 +38,7 @@ export default class EmployeesReportList extends Component {
               <EmployeeReport
                 employee={emp}
                 employeeData={employeeData[emp.id]}
+                employeeWageSum={employeeWagesSums[emp.id]}
                 orders={orders}
                 workTypes={workTypes}
               />

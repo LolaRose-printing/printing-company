@@ -1,6 +1,7 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import EmployeesReportList from '../../components/reports/employees/all/EmployeesReportList';
+import { roundThousandsWorks } from '../../utils/rounding';
 
 function mapStateToProps(state, ownProps) {
   if (!ownProps.match.params.filter) {
@@ -11,7 +12,8 @@ function mapStateToProps(state, ownProps) {
       orders: [],
       workTypes: [],
       employees: [],
-      works: [],
+      employeeData: {},
+      employeeWagesSums: {},
     };
   }
 
@@ -33,6 +35,16 @@ function mapStateToProps(state, ownProps) {
     });
   });
 
+  const employeeWagesSums = {};
+  Object.keys(employeeData).forEach(employeeId => {
+    const wageInThousands = employeeData[employeeId]
+      .flatMap((x) => x.works)
+      .map((work) => work.amount * state.workTypes[work.workTypeId].employeeWage)
+      .reduce((a, b) => a + b, 0);
+
+    employeeWagesSums[employeeId] = roundThousandsWorks(wageInThousands);
+  });
+
   return {
     startDate: start,
     endDate: end,
@@ -40,6 +52,7 @@ function mapStateToProps(state, ownProps) {
     workTypes: state.workTypes,
     employees: affectedEmployees,
     employeeData: employeeData,
+    employeeWagesSums,
   };
 }
 

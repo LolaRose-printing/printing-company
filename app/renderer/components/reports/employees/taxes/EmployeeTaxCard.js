@@ -1,23 +1,22 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import 'materialize-css';
-import EmployeeInfo from '../EmployeeInfo';
 import BackButton from '../../../tools/BackButton';
 import PrintButton from '../../../tools/PrintButton';
 import format from '../../../../utils/dateFormatter';
-import roundTwoDecimals from '../../../../utils/rounding';
 
 export default class EmployeeTaxCard extends Component {
   static propTypes = {
     startDate: PropTypes.any.isRequired,
     endDate: PropTypes.any.isRequired,
     employee: PropTypes.any.isRequired,
-    wage: PropTypes.number.isRequired,
+    wage: PropTypes.string.isRequired,
   };
 
   showIco = employee => (<div className="identification-number">IČO: {employee.identificationNumber}</div>);
 
-  showsocialSecurityNumber = employee => (<div className="social-security">Datum narození: {employee.socialSecurityNumber}</div>);
+  showsocialSecurityNumber = employee => (
+    <div className="social-security">Datum narození: {employee.socialSecurityNumber}</div>);
 
 
   card = () => {
@@ -35,8 +34,8 @@ export default class EmployeeTaxCard extends Component {
 
           <div className="employee-tax-card-card-headline">
             <div className="tax-head">Výdajový pokladní doklad</div>
-            Od:  {format(startDate)}<br/>
-            Do:  {format(endDate)}<br/>
+            Od: {format(startDate)}<br/>
+            Do: {format(endDate)}<br/>
             Dne: {format(new Date())}<br/>
           </div>
 
@@ -57,7 +56,7 @@ export default class EmployeeTaxCard extends Component {
               Účel: <i>Balící činnost</i>
             </div>
             <div className="wage">
-              Celkem: <b>{roundTwoDecimals(wage)} Eur</b>
+              Celkem: <b>{wage} Eur</b>
             </div>
           </div>
         </div>

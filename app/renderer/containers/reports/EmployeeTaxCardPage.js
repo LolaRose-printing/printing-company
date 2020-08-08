@@ -1,6 +1,6 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import roundTwoDecimals from '../../utils/rounding';
+import roundTwoDecimals, { roundThousandsWorks } from '../../utils/rounding';
 import EmployeeTaxCard from '../../components/reports/employees/taxes/EmployeeTaxCard';
 
 function mapStateToProps(state, ownProps) {
@@ -20,7 +20,7 @@ function mapStateToProps(state, ownProps) {
   const start = new Date(startDate);
   const end = new Date(endDate);
 
-  const wage = Object.values(state.orders)
+  const wageInThousands = Object.values(state.orders)
     .filter((o) => {
       const date = new Date(o.date);
       return start <= date && date <= end;
@@ -28,15 +28,15 @@ function mapStateToProps(state, ownProps) {
     .map((o) =>
       o.works
         .filter(w => w.employeeId === employeeId)
-        .map(w => roundTwoDecimals((w.amount / 1000) * state.workTypes[w.workTypeId].employeeWage))
+        .map(w => w.amount * state.workTypes[w.workTypeId].employeeWage)
         .reduce((a, b) => a + b, 0),
-    ).reduce((a, b) => a + b, 0);
+    ).reduce((a, b) => a + b, 0)
 
   return {
     startDate: start,
     endDate: end,
     employee: state.employees[employeeId],
-    wage,
+    wage: roundThousandsWorks(wageInThousands),
   };
 }
 

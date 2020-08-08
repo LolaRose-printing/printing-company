@@ -12,25 +12,28 @@ export default class EmployeesYearReportList extends Component {
     startDate: PropTypes.any.isRequired,
     endDate: PropTypes.any.isRequired,
     employees: PropTypes.array.isRequired,
-    // employeeId to their monthly wage
+    // employeeId to their formatted monthly wage
     employeeMonthlyWages: PropTypes.instanceOf(Object).isRequired,
+    // employeeId to formatted sum per all months
+    employeeWagesSums: PropTypes.instanceOf(Object).isRequired,
   };
 
   render() {
-    const { startDate, endDate, employees, employeeMonthlyWages } = this.props;
+    const { startDate, endDate, employees, employeeMonthlyWages, employeeWagesSums } = this.props;
 
     return (
       <div id="employees-report-list">
-        <BackButton />
+        <BackButton/>
 
-        <PrintButton />
+        <PrintButton/>
 
-        <Headline startDate={startDate} endDate={endDate} />
+        <Headline startDate={startDate} endDate={endDate}/>
 
         <Collection id="report-employees-list">
           {employees.map((emp, idx) => (
             <CollectionItem key={idx}>
-              <EmployeeYearReport employee={emp} monthlyWage={employeeMonthlyWages[emp.id]} />
+              <EmployeeYearReport employee={emp} monthlyWage={employeeMonthlyWages[emp.id]}
+                                  wageSum={employeeWagesSums[emp.id]}/>
             </CollectionItem>
           ))}
         </Collection>
