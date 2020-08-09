@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import BackButton from '../tools/BackButton';
 
 import 'materialize-css';
-import { Collection, CollectionItem, Icon, TextInput } from 'react-materialize';
+import { Button, Collection, CollectionItem, Icon, TextInput } from 'react-materialize';
 import AddNewOrder from './AddOrder';
 import format from '../../utils/dateFormatter';
 import midnightDay from '../../utils/Midnight';
@@ -37,10 +37,8 @@ export default class OrdersList extends Component {
   };
 
   formatOrderName = order => {
-    // TODO unlock this new feature when they need
-    // const motives = [...new Set(order.works.map(w => w.motive))].join(', ')
     return `${order.name} - ${format(midnightDay(order.date))}`;
-  }
+  };
 
   render() {
     const { orders, clients, save } = this.props;
@@ -67,10 +65,19 @@ export default class OrdersList extends Component {
         </div>
 
         <Collection id="orders-list">
-          {displayed.map((wt) => (
-            <CollectionItem key={wt.id}>
-              <Link to={routes.ORDER_DETAIL + JSON.stringify(wt.id)}>
-                {this.formatOrderName(wt)}
+          {displayed.map((order) => (
+            <CollectionItem key={order.id}>
+              <Link to={routes.ORDER_DETAIL + JSON.stringify(order.id)}>
+                <Button
+                  flat
+                  node="div"
+                  tooltip={[...new Set(order.works.map(w => w.motive))].join(', ')}
+                  tooltipOptions={{
+                    exitDelay: 0,
+                    position: 'bottom',
+                  }}>
+                  {this.formatOrderName(order)}
+                </Button>
               </Link>
             </CollectionItem>
           ))}
