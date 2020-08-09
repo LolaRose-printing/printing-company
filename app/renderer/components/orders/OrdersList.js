@@ -25,8 +25,7 @@ export default class OrdersList extends Component {
       const searchPattern = new RegExp(search.map((term) => `(?=.*${term})`).join(''), 'i');
 
       displayed = orders.filter(
-        (e) => e.name.startsWith(search.join(' '))
-          || e.name.match(searchPattern)
+        (e) => e.name.match(searchPattern)
           || e.works.filter(w => w.motive.match(searchPattern)).length,
       );
     } else {
