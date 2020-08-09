@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import BackButton from '../../tools/BackButton';
 import { Button } from 'react-materialize';
 import midnightDay from '../../../utils/Midnight';
+import format from '../../../utils/dateFormatter';
 
 export default class ClientReportSelection extends Component {
   static propTypes = {
@@ -70,7 +71,7 @@ export default class ClientReportSelection extends Component {
       })
       .flatMap((x) => {
         return x.clientOrders.map((order) => {
-          return { value: order.id, label: `${order.name} - ${x.clientName}` };
+          return { value: order.id, label: `${order.name} - ${format(x.date)}` };
         });
       });
 
