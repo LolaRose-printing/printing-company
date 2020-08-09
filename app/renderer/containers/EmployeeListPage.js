@@ -13,7 +13,11 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   const act = bindActionCreators(actions, dispatch);
   return {
-    saveEmployee: (data) => act.saveEmployee(data),
+    saveEmployee: (data) => {
+      if (!data.name) data.name = '';
+      if (!data.surname) data.surname = '';
+      act.saveEmployee(data);
+    },
     deleteEmployee: (data) => act.deleteEmployee(data),
   };
 }

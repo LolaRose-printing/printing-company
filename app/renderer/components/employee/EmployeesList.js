@@ -85,7 +85,10 @@ export default class EmployeesList extends Component {
                   close();
                 }}
                 deleteEmployee={undefined}
-                detail={undefined}
+                detail={{
+                  name: '',
+                  surname: '',
+                }}
               />
             )}
           />
