@@ -7,6 +7,7 @@ import BackButton from '../tools/BackButton';
 import 'materialize-css';
 import { Collection, CollectionItem, Icon, TextInput } from 'react-materialize';
 import AddNewOrder from './AddOrder';
+import format from '../../utils/dateFormatter';
 
 export default class OrdersList extends Component {
   static propTypes = {
@@ -34,6 +35,12 @@ export default class OrdersList extends Component {
     return displayed;
   };
 
+  formatOrderName = order => {
+    // TODO unlock this new feature when they need
+    // const motives = [...new Set(order.works.map(w => w.motive))].join(', ')
+    return `${order.name} - ${format(new Date(order.date))}`
+  }
+
   render() {
     const { orders, clients, save } = this.props;
     const { search } = this.state;
@@ -41,7 +48,7 @@ export default class OrdersList extends Component {
 
     return (
       <div id="order-list-container">
-        <BackButton />
+        <BackButton/>
 
         <div id="search-bar">
           <TextInput
@@ -61,12 +68,14 @@ export default class OrdersList extends Component {
         <Collection id="orders-list">
           {displayed.map((wt) => (
             <CollectionItem key={wt.id}>
-              <Link to={routes.ORDER_DETAIL + JSON.stringify(wt.id)}>{wt.name}</Link>
+              <Link to={routes.ORDER_DETAIL + JSON.stringify(wt.id)}>
+                {this.formatOrderName(wt)}
+              </Link>
             </CollectionItem>
           ))}
         </Collection>
 
-        <AddNewOrder clients={clients} save={save} />
+        <AddNewOrder clients={clients} save={save}/>
       </div>
     );
   }
