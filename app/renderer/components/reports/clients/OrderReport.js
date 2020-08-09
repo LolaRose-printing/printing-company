@@ -13,7 +13,7 @@ export default class OrderReport extends Component {
 
   render() {
     const { order, workTypes } = this.props;
-
+    const lastTdStyle = { textAlign: 'right' };
     return (
       <div className="order-report">
         <span className="order-name">Auftrag Nr.: {order.name} - {format(new Date(order.date))}</span>
@@ -25,7 +25,7 @@ export default class OrderReport extends Component {
               <th data-field="amount">Liefer Menge</th>
               <th data-field="workType">Operation</th>
               <th data-field="workTypePrice">Preis/1000</th>
-              <th data-field="price">Preis total</th>
+              <th data-field="price" style={lastTdStyle}>Preis total</th>
             </tr>
             </thead>
             <tbody>
@@ -37,7 +37,7 @@ export default class OrderReport extends Component {
                   <td>{record.amount}</td>
                   <td>{workType.name}</td>
                   <td>{workType.priceForCustomer}</td>
-                  <td>{record.displayPrice}</td>
+                  <td style={lastTdStyle}>{record.displayPrice} Eur</td>
                 </tr>
               );
             })}
@@ -46,7 +46,7 @@ export default class OrderReport extends Component {
               <td/>
               <td/>
               <td/>
-              <td>{order.displayPrice} Eur</td>
+              <td style={lastTdStyle}>{order.displayPrice} Eur</td>
             </tr>
             </tbody>
           </Table>
