@@ -5,16 +5,18 @@ import PropTypes from 'prop-types';
 
 export default class DeleteButton extends Component {
   static propTypes = {
+    disabled: PropTypes.bool,
     onClick: PropTypes.func.isRequired,
   };
 
   render() {
-    const { onClick } = this.props;
+    const { disabled, onClick } = this.props;
 
     return (
       <Button
         className="red context-button"
         floating
+        disabled={disabled || false}
         icon={<Icon>delete</Icon>}
         small
         node="button"

@@ -81,7 +81,9 @@ export default class AddNewWorkAssignment extends Component {
               addWorkRecord(x);
               this.closeModal();
             }}
-            deleteAssignment={() => {}}
+            deleteAssignment={() => {
+            }}
+            addingNew={true}
           />
         </Modal>
       </div>

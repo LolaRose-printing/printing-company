@@ -15,6 +15,7 @@ export default class WorkAssignment extends Component {
     work: PropTypes.any.isRequired,
     onChange: PropTypes.func.isRequired,
     deleteAssignment: PropTypes.func.isRequired,
+    addingNew: PropTypes.bool,
   };
 
   selector = (value, data, label, nameSelector) => (
@@ -73,7 +74,7 @@ export default class WorkAssignment extends Component {
   };
 
   render() {
-    const { employees, motives, workTypes, work, onChange, deleteAssignment } = this.props;
+    const { employees, motives, workTypes, work, onChange, deleteAssignment, addingNew } = this.props;
 
     return (
       <Form
@@ -100,10 +101,8 @@ export default class WorkAssignment extends Component {
 
             <div className="work-assignment-buttons">
               <SubmitButton disabled={submitting || pristine}/>
-
               <ResetButton disabled={submitting || pristine} onClick={form.reset}/>
-
-              <DeleteButton onClick={deleteAssignment}/>
+              <DeleteButton disabled={addingNew || false} onClick={deleteAssignment}/>
             </div>
           </form>
         )}
