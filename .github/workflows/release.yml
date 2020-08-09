@@ -6,8 +6,8 @@ on:
 
 jobs:
   deploy:
-    name: Build and app
-    runs-on: ubuntu-latest
+    name: Tagged release on Windows
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
 
