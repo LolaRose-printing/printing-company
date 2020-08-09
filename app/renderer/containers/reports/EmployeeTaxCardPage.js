@@ -2,6 +2,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import EmployeeTaxCard from '../../components/reports/employees/taxes/EmployeeTaxCard';
 import { computedWageToDisplayed, computeWage } from '../../utils/wageComputation';
+import midnightDay from '../../utils/Midnight';
 
 function mapStateToProps(state, ownProps) {
   if (!ownProps.match.params.filter) {
@@ -17,12 +18,12 @@ function mapStateToProps(state, ownProps) {
   const { employeesIds, startDate, endDate } = JSON.parse(ownProps.match.params.filter);
   const employeeId = employeesIds[0];
 
-  const start = new Date(startDate);
-  const end = new Date(endDate);
+  const start = midnightDay(startDate);
+  const end = midnightDay(endDate);
 
   const computedWage = Object.values(state.orders)
     .filter((o) => {
-      const date = new Date(o.date);
+      const date = midnightDay(o.date);
       return start <= date && date <= end;
     })
     .map((o) =>

@@ -7,6 +7,7 @@ import DateRangeSelector from '../../tools/DateRangeSelector';
 import PropTypes from 'prop-types';
 import BackButton from '../../tools/BackButton';
 import { Button } from 'react-materialize';
+import midnightDay from '../../../utils/Midnight';
 
 export default class ClientReportSelection extends Component {
   static propTypes = {
@@ -26,8 +27,8 @@ export default class ClientReportSelection extends Component {
     return {
       orderIds: selectedOrders.map((x) => x.value),
       clientIds: selectedClients.map((x) => x.value),
-      startDate: new Date(startDate),
-      endDate: new Date(endDate),
+      startDate: midnightDay(startDate),
+      endDate: midnightDay(endDate),
     };
   };
 
@@ -48,8 +49,8 @@ export default class ClientReportSelection extends Component {
 
   rangeFilter = (dateStr) => {
     const { startDate, endDate } = this.state;
-    const date = new Date(dateStr);
-    return new Date(startDate) <= date && date <= new Date(endDate);
+    const date = midnightDay(dateStr);
+    return midnightDay(startDate) <= date && date <= midnightDay(endDate);
   };
 
   render() {

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import 'materialize-css';
 import OrderDetail from './OrderDetail';
 import AddFromModal from '../tools/AddFromModal';
+import midnightDay from '../../utils/Midnight';
 
 export default class AddNewOrder extends Component {
   static propTypes = {
@@ -20,7 +21,7 @@ export default class AddNewOrder extends Component {
             <OrderDetail
               clients={clients}
               order={{
-                date: (new Date()).toISOString(),
+                date: midnightDay(new Date()),
                 clientId: 1,
                 works: [],
               }}

@@ -4,6 +4,7 @@ import 'materialize-css';
 import BackButton from '../../../tools/BackButton';
 import PrintButton from '../../../tools/PrintButton';
 import format from '../../../../utils/dateFormatter';
+import midnightDay from '../../../../utils/Midnight';
 
 export default class EmployeeTaxCard extends Component {
   static propTypes = {
@@ -36,7 +37,7 @@ export default class EmployeeTaxCard extends Component {
             <div className="tax-head">Výdajový pokladní doklad</div>
             Od: {format(startDate)}<br/>
             Do: {format(endDate)}<br/>
-            Dne: {format(new Date())}<br/>
+            Dne: {format(midnightDay(new Date()))}<br/>
           </div>
 
         </div>

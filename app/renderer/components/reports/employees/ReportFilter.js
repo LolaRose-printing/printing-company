@@ -6,6 +6,7 @@ import BackButton from '../../tools/BackButton';
 import DateRangeSelector from '../../tools/DateRangeSelector';
 import routes from '../../../data/routes';
 import { Button } from 'react-materialize';
+import midnightDay from '../../../utils/Midnight';
 
 export default class ReportFilter extends Component {
   static propTypes = {
@@ -21,8 +22,8 @@ export default class ReportFilter extends Component {
   stateToFilter = (selected, startDate, endDate) => {
     return {
       employeesIds: selected.map((x) => x.value),
-      startDate: new Date(startDate),
-      endDate: new Date(endDate),
+      startDate: midnightDay(startDate),
+      endDate: midnightDay(endDate),
     };
   };
 
@@ -144,8 +145,8 @@ class TaxCard extends Component {
 const stateToFilter = (selected, startDate, endDate) => {
   return {
     employeesIds: selected.map((x) => x.value),
-    startDate: new Date(startDate),
-    endDate: new Date(endDate),
+    startDate: midnightDay(startDate),
+    endDate: midnightDay(endDate),
   };
 };
 

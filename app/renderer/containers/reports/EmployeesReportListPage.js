@@ -2,6 +2,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import EmployeesReportList from '../../components/reports/employees/all/EmployeesReportList';
 import { computedWageToDisplayed, wageFunction } from '../../utils/wageComputation';
+import midnightDay from '../../utils/Midnight';
 
 function mapStateToProps(state, ownProps) {
   if (!ownProps.match.params.filter) {
@@ -19,8 +20,8 @@ function mapStateToProps(state, ownProps) {
 
   const { employeesIds, startDate, endDate } = JSON.parse(ownProps.match.params.filter);
 
-  const start = new Date(startDate);
-  const end = new Date(endDate);
+  const start = midnightDay(startDate);
+  const end = midnightDay(endDate);
 
   const affectedOrders = getAffectedOrders(state.orders, start, end);
   const affectedEmployees = getAffectedEmployees(state.employees, employeesIds);
@@ -66,7 +67,7 @@ function mapStateToProps(state, ownProps) {
 
 const getAffectedOrders = (orders, startDate, endDate) =>
   Object.values(orders).filter((v) => {
-    const date = new Date(v.date);
+    const date = midnightDay(v.date);
     return startDate <= date && date <= endDate;
   });
 

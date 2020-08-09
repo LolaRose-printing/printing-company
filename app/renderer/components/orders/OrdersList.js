@@ -8,6 +8,7 @@ import 'materialize-css';
 import { Collection, CollectionItem, Icon, TextInput } from 'react-materialize';
 import AddNewOrder from './AddOrder';
 import format from '../../utils/dateFormatter';
+import midnightDay from '../../utils/Midnight';
 
 export default class OrdersList extends Component {
   static propTypes = {
@@ -38,7 +39,7 @@ export default class OrdersList extends Component {
   formatOrderName = order => {
     // TODO unlock this new feature when they need
     // const motives = [...new Set(order.works.map(w => w.motive))].join(', ')
-    return `${order.name} - ${format(new Date(order.date))}`
+    return `${order.name} - ${format(midnightDay(order.date))}`;
   }
 
   render() {

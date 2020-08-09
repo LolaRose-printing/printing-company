@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import 'materialize-css';
 import { Table } from 'react-materialize';
 import format from '../../../utils/dateFormatter';
+import midnightDay from '../../../utils/Midnight';
 
 export default class OrderReport extends Component {
   static propTypes = {
@@ -16,7 +17,7 @@ export default class OrderReport extends Component {
     const lastTdStyle = { textAlign: 'right' };
     return (
       <div className="order-report">
-        <span className="order-name">Auftrag Nr.: {order.name} - {format(new Date(order.date))}</span>
+        <span className="order-name">Auftrag Nr.: {order.name} - {format(midnightDay(order.date))}</span>
         <div className="report-data">
           <Table className="employee-monthly-table">
             <thead>

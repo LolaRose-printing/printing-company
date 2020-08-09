@@ -6,6 +6,7 @@ import 'materialize-css';
 import { Select } from 'react-materialize';
 import SubmitButton from '../tools/SubmitButton';
 import ResetButton from '../tools/ResetButton';
+import midnightDay from '../../utils/Midnight';
 
 export default class OrderDetail extends Component {
   static propTypes = {
@@ -63,7 +64,7 @@ export default class OrderDetail extends Component {
               <Field name="date">
                 {({ input }) => (
                   <DatePickerWrapper
-                    initDate={input.value || new Date()}
+                    initDate={input.value || midnightDay(new Date())}
                     onChange={(d) => {
                       input.onChange(d);
                     }}

@@ -1,26 +1,29 @@
 import React, { Component } from 'react';
-import DatePicker from 'react-datepicker';
+import DatePicker, { registerLocale, setDefaultLocale } from 'react-datepicker';
 import PropTypes from 'prop-types';
 import cs from 'date-fns/locale/cs';
-import {registerLocale, setDefaultLocale} from 'react-datepicker';
+import midnightDay from '../../utils/Midnight';
 
-registerLocale('cs', cs)
-setDefaultLocale('cs')
+registerLocale('cs', cs);
+setDefaultLocale('cs');
 
 export default class DatePickerWrapper extends Component {
   static propTypes = {
+    // either Date or date formatted to string
     initDate: PropTypes.any.isRequired,
     onChange: PropTypes.func.isRequired,
   };
 
   constructor(props) {
     super(props);
-    this.state = { date: new Date(this.props.initDate) };
+    const date = props.initDate ? props.initDate : new Date();
+    this.state = { date: midnightDay(date) };
   }
 
   update = (date) => {
-    this.setState({ date });
-    this.props.onChange(date);
+    const normalized = midnightDay(date);
+    this.setState({ date: normalized });
+    this.props.onChange(normalized);
   };
 
   render() {
@@ -28,7 +31,7 @@ export default class DatePickerWrapper extends Component {
 
     return (
       <div>
-        <DatePicker onChange={this.update} selected={date} dateFormat="dd/MM/yyyy" />
+        <DatePicker onChange={this.update} selected={date} dateFormat="dd/MM/yyyy"/>
       </div>
     );
   }

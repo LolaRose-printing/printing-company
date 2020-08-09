@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import ClientsReportsList from '../../components/reports/clients/ClientsReportsList';
 import groupBy from '../../utils/groupBy';
 import { computedWageToDisplayed, wageFunction } from '../../utils/wageComputation';
+import midnightDay from '../../utils/Midnight';
 
 function mapStateToProps(state, ownProps) {
   if (!ownProps.match.params.filter) {
@@ -17,12 +18,12 @@ function mapStateToProps(state, ownProps) {
 
   const { orderIds, clientIds, startDate, endDate } = JSON.parse(ownProps.match.params.filter);
 
-  const start = new Date(startDate);
-  const end = new Date(endDate);
+  const start = midnightDay(startDate);
+  const end = midnightDay(endDate);
 
   const filteredClients = Object.values(state.clients).filter((x) => clientIds.includes(x.id));
   const filteredOrders = Object.values(state.orders).filter((o) => {
-    const date = new Date(o.date);
+    const date = midnightDay(o.date);
     return (
       orderIds.includes(o.id) && clientIds.includes(o.clientId) && start <= date && date <= end
     );
@@ -53,7 +54,7 @@ function mapOrders(clientOrders, workTypeMap) {
     const computedPrice = workRecords.reduce((sum, w) => sum + w.computedPrice, 0);
     return {
       name: order.name,
-      date: new Date(order.date),
+      date: midnightDay(order.date),
       computedPrice,
       displayPrice: computedWageToDisplayed(computedPrice),
       workRecords,

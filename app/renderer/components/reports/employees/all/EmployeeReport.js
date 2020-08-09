@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import EmployeeInfo from '../EmployeeInfo';
 import { Table } from 'react-materialize';
 import format from '../../../../utils/dateFormatter';
+import midnightDay from '../../../../utils/Midnight';
 
 export default class EmployeeReport extends Component {
   static propTypes = {
@@ -42,7 +43,7 @@ export default class EmployeeReport extends Component {
                 <tr key={`order-${order.id}-emp-work-${idx}`}>
                   <td>{order.name}</td>
                   <td>{work.motive}</td>
-                  <td>{format(new Date(order.date))}</td>
+                  <td>{format(midnightDay(order.date))}</td>
                   <td>{workType.name}</td>
                   <td>{work.amount}</td>
                   <td>{work.wageToDisplay} Eur</td>

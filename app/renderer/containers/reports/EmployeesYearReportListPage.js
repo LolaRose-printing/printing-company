@@ -2,6 +2,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import EmployeesYearReportList from '../../components/reports/employees/monthly/EmployeesYearReportList';
 import { computedWageToDisplayed, computeWage } from '../../utils/wageComputation';
+import midnightDay from '../../utils/Midnight';
 
 function mapStateToProps(state, ownProps) {
   if (!ownProps.match.params.filter) {
@@ -17,11 +18,11 @@ function mapStateToProps(state, ownProps) {
 
   const { employeesIds, startDate, endDate } = JSON.parse(ownProps.match.params.filter);
 
-  const start = new Date(startDate);
-  const end = new Date(endDate);
+  const start = midnightDay(startDate);
+  const end = midnightDay(endDate);
 
   const orders = Object.values(state.orders).filter((o) => {
-    const date = new Date(o.date);
+    const date = midnightDay(o.date);
     return start <= date && date <= end;
   });
 
@@ -68,7 +69,7 @@ function prepareMap(start, end, employeesIds) {
 
 function fillWorkDataAndGetSum(orders, employeesIds, workTypes, employeeMonthlyWages) {
   orders.forEach((order) => {
-    const date = new Date(order.date);
+    const date = midnightDay(order.date);
     const key = `${date.getFullYear()}-${date.getMonth() + 1}`;
 
     order.works

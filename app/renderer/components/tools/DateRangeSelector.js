@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import DatePicker from 'react-datepicker';
 import PropTypes from 'prop-types';
+import midnightDay from '../../utils/Midnight';
 
 export default class DateRangeSelector extends Component {
   static propTypes = {
@@ -18,9 +19,9 @@ export default class DateRangeSelector extends Component {
     rangeOnChange({ startDate, endDate });
   };
 
-  startChange = (startDate) => this.setState({ startDate }, this.onChange);
+  startChange = (startDate) => this.setState({ startDate: midnightDay(startDate) }, this.onChange);
 
-  endChange = (endDate) => this.setState({ endDate }, this.onChange);
+  endChange = (endDate) => this.setState({ endDate: midnightDay(endDate) }, this.onChange);
 
   render() {
     const { startDate, endDate } = this.state;
