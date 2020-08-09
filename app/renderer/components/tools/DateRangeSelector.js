@@ -6,12 +6,23 @@ import midnightDay from '../../utils/Midnight';
 export default class DateRangeSelector extends Component {
   static propTypes = {
     rangeOnChange: PropTypes.func.isRequired,
+    startDate: PropTypes.oneOf([String, Date]),
+    endDate: PropTypes.oneOf([String, Date]),
   };
 
   state = {
     startDate: null,
     endDate: null,
   };
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      startDate: props.startDate ? midnightDay(props.startDate) : null,
+      endDate: props.endDate ? midnightDay(props.endDate) : null,
+    };
+  }
 
   onChange = () => {
     const { startDate, endDate } = this.state;
