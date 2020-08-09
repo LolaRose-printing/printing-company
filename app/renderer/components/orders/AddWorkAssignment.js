@@ -76,6 +76,7 @@ export default class AddNewWorkAssignment extends Component {
             work={{
               employeeId: 1,
               workTypeId: 1,
+              motive: '',
             }}
             onChange={(x) => {
               addWorkRecord(x);
