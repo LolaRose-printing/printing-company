@@ -6,6 +6,7 @@ import EmployeeYearReport from './EmployeeYearReport';
 import PrintButton from '../../../tools/PrintButton';
 import 'materialize-css';
 import { Collection, CollectionItem } from 'react-materialize';
+import TaxCardButton from '../TaxCardButton';
 
 export default class EmployeesYearReportList extends Component {
   static propTypes = {
@@ -34,6 +35,9 @@ export default class EmployeesYearReportList extends Component {
             <CollectionItem key={idx}>
               <EmployeeYearReport employee={emp} monthlyWage={employeeMonthlyWages[emp.id]}
                                   wageSum={employeeWagesSums[emp.id]}/>
+              <div className="no-print tax-card-button-reports">
+                <TaxCardButton startDate={startDate} endDate={endDate} employeeId={emp.id}/>
+              </div>
             </CollectionItem>
           ))}
         </Collection>
