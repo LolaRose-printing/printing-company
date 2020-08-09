@@ -23,11 +23,11 @@
 
 .selection-container > .link-to-detail {
     margin-top: 40px;
-
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
-.link-to-detail a {
+.link-to-detail div {
     z-index: 0 !important;
 }
+

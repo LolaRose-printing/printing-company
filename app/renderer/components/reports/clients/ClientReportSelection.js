@@ -107,8 +107,16 @@ export default class ClientReportSelection extends Component {
                 classNamePrefix="select"
               />
             </div>
-
             <div className="link-to-detail">
+              {Object.keys(ordersOptions).length ? (
+                <Button className="red" node="div" waves="light"
+                        onClick={() => this.setState({ selectedOrders: ordersOptions })}
+                        disabled={selectedOrders.length === ordersOptions.length}
+                >
+                  Vyber všechny
+                </Button>
+              ) : (<div/>)}
+
               {this.dataSelected(this.state) ? (
                 <RenderLink filter={this.serialize(this.state)}/>
               ) : null}
