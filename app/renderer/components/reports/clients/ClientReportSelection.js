@@ -71,7 +71,7 @@ export default class ClientReportSelection extends Component {
       })
       .flatMap((x) => {
         return x.clientOrders.map((order) => {
-          return { value: order.id, label: `${order.name} - ${format(x.date)}` };
+          return { value: order.id, label: `${order.name} - ${format(midnightDay(order.date))}` };
         });
       });
 
