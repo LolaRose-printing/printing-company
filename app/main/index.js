@@ -1,5 +1,5 @@
 import path from 'path';
-import { app, crashReporter, BrowserWindow, Menu } from 'electron';
+import { app, BrowserWindow, crashReporter, Menu, nativeTheme } from 'electron';
 
 const isDevelopment = process.env.NODE_ENV === 'development';
 
@@ -48,16 +48,19 @@ app.on('ready', async () => {
     webPreferences: {
       nodeIntegration: true,
     },
+    darkTheme: false,
   });
 
   mainWindow.loadFile(path.resolve(path.join(__dirname, '../renderer/index.html')));
 
   // show window once on first load
   mainWindow.webContents.once('did-finish-load', () => {
-    mainWindow.themeSource = 'light'
+    // on all other systems
+    mainWindow.themeSource = 'light';
     mainWindow.show();
   });
-
+  // because of the MacOs
+  nativeTheme.themeSource = 'light';
   mainWindow.webContents.on('did-finish-load', () => {
     // Handle window logic properly on macOS:
     // 1. App should not terminate if window has been closed
