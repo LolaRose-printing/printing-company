@@ -72,3 +72,21 @@
 .tax-head {
     font-weight: bold;
 }
+
+.tax-card-number-input-box {
+    align-self: center;
+
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.tax-card-number-input-box > .tax-card-number-text {
+    font-size: 1.2rem;
+}
+
+.tax-card-number-input {
+    text-align: center;
+    max-width: 100px;
+}
